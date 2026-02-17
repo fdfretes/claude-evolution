@@ -1,8 +1,8 @@
 # High-Leverage Improvement Questions
 
-## Status: NEAR-TERMINAL (0 fixes at iteration 75 after 0 fixes at iteration 74)
+## Status: NEAR-TERMINAL (0 fixes at iteration 76 after 0 fixes at iterations 74-75)
 
-Iteration 55 declared frontier exhausted. Iterations 56-71 independently verified via 16 distinct approaches — all rejected. Iteration 72 applied operational sequencing lens (1 fix). Iteration 73 applied directive modality consistency lens (2 fixes). Iterations 74-75 applied two more lenses (negative space coverage, conditional reachability) — 0 fixes each. Two consecutive zero-edit iterations post-reopening.
+Iteration 55 declared frontier exhausted. Iterations 56-71 independently verified via 16 distinct approaches — all rejected. Iteration 72 applied operational sequencing lens (1 fix). Iteration 73 applied directive modality consistency lens (2 fixes). Iterations 74-76 applied three more lenses (negative space coverage, conditional reachability, example sufficiency) — 0 fixes each. Three consecutive zero-edit iterations post-reopening.
 
 ## Active
 
@@ -72,6 +72,7 @@ Iteration 55 declared frontier exhausted. Iterations 56-71 independently verifie
 - ~~Directive modality consistency: directive strength vs violation severity~~ → Fixed (discriminated unions "Prefer"→"Use", idempotency-key "should"→declarative imperative) iteration 73
 - ~~Negative space coverage: anti-pattern false negatives~~ → Rejected (all 19 "wrong" labels correctly scoped by qualifying phrases) iteration 74
 - ~~Conditional reachability: action reachability from conditional states~~ → Rejected (5 HIGH candidates all resolved by existing mechanisms) iteration 75
+- ~~Example sufficiency: positive/negative example coverage~~ → Rejected (12 HIGH findings for human audience all rejected; prose sufficient for AI consumer; examples violate technology-agnostic + compression) iteration 76
 
 ## Graveyarded Items
 - Section 14 compression (27 words, below threshold) — evidence/section14-assessment.md
@@ -151,7 +152,7 @@ Carried from iterations 38-75 (unchanged — no promotions at iterations 56-75):
 
 ## Document Maturity Assessment
 
-The document has been through 53 improvement iterations. All content-level and meta-level lenses are exhausted. Frontier exhaustion independently verified at iterations 56-71. Iteration 72 reopened briefly with operational sequencing lens (1 fix applied). Iteration 73 applied directive modality consistency lens (2 fixes applied). Iterations 74-75 applied two more lenses with 0 fixes each — negative space coverage and conditional reachability.
+The document has been through 54 improvement iterations. All content-level and meta-level lenses are exhausted. Frontier exhaustion independently verified at iterations 56-71. Iteration 72 reopened briefly with operational sequencing lens (1 fix applied). Iteration 73 applied directive modality consistency lens (2 fixes applied). Iterations 74-76 applied three more lenses with 0 fixes each — negative space coverage, conditional reachability, and example sufficiency.
 
 | Lens | Iterations | Status |
 |------|-----------|--------|
@@ -203,6 +204,7 @@ The document has been through 53 improvement iterations. All content-level and m
 | Directive modality consistency | 73 | Applied (2 fixes — discriminated unions "Prefer"→"Use", idempotency-key "should"→declarative imperative; 3 MEDIUM rejected as correctly calibrated) |
 | Negative space coverage | 74 | Rejected (19 "wrong" labels audited; 4 always wrong, 1 nearly always, 14 context-dependent — all correctly scoped by qualifying phrases) |
 | Conditional reachability | 75 | Rejected (5 HIGH candidates all falsified — resolved by alternative paths, existing mechanisms, or gate-with-resolution patterns) |
+| Example sufficiency | 76 | Rejected (12 HIGH findings for human audience; all rejected for AI consumer — prose sufficient, code examples violate technology-agnostic principle and compression floor) |
 
 ## Reopening Criteria
 

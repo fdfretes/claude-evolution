@@ -1522,3 +1522,30 @@ Track how the improvement process itself evolves. Meta-observations about what w
 - **Cumulative delta: ~+29 words** (unchanged from iteration 73).
 - **The protocol's natural arc**: iterations 21-37 (17 iterations) produced all substantive improvements; iterations 38-55 (18 iterations) applied progressively finer lenses finding smaller issues; iterations 56-71 (16 iterations) verified exhaustion through 16 independent approaches; iterations 72-73 (2 iterations) found latent issues through novel lenses; iterations 74-75 (2 iterations) verified anti-pattern accuracy and conditional reachability through novel lenses with 0 edits each. This 17:18:16:2:2 distribution shows the tail is now producing novel verification lenses but no edits.
 - **Conditional testing family now complete.** Four lenses cover all conditional dimensions: operand sufficiency (iter 67), failure branches (iter 51), implementation paths (iter 48), physical reachability (iter 75). This is the 11th verification category: conditional completeness (joining structural analysis, cooperative/adversarial compliance, decomposition safety, misapplication recovery, temporal obsolescence, cognitive load, derivability, semantic consistency, execution simulation, modality analysis).
+
+---
+
+## Iteration 76 - Example Sufficiency Audit (2026-02-17)
+
+### What Worked
+- Applied a genuinely novel lens: **example sufficiency** — do rules lacking both positive and negative examples risk misapplication? This tests whether the document's prose clarity is sufficient to produce correct implementations without code demonstrations. Distinct from actionability (iter 44, which checks if rules have enough detail to act on), negative space coverage (iter 74, which checks if "wrong" examples are correctly scoped), and self-contradiction audit (iter 38/42, which checks if examples comply with their own rules). This lens specifically asks: where would a concrete code example significantly reduce misapplication risk?
+- Subagent produced a thorough inventory: 12 HIGH-severity findings across 10 sections. The findings are objectively valid — these ARE the areas where implementations are most commonly done wrong.
+- Falsification was clean and decisive. Four independent arguments converge on rejection: audience (AI doesn't need code examples), technology-agnostic principle, compression floor, and standards-vs-tutorial distinction. No argument was close to failing.
+
+### What Struggled
+- The lens is inherently audience-dependent. For a human developer audience, these 12 findings would all be genuine HIGH-severity gaps requiring code examples. For the AI consumer, they're non-issues because the AI generates implementations from prose. This audience-dependency means the lens is valid but its findings are context-specific. The rejection was about audience fitness, not lens quality.
+
+### Discoveries
+- **Standards documents vs implementation guides occupy complementary but distinct niches.** A standards document defines WHAT and WHY; an implementation guide shows HOW. CLAAAAAAUDE.md already includes examples at the right locations — where they serve disambiguation (right/wrong injection patterns, naming conventions, error handling patterns). It correctly omits examples where the prose is sufficient for a qualified implementer (AI or senior developer).
+- **The example sufficiency lens would be HIGH-value for a companion "Implementation Guide" document.** All 12 findings describe legitimate implementation complexity that a tutorial-style document should address. This observation is a potential future product, not a current editing action.
+- **Three consecutive zero-edit iterations now.** The document is returning to the deep-terminal pattern seen in iterations 56-71, but through genuinely novel lenses rather than rehashed approaches. Each lens produces real analysis but the document's quality ceiling is reached.
+
+### Protocol Adjustments
+- None. The protocol remains at near-terminal state.
+
+### Cross-Iteration Patterns
+- Fifty-six iterations catalogued. Forty-nine lens applications (36 unique + 13 verification/rejection passes).
+- Edit size: ... → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → **-2** → **-1** → **0** → **0** → **0**. Third consecutive zero-edit iteration after the iteration 72-73 reopening.
+- **Cumulative delta: ~+29 words** (unchanged from iteration 73).
+- **Audience-dependent lens rejection is a new pattern.** Previous rejections fell into: derivable (iterations 58, 66, 71), below threshold (iterations 67-70, 74-75), or out of scope (iteration 65). This is the first rejection where the findings are genuinely HIGH-severity for one audience but below threshold for the actual audience. The lens quality is fine; the audience filters the findings.
+- **Example testing family: 3 lenses now cover example dimensions.** Self-contradiction (iter 38/42) checks examples comply with rules. Negative space (iter 74) checks "wrong" examples are correctly scoped. Example sufficiency (iter 76) checks whether example absence creates risk. This is the 12th verification category: example quality (joining structural analysis, cooperative/adversarial compliance, decomposition safety, misapplication recovery, temporal obsolescence, cognitive load, derivability, semantic consistency, execution simulation, modality analysis, conditional completeness).
