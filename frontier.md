@@ -1,8 +1,8 @@
 # High-Leverage Improvement Questions
 
-## Status: EXHAUSTED (confirmed at iterations 56-62)
+## Status: EXHAUSTED (confirmed at iterations 56-63)
 
-Iteration 55 declared frontier exhausted. Iteration 56 independently verified via 4 candidate lenses. Iteration 57 reconfirmed via fresh-eyes approach. Iteration 58 applied data invariant enforcement depth lens — rejected as derivable from existing trust boundary coverage. Iteration 59 applied end-to-end scenario simulation lens — 4 realistic scenarios across 18/26 sections all produce correct results with no gaps. Iteration 60 applied adversarial compliance testing lens — 10 gaming scenarios all blocked by mechanical-constraint + intent-clause pairing pattern. Iteration 61 applied partial adoption safety lens — 5 decomposition scenarios all safe, sections are self-contained. Iteration 62 applied misapplication recovery lens — 8 honest-mistake scenarios tested, structural-friction rules reliably catch errors, intent-dependent rules inherently require human judgment.
+Iteration 55 declared frontier exhausted. Iteration 56 independently verified via 4 candidate lenses. Iteration 57 reconfirmed via fresh-eyes approach. Iteration 58 applied data invariant enforcement depth lens — rejected as derivable from existing trust boundary coverage. Iteration 59 applied end-to-end scenario simulation lens — 4 realistic scenarios across 18/26 sections all produce correct results with no gaps. Iteration 60 applied adversarial compliance testing lens — 10 gaming scenarios all blocked by mechanical-constraint + intent-clause pairing pattern. Iteration 61 applied partial adoption safety lens — 5 decomposition scenarios all safe, sections are self-contained. Iteration 62 applied misapplication recovery lens — 8 honest-mistake scenarios tested, structural-friction rules reliably catch errors, intent-dependent rules inherently require human judgment. Iteration 63 applied temporal obsolescence resilience lens — 14 technology references cataloged, all properly scoped as illustrations with escape hatches, no paradigm lock-in.
 
 ## Active
 
@@ -59,6 +59,7 @@ Iteration 55 declared frontier exhausted. Iteration 56 independently verified vi
 - ~~Adversarial compliance testing: 10 letter-vs-spirit gaming scenarios~~ → Verified resistant iteration 60
 - ~~Partial adoption safety: 5 section-isolation decomposition scenarios~~ → Verified safe iteration 61
 - ~~Misapplication recovery: 8 honest-mistake feedback loop scenarios~~ → Verified adequate iteration 62
+- ~~Temporal obsolescence resilience: 14 technology references, 6 paradigm areas~~ → Verified resilient iteration 63
 
 ## Graveyarded Items
 - Section 14 compression (27 words, below threshold) — evidence/section14-assessment.md
@@ -73,7 +74,7 @@ Iteration 55 declared frontier exhausted. Iteration 56 independently verified vi
 - Feature flag + multi-migration timing (niche, better as project-specific ADR) — graveyard.md
 
 ## Remaining Low-Severity Observations (Not Worth Editing)
-Carried from iterations 38-62 (unchanged — no promotions at iterations 56-62):
+Carried from iterations 38-63 (unchanged — no promotions at iterations 56-63):
 - `console.error` in Section 4 startup example is a legitimate pre-logger exception
 - "Never name anything Handler" wording is broader than intent (refers to classes, not directories)
 - Performance budgets (S7) duplicate SLO targets (S18) — same numbers, different contexts
@@ -114,10 +115,13 @@ Carried from iterations 38-62 (unchanged — no promotions at iterations 56-62):
 - Database-level CHECK constraints for business invariants not explicitly mentioned — derivable from "validate at boundaries" + database as trust boundary (iteration 58 finding)
 - Hand-rolled redundant validation in core/ not explicitly prohibited — derivable from "typed and trusted" + core purity principle (iteration 62 finding)
 - Non-failing regression test depends on per-commit CI or reviewer discipline — Phase 4 structure is correct defense; CI-specifics are tool-dependent (iteration 62 finding)
+- S22 rotation cadences (90/180/365 days) may age as industry shifts toward shorter windows — principle "every secret has a rotation schedule" is durable; numbers are starting defaults (iteration 63 finding)
+- S7 performance budget numbers (200ms/500ms/50ms) will shift with hardware — "profile and optimize if exceeded" is the real rule (iteration 63 finding)
+- Client-server assumption in S2 handler pattern — already extended with "CLI commands event consumers WebSocket handlers" (iteration 63 finding)
 
 ## Document Maturity Assessment
 
-The document has been through 39 improvement iterations. All content-level and meta-level lenses are exhausted. Frontier exhaustion independently verified at iterations 56, 57, 58, 59, 60, 61, and 62.
+The document has been through 40 improvement iterations. All content-level and meta-level lenses are exhausted. Frontier exhaustion independently verified at iterations 56, 57, 58, 59, 60, 61, 62, and 63.
 
 | Lens | Iterations | Status |
 |------|-----------|--------|
@@ -156,6 +160,7 @@ The document has been through 39 improvement iterations. All content-level and m
 | Adversarial compliance testing | 60 | Verified resistant (10 gaming scenarios, all blocked by constraint + intent pairing) |
 | Partial adoption safety | 61 | Verified safe (5 decomposition scenarios, all sections self-contained and safe in isolation) |
 | Misapplication recovery | 62 | Verified adequate (8 scenarios: 3 CAUGHT, 3 PARTIALLY CAUGHT, 2 SILENT but low-severity and inherently judgment-dependent) |
+| Temporal obsolescence resilience | 63 | Verified resilient (14 technology refs properly scoped, 6 paradigm areas have escape hatches, "principle + example + or equivalent" pattern throughout) |
 
 ## Reopening Criteria
 
