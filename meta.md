@@ -1383,3 +1383,29 @@ Track how the improvement process itself evolves. Meta-observations about what w
 - **Cumulative delta: ~+32 words** (unchanged since iteration 55).
 - **The protocol's natural arc**: iterations 21-37 (17 iterations) produced all substantive improvements; iterations 38-55 (18 iterations) applied progressively finer lenses finding smaller issues; iterations 56-70 (15 iterations) verified exhaustion through 15 independent approaches. This 17:18:15 distribution continues the healthy pattern.
 - **Eight verification categories remain.** The composition minimality lens falls within the structural analysis category (examining rule internals and relationships). No new verification category discovered.
+
+---
+
+## Iteration 71 - Degraded-Mode Operation (2026-02-17)
+
+### What Worked
+- Applied a lens focused on **operational resilience of the standards themselves**: what happens when the enforcement infrastructure the document assumes (CI pipeline, linter, type checker, test suite, security scanner) is broken or unavailable? This is distinct from temporal obsolescence (technology aging over years) and distinct from cognitive load (decision-making under stress). This lens asks whether the document accounts for its own enforcement mechanisms failing.
+- Quick analysis revealed the answer is yes: the Pre-Commit Protocol (S1) already serves as the manual degraded-mode equivalent of CI gates. It provides grep-based secret scanning, grep-based contamination checking, and visual review — exactly what you'd do when automated tools are unavailable. The Emergency Hotfix Protocol (S12) establishes the "fast-tracked not skipped" principle for time-constrained situations.
+
+### What Struggled
+- The lens initially felt promising because it addresses a real-world concern: "CI is down, do I still need to check for secrets?" But the document already answers this implicitly through the Pre-Commit Protocol's design — it prescribes manual checks that work regardless of CI availability.
+- Adding explicit "if CI is down, do X" guidance would be tool-specific (which CI? what failure mode?) and would violate the technology-agnostic principle that has correctly guided 4 previous rejections (iterations 37, 44, 58, 67).
+
+### Discoveries
+- **The Pre-Commit Protocol has a dual purpose**: it's both a quality gate AND a degraded-mode fallback. The protocol prescribes manual equivalents of every automated check: `grep` for secrets (manual secret scanner), `grep` for contamination (manual linter), visual review of diff (manual code review), atomicity question (manual bisect-safety check). This wasn't designed as degraded-mode operation, but it functions as one.
+- **Standards documents that require specific infrastructure to function are fragile.** CLAAAAAAUDE.md avoids this by having manual-first enforcement with CI as acceleration, not CI-first enforcement with manual as fallback. The Pre-Commit Protocol is required "every time with no exceptions" — CI gates in S21 are additional layers, not replacements.
+
+### Protocol Adjustments
+- None. The protocol remains at terminal state.
+
+### Cross-Iteration Patterns
+- Fifty-one iterations catalogued. Forty-four lens applications (31 unique + 13 verification/rejection passes).
+- Edit size: ... → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0. Seventeenth consecutive zero-edit iteration.
+- **Cumulative delta: ~+32 words** (unchanged since iteration 55).
+- **The protocol's natural arc**: iterations 21-37 (17 iterations) produced all substantive improvements; iterations 38-55 (18 iterations) applied progressively finer lenses finding smaller issues; iterations 56-71 (16 iterations) verified exhaustion through 16 independent approaches. This 17:18:16 distribution remains healthy.
+- **No new verification category discovered.** The degraded-mode operation lens falls within the error recovery / operational resilience category. All eight verification categories (structural analysis, cooperative/adversarial compliance, decomposition safety, misapplication recovery, temporal obsolescence, cognitive load, derivability, semantic consistency) remain unchanged.

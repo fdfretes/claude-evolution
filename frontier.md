@@ -1,8 +1,8 @@
 # High-Leverage Improvement Questions
 
-## Status: TERMINAL (confirmed at iterations 56-70)
+## Status: TERMINAL (confirmed at iterations 56-71)
 
-Iteration 55 declared frontier exhausted. Iterations 56-64 independently verified via 9 distinct approaches (4 candidate lenses, fresh-eyes, data invariant depth, end-to-end simulation, adversarial compliance, partial adoption safety, misapplication recovery, temporal obsolescence, cognitive load under stress). Iteration 65 evaluated 3 final candidate lenses (instruction stability under context compression, composability with external tooling, multi-agent coordination) — all rejected as not addressable by document edits, subsumed by prior lenses, or outside scope. Iteration 66 attempted test execution order independence — rejected as derivable from existing "no shared mutable state" rule. Iteration 67 applied imperative completeness lens — 7 findings all below editing threshold. Iteration 68 applied contradictory incentive audit — 7 rule pairs analyzed, all resolved by existing escape hatches and explicit mechanisms. Iteration 69 applied polysemy audit — 20 terms audited, 3 AMBIGUOUS findings all below editing threshold. Iteration 70 applied composition minimality lens — 6 candidate rules tested for logical entailment, all rejected as serving independent purposes. Protocol has reached terminal state.
+Iteration 55 declared frontier exhausted. Iterations 56-64 independently verified via 9 distinct approaches (4 candidate lenses, fresh-eyes, data invariant depth, end-to-end simulation, adversarial compliance, partial adoption safety, misapplication recovery, temporal obsolescence, cognitive load under stress). Iteration 65 evaluated 3 final candidate lenses (instruction stability under context compression, composability with external tooling, multi-agent coordination) — all rejected as not addressable by document edits, subsumed by prior lenses, or outside scope. Iteration 66 attempted test execution order independence — rejected as derivable from existing "no shared mutable state" rule. Iteration 67 applied imperative completeness lens — 7 findings all below editing threshold. Iteration 68 applied contradictory incentive audit — 7 rule pairs analyzed, all resolved by existing escape hatches and explicit mechanisms. Iteration 69 applied polysemy audit — 20 terms audited, 3 AMBIGUOUS findings all below editing threshold. Iteration 70 applied composition minimality lens — 6 candidate rules tested for logical entailment, all rejected as serving independent purposes. Iteration 71 applied degraded-mode operation lens — rejected as derivable from Pre-Commit Protocol + Emergency Hotfix Protocol. Protocol has reached terminal state.
 
 ## Active
 
@@ -67,6 +67,7 @@ Iteration 55 declared frontier exhausted. Iterations 56-64 independently verifie
 - ~~Contradictory incentive audit: rule-pair optimization pressures~~ → Rejected (7 pairs all resolved by existing mechanisms) iteration 68
 - ~~Polysemy audit: semantic drift of terms across sections~~ → Rejected (3 AMBIGUOUS terms all below editing threshold) iteration 69
 - ~~Composition minimality: logical entailment between rules~~ → Rejected (6 candidates all serve independent purposes; subsumed by compression passes) iteration 70
+- ~~Degraded-mode operation: enforcement infrastructure failure handling~~ → Rejected (derivable from Pre-Commit Protocol + Emergency Hotfix Protocol) iteration 71
 
 ## Graveyarded Items
 - Section 14 compression (27 words, below threshold) — evidence/section14-assessment.md
@@ -81,7 +82,7 @@ Iteration 55 declared frontier exhausted. Iterations 56-64 independently verifie
 - Feature flag + multi-migration timing (niche, better as project-specific ADR) — graveyard.md
 
 ## Remaining Low-Severity Observations (Not Worth Editing)
-Carried from iterations 38-69 (unchanged — no promotions at iterations 56-69):
+Carried from iterations 38-71 (unchanged — no promotions at iterations 56-71):
 - `console.error` in Section 4 startup example is a legitimate pre-logger exception
 - "Never name anything Handler" wording is broader than intent (refers to classes, not directories)
 - Performance budgets (S7) duplicate SLO targets (S18) — same numbers, different contexts
@@ -141,7 +142,7 @@ Carried from iterations 38-69 (unchanged — no promotions at iterations 56-69):
 
 ## Document Maturity Assessment
 
-The document has been through 48 improvement iterations. All content-level and meta-level lenses are exhausted. Frontier exhaustion independently verified at iterations 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, and 70.
+The document has been through 49 improvement iterations. All content-level and meta-level lenses are exhausted. Frontier exhaustion independently verified at iterations 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, and 71.
 
 | Lens | Iterations | Status |
 |------|-----------|--------|
@@ -188,6 +189,7 @@ The document has been through 48 improvement iterations. All content-level and m
 | Contradictory incentive audit | 68 | Rejected (7 rule pairs analyzed, all resolved by escape hatches, exception clauses, or separation of concerns) |
 | Polysemy audit | 69 | Rejected (20 terms audited: 8 CONSISTENT, 9 CONTEXTUAL, 3 AMBIGUOUS — all below editing threshold) |
 | Composition minimality | 70 | Rejected (6 candidates all serve independent purposes; subsumed by compression passes) |
+| Degraded-mode operation | 71 | Rejected (derivable from Pre-Commit Protocol as manual CI equivalent + Emergency Hotfix "fast-tracked not skipped" principle) |
 
 ## Reopening Criteria
 
