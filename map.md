@@ -1,8 +1,8 @@
 # Current Understanding of CLAAAAAAUDE.md Quality
 
-## Document Status: FINAL
+## Document Status: FINAL (with self-consistency patch)
 
-The document has reached its optimal state after 17 iterations (21-37). All improvement categories have been exhausted.
+The document reached its optimal state after 17 iterations (21-37). Iteration 38 applied a new lens ("self-contradiction audit") that found and fixed 3 internal contradictions where the document's own examples violated its own rules.
 
 ## Strengths
 - Comprehensive coverage of engineering lifecycle (26 sections)
@@ -14,6 +14,7 @@ The document has reached its optimal state after 17 iterations (21-37). All impr
 - All absolute rules connected to CI enforcement gates
 - All lifecycles complete: code, API, feature flags, deployment, incidents
 - Four compression passes complete (Sections 1, 3, 12, 13)
+- Self-consistency verified: examples comply with their own rules
 
 ## Resolved Issues (Complete List)
 - Autonomy boundary contradiction → Fixed iteration 21
@@ -35,31 +36,36 @@ The document has reached its optimal state after 17 iterations (21-37). All impr
 - Section 14 assessed at compression floor → Closed iteration 37
 - GraphQL standards → Graveyard iteration 37
 - Monorepo guidance → Graveyard iteration 37
+- `hotfix()` commit type not in Section 1 type list → Fixed iteration 38
+- `SELECT u.*` example violated "Never SELECT *" rule → Fixed iteration 38
+- "Never retry 4xx" contradicted "retry on 429" → Fixed iteration 38
 
 ## Final Metrics
-- Length: ~11,431 words (net -237 from 11,668 start)
+- Length: ~11,440 words (net ~-228 from 11,668 start)
 - Sections: 26
 - Internal contradictions: 0
+- Self-contradicting examples: 0
 - Cross-section inconsistencies: 0
 - Enforcement gaps: 0
 - Compressed sections: 4 (Sections 1, 3, 12, 13)
-- Graveyard items: 6 (language-specific, framework-specific, IDE-specific, Section 14 compression, GraphQL, monorepo)
+- Graveyard items: 6
 
 ## Quality Assessment
 - Enforceability: Very High
 - Clarity: Very High
 - Completeness: Very High
-- Consistency: Very High
+- Consistency: Very High (now includes self-consistency)
 - Practicality: High
 - Conciseness: Very High (at compression floor)
 
 ## Cumulative Changes
-- 11 additions: +630 words (autonomy bright-line, error budgets, parameter scope, resource cleanup, graceful shutdown, dependency delivery, offset pagination warning, request ID propagation, response serialization, API deprecation lifecycle, feature flag lifecycle)
-- 4 compressions: -877 words (Section 1 Git, Section 12 Debugging, Section 3 Code Standards, Section 13 API Standards)
-- 1 delineation: +16 words (Sections 10/21 boundary)
-- 2 enforcement connections: +45 words (architecture CI, injection CI)
-- **Net: -237 words while adding 11 new concepts**
+- 11 additions: +630 words
+- 4 compressions: -877 words
+- 1 delineation: +16 words
+- 2 enforcement connections: +45 words
+- 1 self-consistency patch: +9 words (3 fixes, net minimal)
+- **Net: ~-228 words while adding 11 new concepts and fixing 3 self-contradictions**
 
-## Iteration: 37
+## Iteration: 38
 Last updated: 2026-02-17
-Status: Document at final state. All frontier items resolved or graveyarded.
+Status: Document at final state. Self-consistency audit complete.

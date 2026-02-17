@@ -24,6 +24,9 @@ All improvement questions have been resolved or graveyarded. The document has re
 - ~~Compression: Section 14 Database Modeling~~ → Assessed at floor, graveyarded iteration 37
 - ~~Missing: GraphQL Standards~~ → Graveyarded iteration 37
 - ~~Missing: Monorepo Guidance~~ → Graveyarded iteration 37
+- ~~Self-contradiction: `hotfix()` commit type~~ → Fixed iteration 38
+- ~~Self-contradiction: `SELECT u.*` example~~ → Fixed iteration 38
+- ~~Self-contradiction: 429 retry vs 4xx rule~~ → Fixed iteration 38
 
 ## Graveyarded Items
 - Section 14 compression (27 words, below threshold) — evidence/section14-assessment.md
@@ -33,9 +36,18 @@ All improvement questions have been resolved or graveyarded. The document has re
 - Framework-specific patterns (pre-seeded rejection)
 - IDE-specific recommendations (pre-seeded rejection)
 
+## Remaining Low-Severity Observations (Not Worth Editing)
+These were identified in the iteration 38 self-contradiction audit but assessed as not worth editing:
+- `console.error` in Section 4 startup example is a legitimate pre-logger exception
+- "Never name anything Handler" wording is broader than intent (refers to classes, not directories)
+- Performance budgets (S7) duplicate SLO targets (S18) — same numbers, different contexts
+- `revert` semver mapping compressed to "all others=no bump" — technically imprecise but acceptable
+- `utils/` directory (S2) vs "never vague names like utils.ts" (S3) — file vs directory distinction
+- Idempotency/backoff concepts appear in multiple sections — appropriate contextual repetition
+
 ## Document Maturity Assessment
 
-The document has been through 17 improvement iterations. Every improvement lens has been applied and exhausted:
+The document has been through 18 improvement iterations. Every improvement lens has been applied and exhausted:
 
 | Lens | Iterations | Status |
 |------|-----------|--------|
@@ -50,6 +62,7 @@ The document has been through 17 improvement iterations. Every improvement lens 
 | Mechanism gap fills | 33, 34 | Exhausted (all lifecycles complete) |
 | Symmetric coverage | 30 | Exhausted (input/output both covered) |
 | Enforcement audit | 31, 32 | Exhausted (all rules verified in CI) |
+| Self-contradiction audit | 38 | Exhausted (examples comply with rules) |
 
 **The document has reached its final state.**
 

@@ -476,3 +476,31 @@ Track how the improvement process itself evolves. Meta-observations about what w
 - **Final cumulative delta: -237 words** from starting state (11,668 → ~11,431). Seventeen iterations: 11 additions (+630 words), 4 compressions (-877 words), 1 delineation (+16 words), 2 enforcement connections (+45 words), 1 final state declaration (+0 words).
 - **The compression curve is complete**: 380, 325, 115, 57, 27 (rejected). Each pass yielded less. The 27-word verified savings confirmed the floor.
 - **The document's journey**: started with contradictions and missing concepts (iterations 21-22), compressed verbosity (23, 25), resolved ambiguities (24, 26), filled mechanism gaps (27-28), aligned cross-references (29), promoted implicit patterns to explicit rules (30), connected rules to enforcement gates (31-32), completed lifecycles (33-34), compressed remaining sections (35-36), and declared final state (37). This progression — from structural fixes to gap fills to compression to closure — is the natural maturity arc of a standards document.
+
+---
+
+## Iteration 38 - Self-Contradiction Audit (2026-02-17)
+
+### What Worked
+- The "self-contradiction audit" lens — asking "does the document's own examples violate its own rules?" — found 3 genuine medium-severity issues that 17 previous iterations missed. This validates the reopening criteria: the document can be "final" with respect to all previously applied lenses while still having undiscovered issues visible only through a new lens.
+- A subagent performed the thorough audit (15 findings total, 3 medium, 6 low, 6 very low), and the triage correctly identified which 3 warranted edits and which 12 were acceptable as-is. The "identify all → triage → apply safe subset" pattern continues to work.
+- All three fixes were surgical single-sentence changes: `hotfix(auth):` → `fix(auth):`, `SELECT u.*` → `SELECT u.id, u.name, u.email`, "Never retry on 4xx" → "Never retry on 4xx except 429." Each addresses a direct self-contradiction where a "Right" example or rule statement violated another rule in the same document.
+
+### What Struggled
+- The iteration 37 "final state declaration" was premature — it declared the document done without applying this lens. The lesson: "final state" should be declared only after explicitly testing for self-consistency, not just after exhausting content-level lenses (gaps, compressions, mechanisms).
+
+### Discoveries
+- **Gap-finding lens: "self-contradiction audit"** — for any example labeled "Right" or recommended, check whether it complies with every rule in the document, not just the rule it illustrates. Examples live in one section but must satisfy all sections simultaneously. This lens is orthogonal to all previous lenses because it doesn't look for missing content, redundant content, or cross-section alignment — it looks for content that contradicts other content at the example level.
+- **Change type: "fix self-contradiction"** — when a "Right" example violates a rule stated elsewhere (or even in the same section), the fix is to update the example. This is different from "resolve contradiction" (iteration 21) which was about conflicting rules. Self-contradictions are about examples not following their own document's rules.
+- **The `hotfix` commit type is the most dangerous kind of inconsistency.** It's a commit message example that developers copy verbatim. A reader following the Section 12 example would produce commits that fail commitlint (if configured per Section 21's "lint commit messages in CI"). The example was actively teaching the wrong practice.
+- **The 429/4xx issue reveals a common logical pattern in standards documents.** When you state "never X" followed by "except for Y which is a subset of X," you must explicitly state the exception or the "never" claim is false. This is the same pattern as "never use `any`" with an implicit exception for certain interop boundaries — except that exception IS explicitly stated ("unless accompanied by a runtime check or comment explaining why").
+
+### Protocol Adjustments
+- Add "self-contradiction audit" to the lens library. Before declaring a document final, explicitly verify that all examples comply with all rules — not just the rules in their own section. This should be a prerequisite for "final state declaration."
+- The reopening criteria from iteration 37 were validated: this iteration was justified by criterion #4 ("genuine ambiguity in applying the standards to a real scenario" — in this case, the document's own examples were the "real scenario" that exposed ambiguity).
+
+### Cross-Iteration Patterns
+- Eighteen iterations catalogued. Change types: "resolve contradiction" (21), "fill gap" (22), "compress redundancy" (23, 25, 35, 36), "delineate boundary" (24), "scope qualifier" (26), "fill mechanism gap" (27, 28, 33, 34), "cross-section alignment" (29), "promote example to rule" (30), "connect rule to gate" (31, 32), "final state declaration" (37), "fix self-contradiction" (38).
+- Edit size: 55 → 72 → -380 → 16 → -325 → 17 → +130 → +60 → +25 → +73 → +20 → +25 → +85 → +68 → -115 → -57 → 0 → +9. The +9 words after a 0-word iteration shows that even "final" documents can have small, high-value fixes.
+- **Cumulative delta: ~-228 words** from starting state (11,668 → ~11,440). Eighteen iterations: 11 additions (+630 words), 4 compressions (-877 words), 1 delineation (+16 words), 2 enforcement connections (+45 words), 1 self-consistency patch (+9 words), 1 final state declaration (+0 words).
+- **Twelve distinct improvement lenses now catalogued.** The lens library is itself a reusable asset for auditing any standards document: contradictions, gaps, compressions, boundary delineation, scope qualifiers, mechanism gaps, cross-section alignment, example-to-rule promotion, rule-to-gate connection, symmetric coverage, enforcement audit, self-contradiction audit.
