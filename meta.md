@@ -1494,3 +1494,31 @@ Track how the improvement process itself evolves. Meta-observations about what w
 - **Cumulative delta: ~+29 words** (unchanged from iteration 73).
 - **The protocol's natural arc**: iterations 21-37 (17 iterations) produced all substantive improvements; iterations 38-55 (18 iterations) applied progressively finer lenses finding smaller issues; iterations 56-71 (16 iterations) verified exhaustion through 16 independent approaches; iterations 72-73 (2 iterations) found latent issues through novel lenses; iteration 74 (1 iteration) verified anti-pattern accuracy through novel lens. This 17:18:16:2:1 distribution shows the yield per lens category is diminishing further.
 - **No new verification category discovered.** The negative space coverage lens falls within adversarial/correctness verification (testing whether the document's own assertions are accurate). It is related to but distinct from adversarial compliance (testing reader gaming) and scope boundaries (testing rule over-broadness). The 10 verification categories remain unchanged.
+
+---
+
+## Iteration 75 - Conditional Reachability Audit (2026-02-17)
+
+### What Worked
+- Applied a genuinely novel lens: **conditional reachability** — when the document says "if X, do Y", is Y always physically reachable from X's state? This tests whether conditional branches reference actions, tools, or states that are always available in the condition's context. Distinct from prerequisite chain completeness (iter 48, which checks implementation paths exist), error recovery (iter 51, which checks failure branches), imperative completeness (iter 67, which checks operand sufficiency), and constraint stacking (iter 50, which checks multi-rule interactions). This lens specifically tests: given a condition is TRUE, can the prescribed action physically execute?
+- Used a subagent for comprehensive extraction of all conditionals across 26 sections. The subagent found 5 HIGH, 14 MEDIUM, and 12 LOW candidates — a thorough inventory.
+- Falsification was decisive: all 5 HIGH candidates resolved cleanly. The document's consistent design patterns (alternative options with "or", adapter patterns, gate-with-resolution sequences) ensure every conditional has at least one reachable path.
+
+### What Struggled
+- The subagent's analysis overestimated severity on several findings by not fully reasoning about how the document's architectural patterns resolve apparent conflicts. For example, the S4/S10 frozen config vs runtime flags finding appears HIGH until you realize that flags are adapters (explicitly stated in S10) and therefore not part of the frozen config object.
+- The S2/S20 "must refactor vs never refactor without tests" finding initially looks like a genuine deadlock, but S20 Step 1 explicitly says "write tests first if they do not exist" — making the gate permeable. This required careful reading of the full Section 20, not just the "never refactor when" list.
+
+### Discoveries
+- **The document uses three patterns to ensure conditional reachability**: (1) **Alternative options** — "X or Y" ensures at least one path is viable even if the other is blocked by context. (2) **Adapter separation** — infrastructure concerns (flags, auth, logging) are accessed through adapters, not through static config, so they can be implemented independently. (3) **Gate-with-resolution** — prohibitions like "never refactor without tests" include explicit resolution paths ("write tests first") that make the gate permeable rather than permanent.
+- **2 new low-severity observations added**: S10 "runtime config reload" partially unreachable under S4's Object.freeze (but "external service" provides the viable alternative), and S6's singular jwtSecret vs S22's key overlap requirement (resolvable via adapter pattern).
+- **Conditional reachability is the right lens to close the conditional-testing family.** Prior lenses tested different aspects of conditionals: operands (iter 67), failure branches (iter 51), implementation paths (iter 48), multi-rule interactions (iter 50). This lens tests the final dimension: physical executability of prescribed actions from conditional states. Together these four lenses provide comprehensive conditional coverage.
+
+### Protocol Adjustments
+- None. The protocol remains at near-terminal state.
+
+### Cross-Iteration Patterns
+- Fifty-five iterations catalogued. Forty-eight lens applications (35 unique + 13 verification/rejection passes).
+- Edit size: ... → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → **-2** → **-1** → **0** → **0**. Second consecutive zero-edit iteration after the iteration 72-73 reopening.
+- **Cumulative delta: ~+29 words** (unchanged from iteration 73).
+- **The protocol's natural arc**: iterations 21-37 (17 iterations) produced all substantive improvements; iterations 38-55 (18 iterations) applied progressively finer lenses finding smaller issues; iterations 56-71 (16 iterations) verified exhaustion through 16 independent approaches; iterations 72-73 (2 iterations) found latent issues through novel lenses; iterations 74-75 (2 iterations) verified anti-pattern accuracy and conditional reachability through novel lenses with 0 edits each. This 17:18:16:2:2 distribution shows the tail is now producing novel verification lenses but no edits.
+- **Conditional testing family now complete.** Four lenses cover all conditional dimensions: operand sufficiency (iter 67), failure branches (iter 51), implementation paths (iter 48), physical reachability (iter 75). This is the 11th verification category: conditional completeness (joining structural analysis, cooperative/adversarial compliance, decomposition safety, misapplication recovery, temporal obsolescence, cognitive load, derivability, semantic consistency, execution simulation, modality analysis).

@@ -1,8 +1,8 @@
 # Current Understanding of CLAAAAAAUDE.md Quality
 
-## Document Status: NEAR-TERMINAL (0 fixes at iteration 74 after 2 fixes at iteration 73)
+## Document Status: NEAR-TERMINAL (0 fixes at iteration 75 after 0 fixes at iteration 74)
 
-The document reached its content-optimal state after 20 iterations (21-40). Iterations 41-55 applied 15 orthogonal lenses without finding remaining HIGH-severity issues. Iterations 56-65 verified frontier exhaustion via 10 distinct verification approaches. Iterations 66-71 attempted six additional lenses — all rejected. Iteration 72 applied operational sequencing lens and found 1 step-ordering error. Iteration 73 applied directive modality consistency lens and found 2 modality mismatches. Iteration 74 applied negative space coverage lens (anti-pattern false negatives) — all 19 "wrong" labels verified as correctly scoped.
+The document reached its content-optimal state after 20 iterations (21-40). Iterations 41-55 applied 15 orthogonal lenses without finding remaining HIGH-severity issues. Iterations 56-65 verified frontier exhaustion via 10 distinct verification approaches. Iterations 66-71 attempted six additional lenses — all rejected. Iteration 72 applied operational sequencing lens and found 1 step-ordering error. Iteration 73 applied directive modality consistency lens and found 2 modality mismatches. Iterations 74-75 applied two more lenses (negative space coverage, conditional reachability) — both produced 0 edits.
 
 ## Strengths
 - Comprehensive coverage of engineering lifecycle (26 sections)
@@ -47,6 +47,7 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - Operational sequencing: 15 sequential instruction sets audited; 1 step-ordering error fixed
 - Directive modality consistency: directive strength matches violation severity; 2 soft-language mismatches on data-integrity rules fixed
 - Negative space coverage: all 19 "wrong" examples correctly scoped by qualifying phrases; zero false-negative anti-patterns
+- Conditional reachability: all conditional branches have at least one viable action path; alternative options and adapter patterns provide escape routes
 
 ## Resolved Issues (Complete List)
 - Autonomy boundary contradiction → Fixed iteration 21
@@ -109,6 +110,7 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - Temporary Debug Logging Protocol step ordering → Fixed iteration 72
 - Discriminated unions "Prefer" and Idempotency-Key "should" modality mismatches → Fixed iteration 73
 - Negative space coverage (anti-pattern false negatives) → Verified correct iteration 74
+- Conditional reachability (action reachability from conditional states) → Verified reachable iteration 75
 
 ## Metrics
 - Length: ~11,558 words (unchanged from iteration 73)
@@ -144,9 +146,10 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - Operational sequencing errors: 0
 - Directive modality mismatches: 0
 - Anti-pattern false negatives (HIGH): 0
+- Conditional reachability gaps (HIGH): 0
 - Compressed sections: 4 (Sections 1, 3, 12, 13)
 - Graveyard items: 8
-- Audit lenses applied without findings: 22 (numeric constraints, actionability, failure mode asymmetry, error recovery paths, trust boundary transitions, rule verifiability, frontier exhaustion verification x2, database constraint depth, scenario simulation, adversarial compliance, partial adoption safety, misapplication recovery, temporal obsolescence resilience, cognitive load under stress, terminal state assessment, test execution order independence, imperative completeness, contradictory incentive audit, polysemy audit, composition minimality, degraded-mode operation, negative space coverage)
+- Audit lenses applied without findings: 23 (numeric constraints, actionability, failure mode asymmetry, error recovery paths, trust boundary transitions, rule verifiability, frontier exhaustion verification x2, database constraint depth, scenario simulation, adversarial compliance, partial adoption safety, misapplication recovery, temporal obsolescence resilience, cognitive load under stress, terminal state assessment, test execution order independence, imperative completeness, contradictory incentive audit, polysemy audit, composition minimality, degraded-mode operation, negative space coverage, conditional reachability)
 
 ## Quality Assessment
 - Enforceability: Very High
@@ -181,6 +184,7 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - Operational Sequencing: Very High (15 instruction sets audited; 1 step-ordering error fixed, 3 HIGH candidates rejected as mitigated)
 - Directive Modality Consistency: Very High (all directives audited; 2 modality mismatches fixed, severity now matches strength)
 - Negative Space Coverage: Very High (19 "wrong" labels audited; all correctly scoped by qualifying phrases, zero false negatives)
+- Conditional Reachability: Very High (all conditionals audited; 5 HIGH candidates rejected after falsification, all actions reachable via alternative paths or existing mechanisms)
 
 ## Cumulative Changes
 - 14 additions: +760 words
@@ -202,6 +206,6 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - 1 modality fix: -1 word (2 soft directives strengthened to match severity)
 - **Net: ~+29 words while adding 22 new concepts and fixing 22 consistency errors**
 
-## Iteration: 74
+## Iteration: 75
 Last updated: 2026-02-17
-Status: Applied negative space coverage lens. Audited all 19 "wrong is" anti-pattern labels for false negatives (patterns labeled wrong that are sometimes correct). Found 4 genuinely always wrong (security + vague reviews), 1 nearly always wrong (dead code), 14 context-dependent. All 14 context-dependent labels already scoped by qualifying phrases (because/when/that/which clauses) that prevent literal misapplication. Zero HIGH findings. 34th unique lens. 47 total lens applications (34 unique + 13 verification/rejection passes).
+Status: Applied conditional reachability lens. Audited all conditional instructions (if/when/unless/after/before) across 26 sections for action reachability from condition state. Found 5 HIGH candidates (S2/S20 refactor gate, S4/S10 frozen config vs runtime flags, S12 no-repro vs emergency, emergency feature flags, S2/S20 untested coupling). All 5 rejected after falsification: S20 Step 1 provides "write tests first" resolution, adapter pattern separates flags from frozen config, emergency protocol redefines reproduction, flag absence has rollback alternative. 14 MEDIUM findings all below threshold. 35th unique lens. 48 total lens applications (35 unique + 13 verification/rejection passes).

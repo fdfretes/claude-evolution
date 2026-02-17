@@ -1,8 +1,8 @@
 # High-Leverage Improvement Questions
 
-## Status: NEAR-TERMINAL (0 fixes at iteration 74 after 2 fixes at iteration 73)
+## Status: NEAR-TERMINAL (0 fixes at iteration 75 after 0 fixes at iteration 74)
 
-Iteration 55 declared frontier exhausted. Iterations 56-71 independently verified via 16 distinct approaches — all rejected. Iteration 72 applied operational sequencing lens (1 fix). Iteration 73 applied directive modality consistency lens (2 fixes). Iteration 74 applied negative space coverage lens (0 fixes — all "wrong" labels correctly scoped). Protocol approaching terminal state again.
+Iteration 55 declared frontier exhausted. Iterations 56-71 independently verified via 16 distinct approaches — all rejected. Iteration 72 applied operational sequencing lens (1 fix). Iteration 73 applied directive modality consistency lens (2 fixes). Iterations 74-75 applied two more lenses (negative space coverage, conditional reachability) — 0 fixes each. Two consecutive zero-edit iterations post-reopening.
 
 ## Active
 
@@ -71,6 +71,7 @@ Iteration 55 declared frontier exhausted. Iterations 56-71 independently verifie
 - ~~Operational sequencing: instruction step ordering correctness~~ → Fixed (Temp Debug Logging Protocol steps 4/5 reordered) iteration 72
 - ~~Directive modality consistency: directive strength vs violation severity~~ → Fixed (discriminated unions "Prefer"→"Use", idempotency-key "should"→declarative imperative) iteration 73
 - ~~Negative space coverage: anti-pattern false negatives~~ → Rejected (all 19 "wrong" labels correctly scoped by qualifying phrases) iteration 74
+- ~~Conditional reachability: action reachability from conditional states~~ → Rejected (5 HIGH candidates all resolved by existing mechanisms) iteration 75
 
 ## Graveyarded Items
 - Section 14 compression (27 words, below threshold) — evidence/section14-assessment.md
@@ -85,7 +86,7 @@ Iteration 55 declared frontier exhausted. Iterations 56-71 independently verifie
 - Feature flag + multi-migration timing (niche, better as project-specific ADR) — graveyard.md
 
 ## Remaining Low-Severity Observations (Not Worth Editing)
-Carried from iterations 38-72 (unchanged — no promotions at iterations 56-74):
+Carried from iterations 38-75 (unchanged — no promotions at iterations 56-75):
 - `console.error` in Section 4 startup example is a legitimate pre-logger exception
 - "Never name anything Handler" wording is broader than intent (refers to classes, not directories)
 - Performance budgets (S7) duplicate SLO targets (S18) — same numbers, different contexts
@@ -145,10 +146,12 @@ Carried from iterations 38-72 (unchanged — no promotions at iterations 56-74):
 - "Linear history preferred" uses soft modality for a workflow choice — correctly calibrated, not a correctness issue (iteration 73 finding)
 - "Blue-green or canary deployments preferred" uses soft modality — correctly calibrated, infrastructure-dependent (iteration 73 finding)
 - "Never use raw literals in tests" slightly over-mandated for simple scalars — context clarifies intent is complex objects (iteration 73 finding)
+- S10 "runtime config reload" option for ops flags appears unreachable under S4's Object.freeze — but "external service" alternative provides viable path; adapter pattern separates flags from frozen config (iteration 75 finding)
+- S6 auth pattern shows singular `config.jwtSecret` but S22 requires key overlap during rotation — adapter pattern resolves: auth middleware can try multiple keys (iteration 75 finding)
 
 ## Document Maturity Assessment
 
-The document has been through 52 improvement iterations. All content-level and meta-level lenses are exhausted. Frontier exhaustion independently verified at iterations 56-71. Iteration 72 reopened briefly with operational sequencing lens (1 fix applied). Iteration 73 applied directive modality consistency lens (2 fixes applied). Iteration 74 applied negative space coverage lens (0 fixes — all anti-patterns correctly scoped).
+The document has been through 53 improvement iterations. All content-level and meta-level lenses are exhausted. Frontier exhaustion independently verified at iterations 56-71. Iteration 72 reopened briefly with operational sequencing lens (1 fix applied). Iteration 73 applied directive modality consistency lens (2 fixes applied). Iterations 74-75 applied two more lenses with 0 fixes each — negative space coverage and conditional reachability.
 
 | Lens | Iterations | Status |
 |------|-----------|--------|
@@ -199,6 +202,7 @@ The document has been through 52 improvement iterations. All content-level and m
 | Operational sequencing | 72 | Applied (1 fix — Temp Debug Logging Protocol steps 4/5 reordered; 3 HIGH rejected as mitigated; 13 MEDIUM rejected) |
 | Directive modality consistency | 73 | Applied (2 fixes — discriminated unions "Prefer"→"Use", idempotency-key "should"→declarative imperative; 3 MEDIUM rejected as correctly calibrated) |
 | Negative space coverage | 74 | Rejected (19 "wrong" labels audited; 4 always wrong, 1 nearly always, 14 context-dependent — all correctly scoped by qualifying phrases) |
+| Conditional reachability | 75 | Rejected (5 HIGH candidates all falsified — resolved by alternative paths, existing mechanisms, or gate-with-resolution patterns) |
 
 ## Reopening Criteria
 
