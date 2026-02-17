@@ -1,8 +1,8 @@
 # High-Leverage Improvement Questions
 
-## Status: NEAR-TERMINAL (2 fixes applied at iteration 73 after 1 fix at iteration 72)
+## Status: NEAR-TERMINAL (0 fixes at iteration 74 after 2 fixes at iteration 73)
 
-Iteration 55 declared frontier exhausted. Iterations 56-71 independently verified via 16 distinct approaches — all rejected. Iteration 72 applied operational sequencing lens (1 fix). Iteration 73 applied directive modality consistency lens (2 fixes). Protocol approaching terminal state again.
+Iteration 55 declared frontier exhausted. Iterations 56-71 independently verified via 16 distinct approaches — all rejected. Iteration 72 applied operational sequencing lens (1 fix). Iteration 73 applied directive modality consistency lens (2 fixes). Iteration 74 applied negative space coverage lens (0 fixes — all "wrong" labels correctly scoped). Protocol approaching terminal state again.
 
 ## Active
 
@@ -70,6 +70,7 @@ Iteration 55 declared frontier exhausted. Iterations 56-71 independently verifie
 - ~~Degraded-mode operation: enforcement infrastructure failure handling~~ → Rejected (derivable from Pre-Commit Protocol + Emergency Hotfix Protocol) iteration 71
 - ~~Operational sequencing: instruction step ordering correctness~~ → Fixed (Temp Debug Logging Protocol steps 4/5 reordered) iteration 72
 - ~~Directive modality consistency: directive strength vs violation severity~~ → Fixed (discriminated unions "Prefer"→"Use", idempotency-key "should"→declarative imperative) iteration 73
+- ~~Negative space coverage: anti-pattern false negatives~~ → Rejected (all 19 "wrong" labels correctly scoped by qualifying phrases) iteration 74
 
 ## Graveyarded Items
 - Section 14 compression (27 words, below threshold) — evidence/section14-assessment.md
@@ -84,7 +85,7 @@ Iteration 55 declared frontier exhausted. Iterations 56-71 independently verifie
 - Feature flag + multi-migration timing (niche, better as project-specific ADR) — graveyard.md
 
 ## Remaining Low-Severity Observations (Not Worth Editing)
-Carried from iterations 38-72 (unchanged — no promotions at iterations 56-73):
+Carried from iterations 38-72 (unchanged — no promotions at iterations 56-74):
 - `console.error` in Section 4 startup example is a legitimate pre-logger exception
 - "Never name anything Handler" wording is broader than intent (refers to classes, not directories)
 - Performance budgets (S7) duplicate SLO targets (S18) — same numbers, different contexts
@@ -147,7 +148,7 @@ Carried from iterations 38-72 (unchanged — no promotions at iterations 56-73):
 
 ## Document Maturity Assessment
 
-The document has been through 51 improvement iterations. All content-level and meta-level lenses are exhausted. Frontier exhaustion independently verified at iterations 56-71. Iteration 72 reopened briefly with operational sequencing lens (1 fix applied). Iteration 73 applied directive modality consistency lens (2 fixes applied).
+The document has been through 52 improvement iterations. All content-level and meta-level lenses are exhausted. Frontier exhaustion independently verified at iterations 56-71. Iteration 72 reopened briefly with operational sequencing lens (1 fix applied). Iteration 73 applied directive modality consistency lens (2 fixes applied). Iteration 74 applied negative space coverage lens (0 fixes — all anti-patterns correctly scoped).
 
 | Lens | Iterations | Status |
 |------|-----------|--------|
@@ -197,6 +198,7 @@ The document has been through 51 improvement iterations. All content-level and m
 | Degraded-mode operation | 71 | Rejected (derivable from Pre-Commit Protocol as manual CI equivalent + Emergency Hotfix "fast-tracked not skipped" principle) |
 | Operational sequencing | 72 | Applied (1 fix — Temp Debug Logging Protocol steps 4/5 reordered; 3 HIGH rejected as mitigated; 13 MEDIUM rejected) |
 | Directive modality consistency | 73 | Applied (2 fixes — discriminated unions "Prefer"→"Use", idempotency-key "should"→declarative imperative; 3 MEDIUM rejected as correctly calibrated) |
+| Negative space coverage | 74 | Rejected (19 "wrong" labels audited; 4 always wrong, 1 nearly always, 14 context-dependent — all correctly scoped by qualifying phrases) |
 
 ## Reopening Criteria
 

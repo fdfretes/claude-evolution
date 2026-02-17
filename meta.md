@@ -1466,3 +1466,31 @@ Track how the improvement process itself evolves. Meta-observations about what w
 - **Cumulative delta: ~+29 words** (down 1 from iteration 72's +30).
 - **The protocol's natural arc**: iterations 21-37 (17 iterations) produced all substantive improvements; iterations 38-55 (18 iterations) applied progressively finer lenses finding smaller issues; iterations 56-71 (16 iterations) verified exhaustion through 16 independent approaches; iterations 72-73 (2 iterations) found latent issues through genuinely novel lenses (ordering + modality). This 17:18:16:2 distribution shows the document has a very small tail of issues discoverable only through novel lens categories.
 - **New verification category: modality analysis.** This is the 10th category (adding to: structural analysis, cooperative/adversarial compliance, decomposition safety, misapplication recovery, temporal obsolescence, cognitive load, derivability, semantic consistency, execution simulation).
+
+---
+
+## Iteration 74 - Negative Space Coverage Audit (2026-02-17)
+
+### What Worked
+- Applied a genuinely novel lens: **negative space coverage** — do any "wrong" examples in the document describe patterns that are sometimes the correct approach? A "wrong" label that is actually sometimes right could mislead a practitioner into avoiding a valid technique. This is distinct from all previous lenses: adversarial compliance (iteration 60) tested whether rules could be gamed; scope boundaries (iteration 55) tested whether absolute rules were over-broad; this lens tests whether the document's *examples of bad practice* have false negatives.
+- Systematic extraction and evaluation of all 19 "wrong is" anti-pattern labels across the document. Categorized as: 4 genuinely always wrong (SQL injection, shell injection, logging credentials, vague reviews), 1 nearly always wrong (dead commented-out code), 14 context-dependent.
+- Falsification of all 14 context-dependent items revealed that every one is already scoped by qualifying phrases in the document text: "because the code already says that" (comments), "when operations are independent" (async), "at every callsite...which treats symptoms" (null checks), etc. These qualifiers prevent the literal misapplication that the subagent analysis hypothesized.
+
+### What Struggled
+- The subagent analysis was thorough but overfit to edge cases outside the document's domain. Many "false negative" findings assumed contexts the document doesn't target: CLI scripts (the document targets systems), browser-side JavaScript (document targets servers), Lambda functions (document addresses deployment generically). The document's architectural scope (handlers → services → core → adapters) implicitly excludes these contexts.
+- The analysis also conflated "the wrong pattern" with "a pattern that contains the wrong element." For example, "innerHTML = userInput" is labeled wrong; sanitized HTML inserted via innerHTML is a different pattern entirely. The subagent treated them as the same.
+
+### Discoveries
+- **The document's qualifying phrases do heavy lifting.** The "wrong" labels are not bare assertions — they are scoped by because/when/that/which clauses that constrain the anti-pattern to its genuinely-wrong domain. This is a subtle design pattern: absolute-sounding labels with qualifying scopes. It reads as "this is always wrong" but technically says "this is wrong when these conditions hold" — and the conditions are exactly the ones where it's always wrong.
+- **Negative space coverage is a novel lens but produces zero findings for this document.** The document's anti-patterns are well-calibrated because they were written by experienced practitioners who know when these patterns are acceptable — and scoped their "wrong" labels accordingly. A less mature document would likely have unscoped "wrong" labels.
+- **The lens is useful as a verification category.** Even though it found nothing, confirming that 19 anti-pattern labels are correctly scoped adds confidence in the document's practical accuracy for diverse real-world contexts.
+
+### Protocol Adjustments
+- None. The protocol remains at near-terminal state.
+
+### Cross-Iteration Patterns
+- Fifty-four iterations catalogued. Forty-seven lens applications (34 unique + 13 verification/rejection passes).
+- Edit size: ... → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → **-2** → **-1** → **0**. Back to zero-edit after 2 consecutive edits.
+- **Cumulative delta: ~+29 words** (unchanged from iteration 73).
+- **The protocol's natural arc**: iterations 21-37 (17 iterations) produced all substantive improvements; iterations 38-55 (18 iterations) applied progressively finer lenses finding smaller issues; iterations 56-71 (16 iterations) verified exhaustion through 16 independent approaches; iterations 72-73 (2 iterations) found latent issues through novel lenses; iteration 74 (1 iteration) verified anti-pattern accuracy through novel lens. This 17:18:16:2:1 distribution shows the yield per lens category is diminishing further.
+- **No new verification category discovered.** The negative space coverage lens falls within adversarial/correctness verification (testing whether the document's own assertions are accurate). It is related to but distinct from adversarial compliance (testing reader gaming) and scope boundaries (testing rule over-broadness). The 10 verification categories remain unchanged.
