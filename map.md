@@ -2,7 +2,7 @@
 
 ## Document Status: MATURE (stable)
 
-The document reached its content-optimal state after 20 iterations (21-40). Iterations 41-47 applied orthogonal lenses (audience fitness, low-severity re-evaluation, cross-reference gaps, numeric constraints, actionability, forward references, temporal ordering, negative guidance). Iteration 48 applied a prerequisite chain completeness lens, finding 1 HIGH gap (feature flag implementation pattern missing despite 3 sections depending on flags as emergency capability).
+The document reached its content-optimal state after 20 iterations (21-40). Iterations 41-48 applied orthogonal lenses (audience fitness, low-severity re-evaluation, cross-reference gaps, numeric constraints, actionability, forward references, temporal ordering, negative guidance, prerequisite chain completeness). Iteration 49 applied a failure mode asymmetry lens, verifying that protective rule density is proportional to failure severity across CATASTROPHIC/HIGH/MEDIUM/LOW categories.
 
 ## Strengths
 - Comprehensive coverage of engineering lifecycle (26 sections)
@@ -27,6 +27,7 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - Cross-section temporal dependencies resolved (regression test squash note connects Phase 4 to Law 1)
 - Contamination scan covers all common pre-commit failure modes including merge conflict markers
 - Feature flag pattern has implementation guidance connecting lifecycle (S10) to architecture (S2)
+- Protective rule density proportional to failure severity (CATASTROPHIC modes have 2-6 layers; LOW modes have 1)
 
 ## Resolved Issues (Complete List)
 - Autonomy boundary contradiction → Fixed iteration 21
@@ -64,9 +65,10 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - Phase 4 regression test commit violates Law 1 bisect-safety → Fixed iteration 46
 - Pre-Commit Protocol Step 4 missing merge conflict marker scan → Fixed iteration 47
 - Feature flag implementation pattern missing → Added iteration 48
+- Failure mode asymmetry audit → Verified proportional iteration 49
 
 ## Metrics
-- Length: ~11,441 words (net ~-88 from 11,668 start; +48 from iteration 48)
+- Length: ~11,441 words (net ~-88 from 11,668 start; +0 from iteration 49)
 - Sections: 26
 - Internal contradictions: 0
 - Self-contradicting examples: 0
@@ -79,9 +81,10 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - Cross-section temporal ordering conflicts: 0
 - Contamination scan gaps: 0
 - Prerequisite chain gaps (HIGH): 0
+- Failure mode asymmetries: 0
 - Compressed sections: 4 (Sections 1, 3, 12, 13)
 - Graveyard items: 6
-- Audit lenses applied without findings: 2 (numeric constraints, actionability)
+- Audit lenses applied without findings: 3 (numeric constraints, actionability, failure mode asymmetry)
 
 ## Quality Assessment
 - Enforceability: Very High
@@ -96,6 +99,7 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - Temporal Coherence: Very High (cross-section ordering dependencies resolved)
 - Contamination Coverage: Complete (all common pre-commit patterns covered)
 - Prerequisite Completeness: Very High (all emergency-path prerequisites now actionable)
+- Protective Proportionality: Very High (rule density scales with failure severity)
 
 ## Cumulative Changes
 - 13 additions: +715 words
@@ -112,6 +116,6 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - 1 prerequisite chain fix: +48 words (feature flag implementation pattern)
 - **Net: ~-88 words while adding 15 new concepts and fixing 14 consistency errors**
 
-## Iteration: 48
+## Iteration: 49
 Last updated: 2026-02-17
-Status: Document continues in stable mature state. New lens (prerequisite chain completeness) applied, finding 1 HIGH gap in feature flag implementation. 21 distinct lenses now applied.
+Status: Document continues in stable mature state. New lens (failure mode asymmetry) applied, finding 0 actionable gaps — protective density is proportional to failure severity. 22 distinct lenses now applied.

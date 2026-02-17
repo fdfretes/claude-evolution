@@ -2,7 +2,7 @@
 
 ## Status: EXHAUSTED (0 active items)
 
-Iteration 48 applied a prerequisite chain completeness lens, finding 1 HIGH gap (feature flag implementation) which was fixed. Remaining prerequisite findings (CI tooling, infrastructure choices) are intentionally technology-agnostic by design. No new active items emerged.
+Iteration 49 applied a failure mode asymmetry lens, verifying that protective rule density is proportional to failure severity. Three potential gaps investigated (ongoing dependency monitoring, concurrent write identification, request ID enforcement) — all rejected as either tool-specific, design judgment, or already covered by adjacent mechanisms. No new active items emerged.
 
 ## Active
 
@@ -45,6 +45,7 @@ Iteration 48 applied a prerequisite chain completeness lens, finding 1 HIGH gap 
 - ~~Temporal ordering: Phase 4 regression test commit violates Law 1 bisect-safety~~ → Fixed iteration 46
 - ~~Missing negative guidance: merge conflict markers not in contamination scan~~ → Fixed iteration 47
 - ~~Prerequisite: Feature flag implementation pattern missing~~ → Added iteration 48
+- ~~Failure mode asymmetry: protective density proportional~~ → Verified clean iteration 49
 
 ## Graveyarded Items
 - Section 14 compression (27 words, below threshold) — evidence/section14-assessment.md
@@ -54,9 +55,10 @@ Iteration 48 applied a prerequisite chain completeness lens, finding 1 HIGH gap 
 - Framework-specific patterns (pre-seeded rejection)
 - IDE-specific recommendations (pre-seeded rejection)
 - Cross-language contamination guard (low leverage, linters catch common cases, ~25 words for rare edge case) — graveyard.md
+- Ongoing dependency monitoring (tool-specific, cadence unenforceable, CI gates provide defense-in-depth) — evidence/failure-mode-asymmetry-audit.md
 
 ## Remaining Low-Severity Observations (Not Worth Editing)
-Carried from iterations 38-48:
+Carried from iterations 38-49:
 - `console.error` in Section 4 startup example is a legitimate pre-logger exception
 - "Never name anything Handler" wording is broader than intent (refers to classes, not directories)
 - Performance budgets (S7) duplicate SLO targets (S18) — same numbers, different contexts
@@ -81,7 +83,7 @@ Carried from iterations 38-48:
 
 ## Document Maturity Assessment
 
-The document has been through 28 improvement iterations. All content-level and meta-level lenses are exhausted. The frontier is empty.
+The document has been through 29 improvement iterations. All content-level and meta-level lenses are exhausted. The frontier is empty.
 
 | Lens | Iterations | Status |
 |------|-----------|--------|
@@ -106,6 +108,7 @@ The document has been through 28 improvement iterations. All content-level and m
 | Implicit temporal ordering | 46 | Applied (1 fix — regression test squash note resolves Phase 4 vs Law 1) |
 | Missing negative guidance | 47 | Applied (1 fix — merge conflict markers added to contamination scan) |
 | Prerequisite chain completeness | 48 | Applied (1 fix — feature flag implementation pattern; 9 others by-design or below threshold) |
+| Failure mode asymmetry | 49 | Applied (0 findings — protective density proportional to severity) |
 
 ## Reopening Criteria
 
