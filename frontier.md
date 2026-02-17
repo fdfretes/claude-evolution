@@ -1,8 +1,8 @@
 # High-Leverage Improvement Questions
 
-## Status: TERMINAL (confirmed at iterations 56-66)
+## Status: TERMINAL (confirmed at iterations 56-67)
 
-Iteration 55 declared frontier exhausted. Iterations 56-64 independently verified via 9 distinct approaches (4 candidate lenses, fresh-eyes, data invariant depth, end-to-end simulation, adversarial compliance, partial adoption safety, misapplication recovery, temporal obsolescence, cognitive load under stress). Iteration 65 evaluated 3 final candidate lenses (instruction stability under context compression, composability with external tooling, multi-agent coordination) — all rejected as not addressable by document edits, subsumed by prior lenses, or outside scope. Iteration 66 attempted test execution order independence — rejected as derivable from existing "no shared mutable state" rule. Protocol has reached terminal state.
+Iteration 55 declared frontier exhausted. Iterations 56-64 independently verified via 9 distinct approaches (4 candidate lenses, fresh-eyes, data invariant depth, end-to-end simulation, adversarial compliance, partial adoption safety, misapplication recovery, temporal obsolescence, cognitive load under stress). Iteration 65 evaluated 3 final candidate lenses (instruction stability under context compression, composability with external tooling, multi-agent coordination) — all rejected as not addressable by document edits, subsumed by prior lenses, or outside scope. Iteration 66 attempted test execution order independence — rejected as derivable from existing "no shared mutable state" rule. Iteration 67 applied imperative completeness lens — 7 findings all below editing threshold. Protocol has reached terminal state.
 
 ## Active
 
@@ -63,6 +63,7 @@ Iteration 55 declared frontier exhausted. Iterations 56-64 independently verifie
 - ~~Cognitive load under stress: 5 high-pressure scenarios, decision path efficiency~~ → Verified optimized for AI consumer iteration 64
 - ~~Terminal state assessment: instruction compression stability, external tooling composability, multi-agent coordination~~ → All rejected, protocol terminal iteration 65
 - ~~Test execution order independence~~ → Rejected (derivable from "no shared mutable state" rule) iteration 66
+- ~~Imperative completeness: directive operand sufficiency~~ → Rejected (7 MEDIUM findings, all below threshold) iteration 67
 
 ## Graveyarded Items
 - Section 14 compression (27 words, below threshold) — evidence/section14-assessment.md
@@ -77,7 +78,7 @@ Iteration 55 declared frontier exhausted. Iterations 56-64 independently verifie
 - Feature flag + multi-migration timing (niche, better as project-specific ADR) — graveyard.md
 
 ## Remaining Low-Severity Observations (Not Worth Editing)
-Carried from iterations 38-66 (unchanged — no promotions at iterations 56-66):
+Carried from iterations 38-67 (unchanged — no promotions at iterations 56-67):
 - `console.error` in Section 4 startup example is a legitimate pre-logger exception
 - "Never name anything Handler" wording is broader than intent (refers to classes, not directories)
 - Performance budgets (S7) duplicate SLO targets (S18) — same numbers, different contexts
@@ -124,10 +125,17 @@ Carried from iterations 38-66 (unchanged — no promotions at iterations 56-66):
 - S12/S26 have no cross-reference for incident handling — each self-contained for its concern; AI consumer sees both simultaneously (iteration 64 finding)
 - Merge conflict resolution guidance is minimal (11 words) — deliberately judgment-dependent, conflict resolution is context-specific (iteration 64 finding)
 - S12 Decision tree placed at end of section after 1,000+ words — irrelevant for AI consumer; valid concern for hypothetical human reader (iteration 64 finding)
+- "--skip without understanding" threshold undefined — judgment-dependent by design, same pattern as merge conflict guidance (iteration 67 finding)
+- Resource cleanup rule doesn't map to C/Arduino patterns — firmware follows platform idioms per S23 separation principle (iteration 67 finding)
+- "Production queries" scope ambiguous for migration/backfill scripts — intent derivable from context (iteration 67 finding)
+- OTA rollback mechanism least-specified directive — hardware-specific implementation violates technology-agnostic principle (iteration 67 finding)
+- DLQ alert threshold missing — workload-dependent, same pattern as performance budget numbers (iteration 67 finding)
+- Pre-commit grep doesn't catch modern token formats — defense-in-depth with CI scanner is intentional (iteration 67 finding)
+- "Update documentation" doesn't specify which artifact — intentionally broad, artifact depends on change type (iteration 67 finding)
 
 ## Document Maturity Assessment
 
-The document has been through 45 improvement iterations. All content-level and meta-level lenses are exhausted. Frontier exhaustion independently verified at iterations 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, and 66.
+The document has been through 46 improvement iterations. All content-level and meta-level lenses are exhausted. Frontier exhaustion independently verified at iterations 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, and 67.
 
 | Lens | Iterations | Status |
 |------|-----------|--------|
@@ -170,6 +178,7 @@ The document has been through 45 improvement iterations. All content-level and m
 | Cognitive load under stress | 64 | Verified optimized for primary audience (5 scenarios tested; format findings are human-specific, content findings are handled or judgment-dependent) |
 | Terminal state assessment | 65 | Confirmed terminal (3 candidate lenses rejected: not document-addressable, subsumed, or out of scope) |
 | Test execution order independence | 66 | Rejected (derivable from "no shared mutable state" rule in Section 5) |
+| Imperative completeness | 67 | Rejected (7 MEDIUM findings: judgment-dependent, platform-specific, workload-dependent, or defense-in-depth covered) |
 
 ## Reopening Criteria
 

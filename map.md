@@ -2,7 +2,7 @@
 
 ## Document Status: TERMINAL (content-optimal, protocol complete)
 
-The document reached its content-optimal state after 20 iterations (21-40). Iterations 41-55 applied 15 orthogonal lenses without finding remaining HIGH-severity issues. Iterations 56-65 verified frontier exhaustion via 10 distinct verification approaches. Iteration 66 attempted test execution order independence lens — rejected as derivable from existing "no shared mutable state" rule in Section 5. No novel lens can be found that is simultaneously not subsumed by prior lenses, addressable by document edits, and meeting improvement criteria.
+The document reached its content-optimal state after 20 iterations (21-40). Iterations 41-55 applied 15 orthogonal lenses without finding remaining HIGH-severity issues. Iterations 56-65 verified frontier exhaustion via 10 distinct verification approaches. Iteration 66 attempted test execution order independence lens — rejected as derivable from existing "no shared mutable state" rule in Section 5. Iteration 67 applied imperative completeness lens (do all directives have sufficient WHAT/WHERE/WHEN operands?) — 7 findings all below editing threshold.
 
 ## Strengths
 - Comprehensive coverage of engineering lifecycle (26 sections)
@@ -40,6 +40,7 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - Misapplication recovery: rules creating structural friction (test inability, binary violations) reliably catch honest mistakes; intent-dependent rules caught by review
 - Temporal obsolescence resilience: technology references properly scoped as illustrations with "or equivalent" escape hatches; paradigm assumptions reasonable defaults with ADR alternatives
 - Cognitive load under stress: document optimized for AI consumer (full context window); human-audience format concerns below threshold
+- Imperative completeness: directives have sufficient operands for their intended audience; firmware-specific and workload-specific gaps are intentional design choices
 
 ## Resolved Issues (Complete List)
 - Autonomy boundary contradiction → Fixed iteration 21
@@ -94,6 +95,7 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - Cognitive load under stress → Verified optimized for primary audience iteration 64
 - Terminal state assessment → Confirmed terminal iteration 65
 - Test execution order independence → Rejected (derivable from "no shared mutable state") iteration 66
+- Imperative completeness audit → Rejected (7 findings all below threshold) iteration 67
 
 ## Metrics
 - Length: ~11,561 words (unchanged since iteration 55)
@@ -122,9 +124,10 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - Misapplication recovery gaps (HIGH): 0
 - Temporal obsolescence vulnerabilities: 0
 - Cognitive load gaps for primary audience: 0
+- Imperative operand gaps (HIGH): 0
 - Compressed sections: 4 (Sections 1, 3, 12, 13)
 - Graveyard items: 8
-- Audit lenses applied without findings: 16 (numeric constraints, actionability, failure mode asymmetry, error recovery paths, trust boundary transitions, rule verifiability, frontier exhaustion verification x2, database constraint depth, scenario simulation, adversarial compliance, partial adoption safety, misapplication recovery, temporal obsolescence resilience, cognitive load under stress, terminal state assessment, test execution order independence)
+- Audit lenses applied without findings: 17 (numeric constraints, actionability, failure mode asymmetry, error recovery paths, trust boundary transitions, rule verifiability, frontier exhaustion verification x2, database constraint depth, scenario simulation, adversarial compliance, partial adoption safety, misapplication recovery, temporal obsolescence resilience, cognitive load under stress, terminal state assessment, test execution order independence, imperative completeness)
 
 ## Quality Assessment
 - Enforceability: Very High
@@ -152,6 +155,7 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - Misapplication Recovery: Very High (8 scenarios tested: 3 CAUGHT by structural friction, 3 PARTIALLY CAUGHT by review + indirect mechanisms, 2 SILENT but low severity — intent-dependent rules inherently require human judgment)
 - Temporal Obsolescence Resilience: Very High (technology references properly scoped as illustrations; paradigm assumptions have ADR escape hatches; "universal principle + concrete example + or equivalent" pattern throughout)
 - Cognitive Load Efficiency: Very High for primary audience (AI agent reads full document into context; format/placement concerns are human-specific and below threshold)
+- Imperative Completeness: Very High (7 findings at MEDIUM or below; all judgment-dependent, platform-specific, or workload-dependent — intentional design choices)
 
 ## Cumulative Changes
 - 14 additions: +760 words
@@ -171,6 +175,6 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - 1 scope boundary fix: +45 words (3 absolute rules scoped to prevent literal misapplication)
 - **Net: ~+32 words while adding 20 new concepts and fixing 19 consistency errors**
 
-## Iteration: 66
+## Iteration: 67
 Last updated: 2026-02-17
-Status: Terminal state reconfirmed. Attempted test execution order independence lens — rejected as derivable from existing "no shared mutable state" rule (Section 5). Same derivability pattern as iterations 58 and 51. 12th consecutive zero-edit iteration. 39 total lens applications (28 unique + 11 verification/rejection passes). The autonomous improvement protocol remains at its natural conclusion.
+Status: Terminal state reconfirmed. Applied imperative completeness lens (do directives have sufficient WHAT/WHERE/WHEN operands?). 7 findings at MEDIUM severity, all below editing threshold — judgment-dependent, platform-specific, workload-dependent, or addressed by defense-in-depth. 13th consecutive zero-edit iteration. 40 total lens applications (28 unique + 12 verification/rejection passes). The autonomous improvement protocol remains at its natural conclusion.
