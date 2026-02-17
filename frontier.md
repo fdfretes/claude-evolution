@@ -1,8 +1,8 @@
 # High-Leverage Improvement Questions
 
-## Status: NEAR-TERMINAL (0 fixes at iteration 77 after 0 fixes at iterations 74-76)
+## Status: NEAR-TERMINAL (0 fixes at iteration 78 after 0 fixes at iterations 74-77)
 
-Iteration 55 declared frontier exhausted. Iterations 56-71 independently verified via 16 distinct approaches — all rejected. Iteration 72 applied operational sequencing lens (1 fix). Iteration 73 applied directive modality consistency lens (2 fixes). Iterations 74-77 applied four more lenses (negative space coverage, conditional reachability, example sufficiency, rule enforcement stratification) — 0 fixes each. Four consecutive zero-edit iterations post-reopening.
+Iteration 55 declared frontier exhausted. Iterations 56-71 independently verified via 16 distinct approaches — all rejected. Iteration 72 applied operational sequencing lens (1 fix). Iteration 73 applied directive modality consistency lens (2 fixes). Iterations 74-78 applied five more lenses (negative space coverage, conditional reachability, example sufficiency, rule enforcement stratification, cross-section default collision) — 0 fixes each. Five consecutive zero-edit iterations post-reopening.
 
 ## Active
 
@@ -74,6 +74,7 @@ Iteration 55 declared frontier exhausted. Iterations 56-71 independently verifie
 - ~~Conditional reachability: action reachability from conditional states~~ → Rejected (5 HIGH candidates all resolved by existing mechanisms) iteration 75
 - ~~Example sufficiency: positive/negative example coverage~~ → Rejected (12 HIGH findings for human audience all rejected; prose sufficient for AI consumer; examples violate technology-agnostic + compression) iteration 76
 - ~~Rule enforcement stratification: enforcement tier promotion candidates~~ → Rejected (7 candidates all at correct tier; mechanically verifiable rules already gated) iteration 77
+- ~~Cross-section default collision: default value/behavior agreement~~ → Rejected (0 collisions; 18 pairs audited, 14 consistent, 4 tensions below threshold) iteration 78
 
 ## Graveyarded Items
 - Section 14 compression (27 words, below threshold) — evidence/section14-assessment.md
@@ -88,7 +89,7 @@ Iteration 55 declared frontier exhausted. Iterations 56-71 independently verifie
 - Feature flag + multi-migration timing (niche, better as project-specific ADR) — graveyard.md
 
 ## Remaining Low-Severity Observations (Not Worth Editing)
-Carried from iterations 38-77 (unchanged — no promotions at iterations 56-77):
+Carried from iterations 38-78 (unchanged — no promotions at iterations 56-78):
 - `console.error` in Section 4 startup example is a legitimate pre-logger exception
 - "Never name anything Handler" wording is broader than intent (refers to classes, not directories)
 - Performance budgets (S7) duplicate SLO targets (S18) — same numbers, different contexts
@@ -150,10 +151,13 @@ Carried from iterations 38-77 (unchanged — no promotions at iterations 56-77):
 - "Never use raw literals in tests" slightly over-mandated for simple scalars — context clarifies intent is complex objects (iteration 73 finding)
 - S10 "runtime config reload" option for ops flags appears unreachable under S4's Object.freeze — but "external service" alternative provides viable path; adapter pattern separates flags from frozen config (iteration 75 finding)
 - S6 auth pattern shows singular `config.jwtSecret` but S22 requires key overlap during rotation — adapter pattern resolves: auth middleware can try multiple keys (iteration 75 finding)
+- Timeout (S15 10s) vs performance budget (S7 50ms) 200x gap — intentional: timeout is safety ceiling, budget is aspirational target (iteration 78 finding)
+- WebSocket error message format not specified in S24 — derivable from S24 envelope + S13 error fields (iteration 78 finding)
+- Distributed lock TTL has no default value in S17 — intentionally context-dependent; no universal default possible (iteration 78 finding)
 
 ## Document Maturity Assessment
 
-The document has been through 55 improvement iterations. All content-level and meta-level lenses are exhausted. Frontier exhaustion independently verified at iterations 56-71. Iteration 72 reopened briefly with operational sequencing lens (1 fix applied). Iteration 73 applied directive modality consistency lens (2 fixes applied). Iterations 74-77 applied four more lenses with 0 fixes each — negative space coverage, conditional reachability, example sufficiency, and rule enforcement stratification.
+The document has been through 55 improvement iterations. All content-level and meta-level lenses are exhausted. Frontier exhaustion independently verified at iterations 56-71. Iteration 72 reopened briefly with operational sequencing lens (1 fix applied). Iteration 73 applied directive modality consistency lens (2 fixes applied). Iterations 74-78 applied five more lenses with 0 fixes each — negative space coverage, conditional reachability, example sufficiency, rule enforcement stratification, and cross-section default collision.
 
 | Lens | Iterations | Status |
 |------|-----------|--------|
@@ -207,6 +211,7 @@ The document has been through 55 improvement iterations. All content-level and m
 | Conditional reachability | 75 | Rejected (5 HIGH candidates all falsified — resolved by alternative paths, existing mechanisms, or gate-with-resolution patterns) |
 | Example sufficiency | 76 | Rejected (12 HIGH findings for human audience; all rejected for AI consumer — prose sufficient, code examples violate technology-agnostic principle and compression floor) |
 | Rule enforcement stratification | 77 | Rejected (7 promotion candidates all at correct tier — mechanically verifiable rules already gated, judgment-dependent rules correctly at review/heuristic tier; inverse of iteration 54) |
+| Cross-section default collision | 78 | Rejected (18 default-value pairs audited across 10 categories; 0 collisions, 14 consistent, 4 tensions below threshold — protocol-boundary divergence, derivable composition, or context-dependent) |
 
 ## Reopening Criteria
 
