@@ -1080,3 +1080,29 @@ Track how the improvement process itself evolves. Meta-observations about what w
 - Edit size: ... → +45 → 0 → 0 → 0 → 0. Fifth consecutive zero-edit iteration. New record for longest zero-edit streak.
 - **Cumulative delta: ~+32 words** (unchanged since iteration 55).
 - **Five consecutive zero-edit iterations.** The gap between "novel lens" and "actionable finding" is now consistently zero. The document's content is stable under both structural analysis (iterations 56-58) and practitioner walkthrough (iteration 59).
+
+---
+
+## Iteration 60 - Adversarial Compliance Testing (2026-02-17)
+
+### What Worked
+- Applied a genuinely novel verification lens: "adversarial compliance testing." Unlike cooperative scenario simulation (iteration 59, which tested what happens when a practitioner follows instructions in good faith), this lens tests whether a practitioner can game the rules — satisfying the letter while violating the spirit. This is qualitatively distinct from all previous lenses: it tests the document's resistance to rules-lawyering, not its content, structure, or navigability.
+- Tested 10 gaming scenarios: function length manipulation, test assertion combining, trivial regression tests, permissive validation, column enumeration, giant options objects, micro-commits, security scan evasion, numeric boolean substitution, and flag name near-reuse. 8 were genuine attacks (all blocked); 2 were correctly permitted as non-attacks.
+- Discovered the document's structural defense pattern: **every mechanical constraint is paired with an intent clause.** "Max 30 lines" + "extract sub-functions with descriptive names that serve as documentation." "Never SELECT *" + "select only the columns you need." "One assertion per test" + "a failing test immediately tells you what broke." An adversarial consumer can satisfy the mechanical constraint but cannot simultaneously satisfy the intent clause while gaming.
+
+### What Struggled
+- Some scenarios required cross-rule interaction analysis to confirm blocking. The security scan evasion scenario (naming a credential `authCode` to evade the grep pattern) is only blocked because S3 naming rules require constants to describe MEANING (`API_KEY`, `AUTH_TOKEN`), which feeds into S1's grep pattern catching `key` and `token`. The defense is distributed across sections, which makes it robust but harder to verify.
+
+### Discoveries
+- **The mechanical-constraint + intent-clause pairing pattern is the document's primary adversarial defense.** Mechanical constraints (line counts, keyword bans, grep patterns) are gameable in isolation. Intent clauses ("for the reviewer", "you need", "tells you what broke") describe the OUTCOME the rule serves, making gaming detectable even when the mechanical check is technically satisfied.
+- **Cross-rule interactions provide defense-in-depth against gaming.** The security scan evasion scenario is blocked not by the scan alone but by the combination of S3 naming rules + S1 scan patterns. A practitioner gaming one rule would need to simultaneously game its interacting rules, which becomes combinatorially harder.
+- **Three verification categories now complete.** The document has been verified under: (1) structural analysis (iterations 56-58: rule consistency, enforcement, cross-references), (2) cooperative compliance (iteration 59: following instructions produces correct results), and (3) adversarial compliance (iteration 60: gaming instructions is blocked by intent clauses). These three categories cover the full spectrum of document usage modes.
+
+### Protocol Adjustments
+- None needed. The adversarial compliance lens is a one-time verification that complements the cooperative compliance lens. Together they provide complete usage-mode coverage.
+
+### Cross-Iteration Patterns
+- Forty iterations catalogued. Thirty-three lens applications (28 unique + 5 verification/rejection passes).
+- Edit size: ... → +45 → 0 → 0 → 0 → 0 → 0. Sixth consecutive zero-edit iteration.
+- **Cumulative delta: ~+32 words** (unchanged since iteration 55).
+- **Three verification categories complete:** structural analysis (rule internals), cooperative compliance (good-faith usage), adversarial compliance (gaming resistance). The document is verified from all perspectives: its rules are internally consistent, its instructions produce correct results when followed, and its constraints resist gaming when challenged.
