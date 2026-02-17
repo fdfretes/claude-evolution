@@ -2,7 +2,7 @@
 
 ## Document Status: MATURE (stable)
 
-The document reached its content-optimal state after 20 iterations (21-40). Iterations 41-48 applied orthogonal lenses (audience fitness, low-severity re-evaluation, cross-reference gaps, numeric constraints, actionability, forward references, temporal ordering, negative guidance, prerequisite chain completeness). Iteration 49 applied a failure mode asymmetry lens, verifying that protective rule density is proportional to failure severity across CATASTROPHIC/HIGH/MEDIUM/LOW categories.
+The document reached its content-optimal state after 20 iterations (21-40). Iterations 41-49 applied orthogonal lenses (audience fitness, low-severity re-evaluation, cross-reference gaps, numeric constraints, actionability, forward references, temporal ordering, negative guidance, prerequisite chain completeness, failure mode asymmetry). Iteration 50 applied a constraint stacking composability lens, finding 1 real deadlock (refactoring reveals bug testable only post-refactor) and resolving it with a single sentence.
 
 ## Strengths
 - Comprehensive coverage of engineering lifecycle (26 sections)
@@ -28,6 +28,7 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - Contamination scan covers all common pre-commit failure modes including merge conflict markers
 - Feature flag pattern has implementation guidance connecting lifecycle (S10) to architecture (S2)
 - Protective rule density proportional to failure severity (CATASTROPHIC modes have 2-6 layers; LOW modes have 1)
+- Multi-section constraint stacking verified: rules compose cleanly under simultaneous application (5 scenarios tested)
 
 ## Resolved Issues (Complete List)
 - Autonomy boundary contradiction → Fixed iteration 21
@@ -66,9 +67,10 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - Pre-Commit Protocol Step 4 missing merge conflict marker scan → Fixed iteration 47
 - Feature flag implementation pattern missing → Added iteration 48
 - Failure mode asymmetry audit → Verified proportional iteration 49
+- Refactoring-reveals-untestable-bug deadlock → Fixed iteration 50
 
 ## Metrics
-- Length: ~11,441 words (net ~-88 from 11,668 start; +0 from iteration 49)
+- Length: ~11,486 words (net ~-43 from 11,668 start; +45 from iteration 49)
 - Sections: 26
 - Internal contradictions: 0
 - Self-contradicting examples: 0
@@ -82,8 +84,9 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - Contamination scan gaps: 0
 - Prerequisite chain gaps (HIGH): 0
 - Failure mode asymmetries: 0
+- Constraint stacking deadlocks: 0
 - Compressed sections: 4 (Sections 1, 3, 12, 13)
-- Graveyard items: 6
+- Graveyard items: 8
 - Audit lenses applied without findings: 3 (numeric constraints, actionability, failure mode asymmetry)
 
 ## Quality Assessment
@@ -100,9 +103,10 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - Contamination Coverage: Complete (all common pre-commit patterns covered)
 - Prerequisite Completeness: Very High (all emergency-path prerequisites now actionable)
 - Protective Proportionality: Very High (rule density scales with failure severity)
+- Cross-Section Composability: Very High (5 multi-section scenarios verified; 1 deadlock fixed, 2 clean, 2 graveyarded)
 
 ## Cumulative Changes
-- 13 additions: +715 words
+- 14 additions: +760 words
 - 4 compressions: -877 words
 - 1 delineation: +16 words
 - 2 enforcement connections: +45 words
@@ -114,8 +118,9 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - 1 temporal ordering fix: +25 words (regression test squash note)
 - 1 contamination scan fix: +10 words (merge conflict markers)
 - 1 prerequisite chain fix: +48 words (feature flag implementation pattern)
-- **Net: ~-88 words while adding 15 new concepts and fixing 14 consistency errors**
+- 1 composability deadlock fix: +45 words (refactoring-reveals-bug exception)
+- **Net: ~-43 words while adding 16 new concepts and fixing 15 consistency errors**
 
-## Iteration: 49
+## Iteration: 50
 Last updated: 2026-02-17
-Status: Document continues in stable mature state. New lens (failure mode asymmetry) applied, finding 0 actionable gaps — protective density is proportional to failure severity. 22 distinct lenses now applied.
+Status: Document continues in stable mature state. New lens (constraint stacking composability) applied, finding 1 real deadlock (S20 "stop refactoring" vs S12 "write failing test first" when bug is only testable post-refactor). Fixed with 1 sentence. 2 niche scenarios graveyarded. 23 distinct lenses now applied.

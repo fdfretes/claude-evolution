@@ -57,3 +57,19 @@ Each rejection must include reasoning and evidence.
 - **Why rejected**: Low leverage for ~25 words. Linters catch the common cases (case convention violations). The remaining edge cases are rare. The document already implicitly covers this through S9 step 5 ("every new file verify it belongs in the right directory per the architecture rules") and S11's bright line principle (conforming to existing patterns is silent)
 - **Evidence**: Carried on frontier as low-priority since iteration 41; assessed as below editing threshold across 3 iterations
 - **Alternative**: Rely on linters and existing "follow project conventions" guidance
+
+---
+
+## Iteration 50 Rejections
+
+### Emergency Hotfix Schema Exception
+- **What**: Add guidance to Section 12 Emergency Hotfix Protocol for when the bug IS the schema (active data corruption requiring immediate migration), bypassing Section 14's 4-phase zero-downtime migration
+- **Why rejected**: The sub-case (active data corruption requiring immediate schema change) is rare — one-in-a-hundred hotfixes. The existing hotfix protocol already says "Do not attempt complex fixes under pressure" and "apply the SMALLEST possible fix" which implicitly covers: do whatever stops the bleeding. Adding explicit guidance would add ~40 words for a narrow edge case.
+- **Evidence**: evidence/constraint-stacking-composability.md (Scenario 1)
+- **Alternative**: Rely on the existing hotfix protocol's "smallest fix" + "disable the feature" guidance; teams facing active data corruption will make the judgment call
+
+### Feature Flag + Multi-Phase Migration Timing
+- **What**: Define when the 30-day release flag removal window starts for migration-coupled flags (Phase 1 vs Phase 3), and establish that migration phases proceed independently of flag state
+- **Why rejected**: The scenario (feature flag + multi-phase zero-downtime migration simultaneously) is narrow enough that it belongs in a project-specific ADR (per S19) rather than universal standards. The correct answer depends on migration tooling, flag infrastructure, and data model — factors that vary per project. Adding guidance would add ~60 words for a scenario requiring significant project-specific context.
+- **Evidence**: evidence/constraint-stacking-composability.md (Scenario 5)
+- **Alternative**: Use Section 19 (ADR) to document migration-flag interaction strategy per project

@@ -2,7 +2,7 @@
 
 ## Status: EXHAUSTED (0 active items)
 
-Iteration 49 applied a failure mode asymmetry lens, verifying that protective rule density is proportional to failure severity. Three potential gaps investigated (ongoing dependency monitoring, concurrent write identification, request ID enforcement) — all rejected as either tool-specific, design judgment, or already covered by adjacent mechanisms. No new active items emerged.
+Iteration 50 applied a constraint stacking composability lens, testing 5 multi-section interaction scenarios. Found 1 real deadlock (refactoring reveals bug testable only post-refactor) — fixed. 2 niche conflicts graveyarded (emergency schema hotfix, migration-coupled feature flags). 2 confirmed clean (cross-layer bug fix, dependency + restructuring). No new active items emerged.
 
 ## Active
 
@@ -46,6 +46,7 @@ Iteration 49 applied a failure mode asymmetry lens, verifying that protective ru
 - ~~Missing negative guidance: merge conflict markers not in contamination scan~~ → Fixed iteration 47
 - ~~Prerequisite: Feature flag implementation pattern missing~~ → Added iteration 48
 - ~~Failure mode asymmetry: protective density proportional~~ → Verified clean iteration 49
+- ~~Constraint stacking: S20 refactoring-reveals-bug deadlock with S12/S5~~ → Fixed iteration 50
 
 ## Graveyarded Items
 - Section 14 compression (27 words, below threshold) — evidence/section14-assessment.md
@@ -56,9 +57,11 @@ Iteration 49 applied a failure mode asymmetry lens, verifying that protective ru
 - IDE-specific recommendations (pre-seeded rejection)
 - Cross-language contamination guard (low leverage, linters catch common cases, ~25 words for rare edge case) — graveyard.md
 - Ongoing dependency monitoring (tool-specific, cadence unenforceable, CI gates provide defense-in-depth) — evidence/failure-mode-asymmetry-audit.md
+- Emergency hotfix schema exception (rare sub-case, existing "smallest fix" guidance sufficient) — graveyard.md
+- Feature flag + multi-migration timing (niche, better as project-specific ADR) — graveyard.md
 
 ## Remaining Low-Severity Observations (Not Worth Editing)
-Carried from iterations 38-49:
+Carried from iterations 38-50:
 - `console.error` in Section 4 startup example is a legitimate pre-logger exception
 - "Never name anything Handler" wording is broader than intent (refers to classes, not directories)
 - Performance budgets (S7) duplicate SLO targets (S18) — same numbers, different contexts
@@ -80,10 +83,11 @@ Carried from iterations 38-49:
 - Infrastructure prerequisites (MQTT broker, time-series DB, monitoring platform, secrets manager) are intentionally left as project-specific ADR decisions
 - Redis optional-vs-required ambiguity across sections (config marks optional, scaling sections assume present — context-dependent, not contradictory)
 - Structured logger library selection is covered by Section 4 dependency framework
+- Cross-layer bug fix commit scoping (Law 1 bisect-safety serves as tiebreaker for Law 2 when splitting would break intermediate commits) — derivable, not worth explicit text
 
 ## Document Maturity Assessment
 
-The document has been through 29 improvement iterations. All content-level and meta-level lenses are exhausted. The frontier is empty.
+The document has been through 30 improvement iterations. All content-level and meta-level lenses are exhausted. The frontier is empty.
 
 | Lens | Iterations | Status |
 |------|-----------|--------|
@@ -109,6 +113,7 @@ The document has been through 29 improvement iterations. All content-level and m
 | Missing negative guidance | 47 | Applied (1 fix — merge conflict markers added to contamination scan) |
 | Prerequisite chain completeness | 48 | Applied (1 fix — feature flag implementation pattern; 9 others by-design or below threshold) |
 | Failure mode asymmetry | 49 | Applied (0 findings — protective density proportional to severity) |
+| Constraint stacking composability | 50 | Applied (1 fix — refactoring-reveals-bug deadlock; 2 graveyarded; 2 clean) |
 
 ## Reopening Criteria
 
