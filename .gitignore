@@ -1,0 +1,7 @@
+# Only track 3 files: CLAAAAAAUDE.md, README.md, session-log.jsonl
+# Ignore everything else
+*
+!.gitignore
+!CLAAAAAAUDE.md
+!README.md
+!session-log.jsonl
