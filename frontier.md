@@ -1,8 +1,8 @@
 # High-Leverage Improvement Questions
 
-## Status: TERMINAL (confirmed at iterations 56-65)
+## Status: TERMINAL (confirmed at iterations 56-66)
 
-Iteration 55 declared frontier exhausted. Iterations 56-64 independently verified via 9 distinct approaches (4 candidate lenses, fresh-eyes, data invariant depth, end-to-end simulation, adversarial compliance, partial adoption safety, misapplication recovery, temporal obsolescence, cognitive load under stress). Iteration 65 evaluated 3 final candidate lenses (instruction stability under context compression, composability with external tooling, multi-agent coordination) — all rejected as not addressable by document edits, subsumed by prior lenses, or outside scope. Protocol has reached terminal state.
+Iteration 55 declared frontier exhausted. Iterations 56-64 independently verified via 9 distinct approaches (4 candidate lenses, fresh-eyes, data invariant depth, end-to-end simulation, adversarial compliance, partial adoption safety, misapplication recovery, temporal obsolescence, cognitive load under stress). Iteration 65 evaluated 3 final candidate lenses (instruction stability under context compression, composability with external tooling, multi-agent coordination) — all rejected as not addressable by document edits, subsumed by prior lenses, or outside scope. Iteration 66 attempted test execution order independence — rejected as derivable from existing "no shared mutable state" rule. Protocol has reached terminal state.
 
 ## Active
 
@@ -62,6 +62,7 @@ Iteration 55 declared frontier exhausted. Iterations 56-64 independently verifie
 - ~~Temporal obsolescence resilience: 14 technology references, 6 paradigm areas~~ → Verified resilient iteration 63
 - ~~Cognitive load under stress: 5 high-pressure scenarios, decision path efficiency~~ → Verified optimized for AI consumer iteration 64
 - ~~Terminal state assessment: instruction compression stability, external tooling composability, multi-agent coordination~~ → All rejected, protocol terminal iteration 65
+- ~~Test execution order independence~~ → Rejected (derivable from "no shared mutable state" rule) iteration 66
 
 ## Graveyarded Items
 - Section 14 compression (27 words, below threshold) — evidence/section14-assessment.md
@@ -76,7 +77,7 @@ Iteration 55 declared frontier exhausted. Iterations 56-64 independently verifie
 - Feature flag + multi-migration timing (niche, better as project-specific ADR) — graveyard.md
 
 ## Remaining Low-Severity Observations (Not Worth Editing)
-Carried from iterations 38-64 (unchanged — no promotions at iterations 56-64):
+Carried from iterations 38-66 (unchanged — no promotions at iterations 56-66):
 - `console.error` in Section 4 startup example is a legitimate pre-logger exception
 - "Never name anything Handler" wording is broader than intent (refers to classes, not directories)
 - Performance budgets (S7) duplicate SLO targets (S18) — same numbers, different contexts
@@ -126,7 +127,7 @@ Carried from iterations 38-64 (unchanged — no promotions at iterations 56-64):
 
 ## Document Maturity Assessment
 
-The document has been through 44 improvement iterations. All content-level and meta-level lenses are exhausted. Frontier exhaustion independently verified at iterations 56, 57, 58, 59, 60, 61, 62, 63, 64, and 65.
+The document has been through 45 improvement iterations. All content-level and meta-level lenses are exhausted. Frontier exhaustion independently verified at iterations 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, and 66.
 
 | Lens | Iterations | Status |
 |------|-----------|--------|
@@ -168,6 +169,7 @@ The document has been through 44 improvement iterations. All content-level and m
 | Temporal obsolescence resilience | 63 | Verified resilient (14 technology refs properly scoped, 6 paradigm areas have escape hatches, "principle + example + or equivalent" pattern throughout) |
 | Cognitive load under stress | 64 | Verified optimized for primary audience (5 scenarios tested; format findings are human-specific, content findings are handled or judgment-dependent) |
 | Terminal state assessment | 65 | Confirmed terminal (3 candidate lenses rejected: not document-addressable, subsumed, or out of scope) |
+| Test execution order independence | 66 | Rejected (derivable from "no shared mutable state" rule in Section 5) |
 
 ## Reopening Criteria
 
