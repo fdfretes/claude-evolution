@@ -1549,3 +1549,31 @@ Track how the improvement process itself evolves. Meta-observations about what w
 - **Cumulative delta: ~+29 words** (unchanged from iteration 73).
 - **Audience-dependent lens rejection is a new pattern.** Previous rejections fell into: derivable (iterations 58, 66, 71), below threshold (iterations 67-70, 74-75), or out of scope (iteration 65). This is the first rejection where the findings are genuinely HIGH-severity for one audience but below threshold for the actual audience. The lens quality is fine; the audience filters the findings.
 - **Example testing family: 3 lenses now cover example dimensions.** Self-contradiction (iter 38/42) checks examples comply with rules. Negative space (iter 74) checks "wrong" examples are correctly scoped. Example sufficiency (iter 76) checks whether example absence creates risk. This is the 12th verification category: example quality (joining structural analysis, cooperative/adversarial compliance, decomposition safety, misapplication recovery, temporal obsolescence, cognitive load, derivability, semantic consistency, execution simulation, modality analysis, conditional completeness).
+
+---
+
+## Iteration 77 - Rule Enforcement Stratification Audit (2026-02-17)
+
+### What Worked
+- Applied a genuinely novel lens: **rule enforcement stratification** — are all rules at their correct enforcement tier (absolute prohibition → CI gate → review → heuristic), or should any be promoted to a stronger tier? This is the inverse of iteration 54 (rule verifiability), which asked "does each rule's phrasing match its verifiability?" This lens asks "should any rule's enforcement tier be upgraded to provide stronger guarantees?"
+- Seven promotion candidates evaluated systematically: max 30 lines/function, max 300 lines/file, circular imports, N+1 detection, DB lock + HTTP call, one logical assertion, handler 15-20 lines. All seven rejected with concrete reasoning.
+- The rejections follow clear, consistent patterns: escape clauses make hard gates inappropriate, exemption complexity prevents linter enforcement, tool-specific implementation details violate technology-agnostic principle, or self-scoping language prevents mechanization.
+
+### What Struggled
+- Distinguishing this from iteration 54 required careful framing. Iteration 54 asked "is each rule honest about its verifiability?" (top-down: does the claim match the mechanism). This iteration asks "should any rule be promoted?" (bottom-up: could a stronger mechanism be applied). The analysis converges on the same conclusion from opposite directions, confirming the enforcement tiers are well-calibrated.
+- At 37 unique lenses over 57 iterations, generating genuinely novel analytical dimensions is approaching exhaustion. This lens is defensibly novel (inverse direction of iter 54) but the novelty margin is thin.
+
+### Discoveries
+- **Enforcement tier calibration has a natural equilibrium.** Rules that CAN be mechanically verified are already at the CI gate tier (connected in iterations 31-32). Rules that cannot be mechanically verified are at the review or heuristic tier and correctly signal this with language like "logical", ranges like "15-20", or escape clauses like "if longer, extract." There are no rules stuck at a tier below their natural level.
+- **Three reasons rules resist tier promotion:** (1) escape clauses — rules with qualifiers like "if longer" or ranges like "15-20" signal guidance, not absolutes, and forcing them into CI gates would require managing exceptions that are the norm. (2) Architecture already provides implicit enforcement — e.g., circular imports are caught by the architecture layer verification gate without needing a dedicated gate. (3) Verification requires runtime analysis — e.g., N+1 detection can only be done during integration test execution, not static analysis. Tool-specific integration would violate the technology-agnostic principle.
+- **The enforcement audit family is now complete.** Iteration 31-32 connected rules to CI gates (forward direction). Iteration 54 verified rules are honest about their verifiability (claim-mechanism alignment). Iteration 77 verified no rules deserve promotion (inverse direction). Three lenses, three directions, same conclusion: enforcement tiers are correctly calibrated.
+
+### Protocol Adjustments
+- None. The protocol remains at near-terminal state. Four consecutive zero-edit iterations.
+
+### Cross-Iteration Patterns
+- Fifty-seven iterations catalogued. Fifty lens applications (37 unique + 13 verification/rejection passes).
+- Edit size: ... → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → **-2** → **-1** → **0** → **0** → **0** → **0**. Fourth consecutive zero-edit iteration after the iteration 72-73 reopening.
+- **Cumulative delta: ~+29 words** (unchanged from iteration 73).
+- **Inverse-direction verification is a valid but diminishing technique.** This iteration tested the inverse of iteration 54 and confirmed the same conclusion. The technique has value (confirming from opposite directions increases confidence) but produces no edits when the original direction already found correct calibration.
+- **Enforcement audit family now complete (3 lenses).** Forward (iters 31-32: connect to gates), alignment (iter 54: claim matches mechanism), inverse (iter 77: no promotions warranted). This is the 13th verification category: enforcement calibration (joining structural analysis, cooperative/adversarial compliance, decomposition safety, misapplication recovery, temporal obsolescence, cognitive load, derivability, semantic consistency, execution simulation, modality analysis, conditional completeness, example quality).
