@@ -504,3 +504,30 @@ Track how the improvement process itself evolves. Meta-observations about what w
 - Edit size: 55 → 72 → -380 → 16 → -325 → 17 → +130 → +60 → +25 → +73 → +20 → +25 → +85 → +68 → -115 → -57 → 0 → +9. The +9 words after a 0-word iteration shows that even "final" documents can have small, high-value fixes.
 - **Cumulative delta: ~-228 words** from starting state (11,668 → ~11,440). Eighteen iterations: 11 additions (+630 words), 4 compressions (-877 words), 1 delineation (+16 words), 2 enforcement connections (+45 words), 1 self-consistency patch (+9 words), 1 final state declaration (+0 words).
 - **Twelve distinct improvement lenses now catalogued.** The lens library is itself a reusable asset for auditing any standards document: contradictions, gaps, compressions, boundary delineation, scope qualifiers, mechanism gaps, cross-section alignment, example-to-rule promotion, rule-to-gate connection, symmetric coverage, enforcement audit, self-contradiction audit.
+
+---
+
+## Iteration 39 - Cross-Reference Integrity Audit (2026-02-17)
+
+### What Worked
+- The "cross-reference integrity" lens found 2 high and 1 medium-severity issues that 18 previous iterations (including the self-contradiction audit) missed. The key distinction: iteration 38 checked examples against rules within their own section's context. This iteration checked examples against rules in OTHER sections. Section 12's commit examples were compliant with Section 12's own rules but violated Section 1's 50-char limit — a cross-section violation invisible to within-section auditing.
+- The subagent also performed a "rule conflict under composition" analysis that identified the "No any ever" vs "without justification" contradiction — a genuine inter-section inconsistency that survived 38 iterations because both rules seem reasonable in isolation. This finding was correctly triaged as low-severity (deferred) because the practical impact is negligible.
+- The "Phases 1-5" → "Phases 1-6" fix was a clean stale-reference catch: the Decision Tree summary was likely written before Phase 6 was finalized and never updated. This class of bug (summaries falling out of sync with the content they summarize) is specific to cross-reference auditing.
+
+### What Struggled
+- The commit example shortening required careful rewording to preserve meaning within the 50-char budget. The longest example ("fix(services): add userId validation to payment and shipping services" at 69 chars) needed the most creative compression. The fix ("fix(services): add userId checks across services" at 49) sacrifices specificity (which services) for brevity — but the body should contain that detail per Section 1's own rules.
+
+### Discoveries
+- **Gap-finding lens: "cross-reference integrity"** — verify (1) every explicit "per Section N" reference points to content that actually exists in Section N, (2) examples in section X comply with rules stated in section Y, not just their own section's rules, (3) summary references (like "Phases 1-5") match the actual count of items they summarize. This is orthogonal to self-contradiction audit (within-section) because it's cross-section.
+- **Commit examples are the most violation-prone content in standards documents.** Iterations 38 and 39 both found commit examples as the primary offenders. This makes sense: commit examples are written to illustrate debugging/fix concepts, not to demonstrate git standards. The author's attention is on the fix narrative, not the format. A meta-rule: always verify examples against ALL relevant standards, not just the standard they illustrate.
+- **The 50-char rule is particularly vulnerable to cross-section violations** because it's a hard numeric constraint that's easy to violate unconsciously when writing example scenarios in later sections. Unlike "never SELECT *" (which is a content rule that a writer must consciously choose to follow or violate), the 50-char limit can be violated by simply writing a descriptive commit message without counting characters.
+
+### Protocol Adjustments
+- For future audits, add "cross-reference integrity" as a distinct final-pass lens. The checklist: (1) every "per Section N" reference verified, (2) every example tested against ALL relevant rules (not just the local section), (3) every summary count verified against actual item count.
+- The "self-contradiction audit" and "cross-reference integrity audit" together form a complete "document consistency" verification: within-section (iteration 38) and cross-section (iteration 39). Both should be prerequisites before declaring a document final.
+
+### Cross-Iteration Patterns
+- Nineteen iterations catalogued. Thirteen distinct improvement lenses now in the library: contradictions, gaps, compressions, boundary delineation, scope qualifiers, mechanism gaps, cross-section alignment, example-to-rule promotion, rule-to-gate connection, symmetric coverage, enforcement audit, self-contradiction audit, cross-reference integrity.
+- Edit size: 55 → 72 → -380 → 16 → -325 → 17 → +130 → +60 → +25 → +73 → +20 → +25 → +85 → +68 → -115 → -57 → 0 → +9 → -10. The -10 words is from shortening commit examples — the first edit to simultaneously fix a cross-reference error AND compress.
+- **Cumulative delta: ~-238 words** from starting state (11,668 → ~11,430). Nineteen iterations: 11 additions (+630 words), 4 compressions (-877 words), 1 delineation (+16 words), 2 enforcement connections (+45 words), 1 self-consistency patch (+9 words), 1 cross-reference integrity patch (-10 words), 1 final state declaration (+0 words).
+- **The consistency verification arc is complete.** Iteration 38 verified within-section self-consistency. Iteration 39 verified cross-section reference integrity. Together they cover the two dimensions of internal document consistency. The remaining low-severity "any/unknown" contradiction is the only known inconsistency, and it's been explicitly deferred with reasoning.
