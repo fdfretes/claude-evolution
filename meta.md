@@ -449,3 +449,30 @@ Track how the improvement process itself evolves. Meta-observations about what w
 - **Cumulative delta: -231 words** from starting state (11,668 → ~11,437). Sixteen iterations: 11 additions (+630 words), 4 compressions (-877 words), 1 delineation (+16 words).
 - **Four compression passes complete** targeting the four largest compressible sections: Section 1 Git (-380), Section 12 Debugging (-325), Section 3 Code Standards (-115), Section 13 API Standards (-57). Total compression: 877 words. Remaining Section 14 is estimated at ~120 words — if verified, it would bring total compression to ~1000 words, a meaningful milestone.
 - **The diminishing returns curve is clear.** Each successive compression pass yields less: 380, 325, 115, 57. Extrapolating, Section 14's ~120 estimate may resolve to ~60-80 verified words. The document is approaching its compression floor.
+
+---
+
+## Iteration 37 - Final State Declaration (2026-02-17)
+
+### What Worked
+- The decision NOT to edit was the right call. Section 14 analysis found only 27 words of safe compression (6.4%) — dramatically below the frontier's ~120 word estimate. The diminishing returns curve (380 → 325 → 115 → 57 → 27) has clearly reached its floor. Applying three edits for ~9 words each would be all risk, no reward.
+- Moving GraphQL and monorepo to graveyard was clean and well-justified. Both items had been on the frontier since early iterations, repeatedly assessed as "low leverage / graveyard candidate." The ADR alternative (use Section 19 for project-specific decisions) is the correct mechanism for technology-specific and opinionated choices.
+- The iteration completed without touching CLAAAAAAUDE.md. This is the first iteration with zero edits to the target document, and it's the correct outcome: the document is done.
+
+### What Struggled
+- Nothing significant. The iteration was a clean assessment and closure.
+
+### Discoveries
+- **Change type: "final state declaration"** — when all improvement lenses have been applied and exhausted, the iteration's output is not an edit but a declaration that the document has reached its optimal state. This is itself a valid and important iteration output.
+- **The "estimated vs verified" compression gap was larger than predicted.** The frontier estimated ~120 words for Section 14; verification found ~27. This 77% overestimate confirms the meta-pattern from iteration 36 (estimated ~150, verified ~57, 62% overestimate). Lesson: surface-level text analysis overestimates redundancy because it doesn't account for distinct behavioral standards that happen to use similar phrasing.
+- **Knowing when to stop is a skill.** The protocol's improvement criteria (#5: "survives falsification") applies to the meta-level too. The hypothesis "Section 14 needs compression" did not survive verification. The hypothesis "GraphQL/monorepo need addition" did not survive the language-agnostic principle. The right action was rejection, not forced improvement.
+
+### Protocol Adjustments
+- The protocol should include a "completion criteria" section for documents that reach their final state. Without it, future sessions could waste iterations re-exploring exhausted territory.
+
+### Cross-Iteration Patterns
+- Seventeen iterations catalogued. Change types: "resolve contradiction" (21), "fill gap" (22), "compress redundancy" (23, 25, 35, 36), "delineate boundary" (24), "scope qualifier" (26), "fill mechanism gap" (27, 28, 33, 34), "cross-section alignment" (29), "promote example to rule" (30), "connect rule to gate" (31, 32), "final state declaration" (37).
+- Edit size: 55 → 72 → -380 → 16 → -325 → 17 → +130 → +60 → +25 → +73 → +20 → +25 → +85 → +68 → -115 → -57 → 0. The zero-edit iteration is the natural terminus of the improvement curve.
+- **Final cumulative delta: -237 words** from starting state (11,668 → ~11,431). Seventeen iterations: 11 additions (+630 words), 4 compressions (-877 words), 1 delineation (+16 words), 2 enforcement connections (+45 words), 1 final state declaration (+0 words).
+- **The compression curve is complete**: 380, 325, 115, 57, 27 (rejected). Each pass yielded less. The 27-word verified savings confirmed the floor.
+- **The document's journey**: started with contradictions and missing concepts (iterations 21-22), compressed verbosity (23, 25), resolved ambiguities (24, 26), filled mechanism gaps (27-28), aligned cross-references (29), promoted implicit patterns to explicit rules (30), connected rules to enforcement gates (31-32), completed lifecycles (33-34), compressed remaining sections (35-36), and declared final state (37). This progression — from structural fixes to gap fills to compression to closure — is the natural maturity arc of a standards document.

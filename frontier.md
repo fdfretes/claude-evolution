@@ -1,50 +1,10 @@
 # High-Leverage Improvement Questions
-Ranked by: How much would answering this improve CLAAAAAAUDE.md?
 
-## Priority 1 (Low Leverage — Last Compression Opportunity)
+## Status: EXHAUSTED
 
-### 1. Compression: Section 14 (Database and Data Modeling)
-- **Issue**: UUID rationale paragraph has redundancy (auto-increment drawback restated), soft delete explanation repeats "default scope" concept, NOT NULL constraint rule is derivable from the four-phase migration pattern
-- **Leverage**: LOW - ~120 words recoverable
-- **Impact**: Would complete the compression pass across all medium+ sections
-- **Risk**: Must preserve the column rename anti-pattern (common production mistake) and CONCURRENTLY rule
+All improvement questions have been resolved or graveyarded. The document has reached its final state.
 
-## Priority 2 (Low Leverage — Scope Expansion / Graveyard Candidates)
-
-### 2. Missing: GraphQL Standards
-- **Issue**: REST is thoroughly covered in Section 13, GraphQL mentioned but not specified
-- **Questions**: When to use GraphQL vs REST? Schema design? N+1 query prevention (dataloader)?
-- **Leverage**: LOW - affects only GraphQL projects
-- **Risk**: Would add 200+ words for a pattern not every project uses. May belong in an ADR template rather than a universal standard.
-- **Graveyard candidate**: High probability — technology-specific, violates language-agnostic principle
-
-### 3. Missing: Monorepo vs Polyrepo Guidance
-- **Issue**: No guidance on when to split repos or use monorepo
-- **Leverage**: LOW - affects project structure decisions infrequently
-- **Risk**: Highly opinionated area. May be better as an ADR template than a hard rule.
-- **Graveyard candidate**: High probability — too opinionated for universal standard
-
-## Document Maturity Assessment
-
-The document has been through 16 improvement iterations (21-36). All high-severity issues are resolved:
-- All contradictions fixed (iterations 21, 24)
-- All critical gaps filled (iterations 22, 27, 28, 30, 33, 34)
-- Four compression passes complete (iterations 23, 25, 35, 36)
-- Edge case ambiguities clarified (iteration 26)
-- Cross-section inconsistencies resolved (iteration 29)
-- Security model symmetric: input validation + output serialization (iteration 30)
-- All absolute rules connected to CI enforcement (iterations 31, 32)
-- API lifecycle complete: creation → versioning → deprecation → removal (iteration 33)
-- Feature flag lifecycle complete: types → ownership → cleanup → name safety (iteration 34)
-- Section 3 naming/error examples compressed (iteration 35)
-- Section 13 API standards compressed (iteration 36)
-
-**The document has reached comprehensive maturity.** The only remaining compression opportunity (Section 14, ~120 words) is diminishing returns. Future iterations should:
-1. Compress Section 14 or determine it's at its floor
-2. Move GraphQL and monorepo to graveyard
-3. Consider declaring the document at its final state
-
-## Resolved
+## Resolved (Complete List)
 - ~~Contradiction: Autonomy vs Permission Boundary~~ → Fixed iteration 21
 - ~~Missing: Error Budget Guidance~~ → Fixed iteration 22
 - ~~Compression: Git Section Verbosity~~ → Compressed iteration 23
@@ -61,14 +21,42 @@ The document has been through 16 improvement iterations (21-36). All high-severi
 - ~~Missing: Feature Flag Lifecycle~~ → Added iteration 34
 - ~~Compression: Section 3 Naming/Error Class Verbosity~~ → Compressed iteration 35
 - ~~Compression: Section 13 API Standards Verbosity~~ → Compressed iteration 36
+- ~~Compression: Section 14 Database Modeling~~ → Assessed at floor, graveyarded iteration 37
+- ~~Missing: GraphQL Standards~~ → Graveyarded iteration 37
+- ~~Missing: Monorepo Guidance~~ → Graveyarded iteration 37
 
-## Graveyard Candidates (Revisit if evidence changes)
-- Adding language-specific subsections (rejected: keep language-agnostic)
-- Framework-specific patterns (rejected: principles over frameworks)
-- IDE-specific recommendations (rejected: tool-agnostic)
-- GraphQL standards (may be better as ADR template — evaluate if demand emerges)
-- Monorepo guidance (too opinionated for universal standard)
+## Graveyarded Items
+- Section 14 compression (27 words, below threshold) — evidence/section14-assessment.md
+- GraphQL standards (technology-specific, violates language-agnostic principle) — graveyard.md
+- Monorepo guidance (too opinionated, better as ADR per project) — graveyard.md
+- Language-specific subsections (pre-seeded rejection)
+- Framework-specific patterns (pre-seeded rejection)
+- IDE-specific recommendations (pre-seeded rejection)
 
-## Questions for Future Exploration
-- Is there a compression technique that works across all sections simultaneously (e.g., consistent format standardization)?
-- Has the document reached its optimal final state?
+## Document Maturity Assessment
+
+The document has been through 17 improvement iterations. Every improvement lens has been applied and exhausted:
+
+| Lens | Iterations | Status |
+|------|-----------|--------|
+| Contradictions | 21 | Exhausted (0 remaining) |
+| Gap fills | 22, 27, 28, 30 | Exhausted (all mechanisms connected) |
+| Compressions | 23, 25, 35, 36, 37 | Exhausted (at floor) |
+| Boundary delineation | 24 | Exhausted (all overlaps resolved) |
+| Scope qualifiers | 26 | Exhausted (all ambiguities clarified) |
+| Cross-section alignment | 29 | Exhausted (all inconsistencies fixed) |
+| Example-to-rule promotion | 30 | Exhausted (implicit patterns made explicit) |
+| Rule-to-gate connection | 31, 32 | Exhausted (all absolute rules enforced) |
+| Mechanism gap fills | 33, 34 | Exhausted (all lifecycles complete) |
+| Symmetric coverage | 30 | Exhausted (input/output both covered) |
+| Enforcement audit | 31, 32 | Exhausted (all rules verified in CI) |
+
+**The document has reached its final state.**
+
+## Reopening Criteria
+
+Future iterations would only be justified if:
+1. A new failure mode is discovered in production that the current standards don't prevent
+2. A new industry standard emerges (like RFC 9745 prompted the deprecation lifecycle)
+3. The codebase adopts a technology that requires new universal standards (not technology-specific ones)
+4. A user reports genuine ambiguity in applying the standards to a real scenario
