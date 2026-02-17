@@ -1134,3 +1134,31 @@ Track how the improvement process itself evolves. Meta-observations about what w
 - **Cumulative delta: ~+32 words** (unchanged since iteration 55).
 - **Seven consecutive zero-edit iterations.** The document continues to hold under novel analysis angles. The gap between "novel lens" and "actionable finding" remains zero for all post-iteration-55 lenses.
 - **Four verification categories now explored:** structural analysis, cooperative compliance, adversarial compliance, and decomposition safety. Each probes the document from a fundamentally different usage perspective, and all four confirm the document is sound.
+
+---
+
+## Iteration 62 - Misapplication Recovery (2026-02-17)
+
+### What Worked
+- Applied a genuinely novel lens: "misapplication recovery" — asking whether the system of rules creates feedback loops that catch honest mistakes in rule application before they reach production. This is distinct from adversarial compliance (intentional gaming, iteration 60), partial adoption (missing sections, iteration 61), and error recovery (procedure failures, iteration 51). This tests whether a practitioner who misunderstands a specific rule receives corrective feedback.
+- Tested 8 scenarios across the document's major rule categories: dependency direction, parameter design, regression testing, validation placement, column selection, commit granularity, mocking strategy, and feature flag scoping.
+- The most interesting structural finding: rules that create **structural friction** (you literally cannot write the prescribed test style for impure core code; a multi-concern commit literally violates Law 2) are reliably caught by multiple independent mechanisms. Rules that are **intent-dependent** (select only needed columns, don't over-flag) can only be caught by human review judgment. This is inherent to standards documents — you can't mechanically enforce context-dependent optimization decisions.
+
+### What Struggled
+- Scenario 8 (feature flags on everything) was initially classified as SILENT, but re-evaluation against Section 10's existing flag lifecycle rules (type taxonomy: release/ops/experiment/permission) reclassified it to PARTIALLY CAUGHT. The subagent incorrectly stated "the document has no feature flag lifecycle" when Section 10 has a full lifecycle subsection added in iteration 34. This highlights the importance of verifying subagent analysis against the actual document, especially for a 61-iteration document with many additions.
+- The SILENT findings (column enumeration, hand-rolled validation in core) are both inherently judgment-dependent. Adding guidance for them would either be redundant (the text already says "select only the columns you need") or prescriptive about developer cognition (don't re-validate after boundary validation — the document already says "typed and trusted throughout the service layer"). No actionable edit possible without over-engineering.
+
+### Discoveries
+- **Rules defended by structural friction are the strongest.** Core purity, dependency direction, and commit atomicity are the best-defended rules because violating them creates immediate, unavoidable friction: tests won't work as prescribed, CI gates fire, or binary rules are violated. This is the standards-document equivalent of "make illegal states unrepresentable" (Section 12 Fix Quality Rule 3).
+- **Intent-dependent rules are inherently review-dependent.** "Select only needed columns" and "don't add flags to refactoring" require understanding the developer's intent, which no mechanical gate can assess. Code review is the correct defense for this class of rule, and the document's Section 25 review checklist provides adequate coverage.
+- **Five verification categories now explored.** Structural analysis, cooperative compliance, adversarial compliance, decomposition safety, and now misapplication recovery. The document has been tested across the full spectrum from rule internals through correct usage, gaming, isolation, and honest-mistake recovery.
+
+### Protocol Adjustments
+- None needed. The finding that "structural friction rules are self-correcting while intent-dependent rules require human judgment" is a meta-observation about standards documents in general, not a protocol improvement.
+
+### Cross-Iteration Patterns
+- Forty-two iterations catalogued. Thirty-five lens applications (28 unique + 7 verification/rejection passes).
+- Edit size: ... → +45 → 0 → 0 → 0 → 0 → 0 → 0 → 0. Eighth consecutive zero-edit iteration.
+- **Cumulative delta: ~+32 words** (unchanged since iteration 55).
+- **Eight consecutive zero-edit iterations.** The document continues to hold under novel analysis angles. Each new lens confirms the document's robustness from a different perspective but finds no actionable improvements.
+- **Five verification categories now explored:** structural analysis, cooperative compliance, adversarial compliance, decomposition safety, and misapplication recovery. Each probes the document from a fundamentally different usage perspective, and all five confirm the document is sound.

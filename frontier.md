@@ -1,8 +1,8 @@
 # High-Leverage Improvement Questions
 
-## Status: EXHAUSTED (confirmed at iterations 56-61)
+## Status: EXHAUSTED (confirmed at iterations 56-62)
 
-Iteration 55 declared frontier exhausted. Iteration 56 independently verified via 4 candidate lenses. Iteration 57 reconfirmed via fresh-eyes approach. Iteration 58 applied data invariant enforcement depth lens — rejected as derivable from existing trust boundary coverage. Iteration 59 applied end-to-end scenario simulation lens — 4 realistic scenarios across 18/26 sections all produce correct results with no gaps. Iteration 60 applied adversarial compliance testing lens — 10 gaming scenarios all blocked by mechanical-constraint + intent-clause pairing pattern. Iteration 61 applied partial adoption safety lens — 5 decomposition scenarios all safe, sections are self-contained.
+Iteration 55 declared frontier exhausted. Iteration 56 independently verified via 4 candidate lenses. Iteration 57 reconfirmed via fresh-eyes approach. Iteration 58 applied data invariant enforcement depth lens — rejected as derivable from existing trust boundary coverage. Iteration 59 applied end-to-end scenario simulation lens — 4 realistic scenarios across 18/26 sections all produce correct results with no gaps. Iteration 60 applied adversarial compliance testing lens — 10 gaming scenarios all blocked by mechanical-constraint + intent-clause pairing pattern. Iteration 61 applied partial adoption safety lens — 5 decomposition scenarios all safe, sections are self-contained. Iteration 62 applied misapplication recovery lens — 8 honest-mistake scenarios tested, structural-friction rules reliably catch errors, intent-dependent rules inherently require human judgment.
 
 ## Active
 
@@ -58,6 +58,7 @@ Iteration 55 declared frontier exhausted. Iteration 56 independently verified vi
 - ~~End-to-end scenario simulation: 4 multi-section practitioner walkthroughs~~ → Verified correct iteration 59
 - ~~Adversarial compliance testing: 10 letter-vs-spirit gaming scenarios~~ → Verified resistant iteration 60
 - ~~Partial adoption safety: 5 section-isolation decomposition scenarios~~ → Verified safe iteration 61
+- ~~Misapplication recovery: 8 honest-mistake feedback loop scenarios~~ → Verified adequate iteration 62
 
 ## Graveyarded Items
 - Section 14 compression (27 words, below threshold) — evidence/section14-assessment.md
@@ -72,7 +73,7 @@ Iteration 55 declared frontier exhausted. Iteration 56 independently verified vi
 - Feature flag + multi-migration timing (niche, better as project-specific ADR) — graveyard.md
 
 ## Remaining Low-Severity Observations (Not Worth Editing)
-Carried from iterations 38-61 (unchanged — no promotions at iterations 56-61):
+Carried from iterations 38-62 (unchanged — no promotions at iterations 56-62):
 - `console.error` in Section 4 startup example is a legitimate pre-logger exception
 - "Never name anything Handler" wording is broader than intent (refers to classes, not directories)
 - Performance budgets (S7) duplicate SLO targets (S18) — same numbers, different contexts
@@ -111,10 +112,12 @@ Carried from iterations 38-61 (unchanged — no promotions at iterations 56-61):
 - "Every service exposes GET /health" doesn't address non-HTTP workers — implicit scope to HTTP services (iteration 55 finding)
 - "No reproduction means no fix attempt" could block defensive measures against undeniable security evidence — Emergency Hotfix Protocol provides escape (iteration 55 finding)
 - Database-level CHECK constraints for business invariants not explicitly mentioned — derivable from "validate at boundaries" + database as trust boundary (iteration 58 finding)
+- Hand-rolled redundant validation in core/ not explicitly prohibited — derivable from "typed and trusted" + core purity principle (iteration 62 finding)
+- Non-failing regression test depends on per-commit CI or reviewer discipline — Phase 4 structure is correct defense; CI-specifics are tool-dependent (iteration 62 finding)
 
 ## Document Maturity Assessment
 
-The document has been through 39 improvement iterations. All content-level and meta-level lenses are exhausted. Frontier exhaustion independently verified at iterations 56, 57, 58, 59, 60, and 61.
+The document has been through 39 improvement iterations. All content-level and meta-level lenses are exhausted. Frontier exhaustion independently verified at iterations 56, 57, 58, 59, 60, 61, and 62.
 
 | Lens | Iterations | Status |
 |------|-----------|--------|
@@ -152,6 +155,7 @@ The document has been through 39 improvement iterations. All content-level and m
 | End-to-end scenario simulation | 59 | Verified correct (4 scenarios across 18/26 sections, all produce correct results) |
 | Adversarial compliance testing | 60 | Verified resistant (10 gaming scenarios, all blocked by constraint + intent pairing) |
 | Partial adoption safety | 61 | Verified safe (5 decomposition scenarios, all sections self-contained and safe in isolation) |
+| Misapplication recovery | 62 | Verified adequate (8 scenarios: 3 CAUGHT, 3 PARTIALLY CAUGHT, 2 SILENT but low-severity and inherently judgment-dependent) |
 
 ## Reopening Criteria
 

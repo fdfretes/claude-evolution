@@ -2,7 +2,7 @@
 
 ## Document Status: MATURE (confirmed stable)
 
-The document reached its content-optimal state after 20 iterations (21-40). Iterations 41-55 applied 15 orthogonal lenses without finding remaining HIGH-severity issues. Iterations 56-58 verified frontier exhaustion via structural lens application. Iteration 59 verified via end-to-end scenario simulation (cooperative compliance). Iteration 60 verified via adversarial compliance testing (gaming resistance). Iteration 61 verified via partial adoption safety lens (section independence).
+The document reached its content-optimal state after 20 iterations (21-40). Iterations 41-55 applied 15 orthogonal lenses without finding remaining HIGH-severity issues. Iterations 56-58 verified frontier exhaustion via structural lens application. Iteration 59 verified via end-to-end scenario simulation (cooperative compliance). Iteration 60 verified via adversarial compliance testing (gaming resistance). Iteration 61 verified via partial adoption safety lens (section independence). Iteration 62 verified via misapplication recovery lens (honest-mistake feedback loops).
 
 ## Strengths
 - Comprehensive coverage of engineering lifecycle (26 sections)
@@ -37,6 +37,7 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - End-to-end scenario simulation: 4 realistic multi-section scenarios produce correct results when following document instructions
 - Adversarial compliance resistance: mechanical constraints paired with intent clauses prevent letter-vs-spirit gaming across all 10 tested scenarios
 - Partial adoption safety: all sections are self-contained and safe in isolation; no section becomes dangerous without another section present
+- Misapplication recovery: rules creating structural friction (test inability, binary violations) reliably catch honest mistakes; intent-dependent rules caught by review
 
 ## Resolved Issues (Complete List)
 - Autonomy boundary contradiction → Fixed iteration 21
@@ -86,6 +87,7 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - End-to-end scenario simulation → Verified correct iteration 59
 - Adversarial compliance testing → Verified resistant iteration 60
 - Partial adoption safety → Verified safe iteration 61
+- Misapplication recovery → Verified adequate iteration 62
 
 ## Metrics
 - Length: ~11,561 words (unchanged since iteration 55)
@@ -111,9 +113,10 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - End-to-end scenario failures: 0
 - Adversarial compliance gaps: 0
 - Partial adoption safety risks: 0
+- Misapplication recovery gaps (HIGH): 0
 - Compressed sections: 4 (Sections 1, 3, 12, 13)
 - Graveyard items: 8
-- Audit lenses applied without findings: 11 (numeric constraints, actionability, failure mode asymmetry, error recovery paths, trust boundary transitions, rule verifiability, frontier exhaustion verification x2, database constraint depth, scenario simulation, adversarial compliance, partial adoption safety)
+- Audit lenses applied without findings: 12 (numeric constraints, actionability, failure mode asymmetry, error recovery paths, trust boundary transitions, rule verifiability, frontier exhaustion verification x2, database constraint depth, scenario simulation, adversarial compliance, partial adoption safety, misapplication recovery)
 
 ## Quality Assessment
 - Enforceability: Very High
@@ -138,6 +141,7 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - End-to-End Adequacy: Very High (4 scenarios tested across 18/26 sections, all produce correct results)
 - Adversarial Compliance Resistance: Very High (10 gaming scenarios tested, all blocked by mechanical-constraint + intent-clause pairing pattern)
 - Partial Adoption Safety: Very High (5 decomposition scenarios tested, all sections safe in isolation)
+- Misapplication Recovery: Very High (8 scenarios tested: 3 CAUGHT by structural friction, 3 PARTIALLY CAUGHT by review + indirect mechanisms, 2 SILENT but low severity — intent-dependent rules inherently require human judgment)
 
 ## Cumulative Changes
 - 14 additions: +760 words
@@ -157,6 +161,6 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - 1 scope boundary fix: +45 words (3 absolute rules scoped to prevent literal misapplication)
 - **Net: ~+32 words while adding 20 new concepts and fixing 19 consistency errors**
 
-## Iteration: 61
+## Iteration: 62
 Last updated: 2026-02-17
-Status: Applied partial adoption safety lens. Tested 5 section-isolation scenarios (debugging without testing, git without workflow, performance without database, security without error handling, resilience without logging). All sections are self-contained and safe in isolation — cross-references are informational pointers, not prerequisite dependencies. Section architecture mirrors the code architecture the document prescribes (cohesive, loosely coupled). 7th consecutive zero-edit iteration. 34 total lens applications (28 unique + 6 verification/rejection passes). Document remains at content-optimal state.
+Status: Applied misapplication recovery lens. Tested 8 honest-mistake scenarios across dependency direction, parameter design, regression testing, validation placement, column selection, commit granularity, mocking strategy, and feature flag scoping. Found 3 CAUGHT (structural friction catches reliably), 3 PARTIALLY CAUGHT (review + indirect mechanisms), 2 SILENT (inherently require context-dependent human judgment — no actionable edit possible). 8th consecutive zero-edit iteration. 35 total lens applications (28 unique + 7 verification/rejection passes). Document remains at content-optimal state.
