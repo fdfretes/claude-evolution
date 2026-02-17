@@ -23,11 +23,12 @@
 - **API deprecation lifecycle added** — Section 13 now defines the full deprecation process: RFC headers (Deprecation/Sunset), monitoring requirement, 410 Gone after sunset, zero-traffic removal gate
 - **Feature flag lifecycle added** — Section 10 now defines flag types (release/ops/experiment/permission), ownership, cleanup rules, and name reuse prohibition
 - **Section 3 naming conventions compressed** — removed "(yes)"/"(no)" markers and parenthetical explanations; removed third error class example (InsufficientFundsError)
+- **Section 13 API standards compressed** — removed obvious status code definitions, kept non-obvious distinctions (401 vs 403, 409, 422, 429); removed idempotency implementation tutorial
 
 ## Weaknesses Remaining
-- Missing GraphQL-specific standards (only REST in Section 13)
-- No monorepo vs polyrepo guidance
-- Sections 13 and 14 have compression opportunities (~150 and ~120 words respectively)
+- Section 14 has minor compression opportunity (~120 words: UUID rationale, soft delete explanation)
+- Missing GraphQL-specific standards (only REST in Section 13) — likely graveyard candidate
+- No monorepo vs polyrepo guidance — likely graveyard candidate
 
 ## Resolved Issues
 - ~~Autonomy boundary contradiction in Section 11~~ → Fixed iteration 21
@@ -45,14 +46,15 @@
 - ~~API deprecation lifecycle missing from Section 13~~ → Added iteration 33
 - ~~Feature flag lifecycle missing from Section 10~~ → Added iteration 34
 - ~~Section 3 naming/error class verbosity~~ → Compressed iteration 35
+- ~~Section 13 API standards verbosity~~ → Compressed iteration 36
 
 ## Current Metrics
-- Length: ~11,488 words (net -115 from Section 3 compression)
+- Length: ~11,431 words (net -57 from Section 13 compression)
 - Sections: 26
 - Internal contradictions: 0 remaining
 - Cross-section inconsistencies: 0 remaining
 - Enforcement gaps: 0 remaining
-- Compressed sections: 3 (Sections 1, 3, 12)
+- Compressed sections: 4 (Sections 1, 3, 12, 13)
 
 ## Quality Assessment
 - Enforceability: Very High
@@ -60,8 +62,8 @@
 - Completeness: Very High (all lifecycle gaps closed: code, API, feature flags, deployment)
 - Consistency: High
 - Practicality: High
-- Conciseness: High (3 compression passes complete)
+- Conciseness: Very High (4 compression passes complete)
 
-## Iteration: 35
+## Iteration: 36
 Last updated: 2026-02-17
-Next focus: Remaining compression opportunities in Sections 13 (~150 words) and 14 (~120 words). The remaining weaknesses (GraphQL, monorepo) are low-leverage and likely graveyard candidates. Future iterations should evaluate whether to compress Sections 13/14 or declare the document at its compression floor.
+Next focus: Section 14 compression (~120 words) is the last uncompressed medium section. GraphQL and monorepo items should be evaluated for graveyard. The document is approaching its compression floor — future iterations should evaluate whether to compress Section 14 or declare the document at its final state.

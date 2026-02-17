@@ -1,49 +1,35 @@
 # High-Leverage Improvement Questions
 Ranked by: How much would answering this improve CLAAAAAAUDE.md?
 
-## Priority 1 (Low-Medium Leverage — Compression Opportunities)
+## Priority 1 (Low Leverage — Last Compression Opportunity)
 
-### 1. Compression: Section 13 (API Design Standards)
-- **Issue**: Status code list is tutorial content, REST URL anti-examples are redundant, idempotency implementation detail is tutorial
-- **Leverage**: LOW-MEDIUM - ~150 words recoverable
-- **Impact**: Tightens the third-longest uncompressed section
-- **Risk**: Must preserve non-obvious distinctions (401 vs 403, 409, 422)
-
-### 2. Compression: Section 14 (Database and Data Modeling)
-- **Issue**: NOT NULL constraint rule is derivable from four-phase migration pattern, UUID rationale can be tightened, soft delete explanation has redundancy
+### 1. Compression: Section 14 (Database and Data Modeling)
+- **Issue**: UUID rationale paragraph has redundancy (auto-increment drawback restated), soft delete explanation repeats "default scope" concept, NOT NULL constraint rule is derivable from the four-phase migration pattern
 - **Leverage**: LOW - ~120 words recoverable
-- **Impact**: Minor tightening
-- **Risk**: Must preserve the column rename anti-pattern (common production mistake)
+- **Impact**: Would complete the compression pass across all medium+ sections
+- **Risk**: Must preserve the column rename anti-pattern (common production mistake) and CONCURRENTLY rule
 
-## Priority 2 (Low Leverage — Scope Expansion)
+## Priority 2 (Low Leverage — Scope Expansion / Graveyard Candidates)
 
-### 3. Missing: GraphQL Standards
+### 2. Missing: GraphQL Standards
 - **Issue**: REST is thoroughly covered in Section 13, GraphQL mentioned but not specified
 - **Questions**: When to use GraphQL vs REST? Schema design? N+1 query prevention (dataloader)?
-- **Leverage**: LOW-MEDIUM - affects API design decisions in GraphQL projects
-- **Risk**: Could add 200+ words for a pattern not every project uses. May belong in an ADR template rather than a universal standard.
+- **Leverage**: LOW - affects only GraphQL projects
+- **Risk**: Would add 200+ words for a pattern not every project uses. May belong in an ADR template rather than a universal standard.
+- **Graveyard candidate**: High probability — technology-specific, violates language-agnostic principle
 
-### 4. Missing: Monorepo vs Polyrepo Guidance
+### 3. Missing: Monorepo vs Polyrepo Guidance
 - **Issue**: No guidance on when to split repos or use monorepo
-- **Leverage**: LOW-MEDIUM - affects project structure decisions
+- **Leverage**: LOW - affects project structure decisions infrequently
 - **Risk**: Highly opinionated area. May be better as an ADR template than a hard rule.
-
-## Priority 3 (Low Leverage)
-
-### 5. Enhancement: Concrete Zod Schema Examples
-- **Issue**: Section 6 mentions Zod but no concrete patterns shown
-- **Leverage**: LOW - helpful but not critical
-
-### 6. Clarity: Soft Delete Implementation Details
-- **Issue**: Section 14 says "default to soft deletes" but minimal implementation guidance
-- **Leverage**: LOW - most teams figure this out
+- **Graveyard candidate**: High probability — too opinionated for universal standard
 
 ## Document Maturity Assessment
 
-The document has been through 15 improvement iterations (21-35). All high-severity issues are resolved:
+The document has been through 16 improvement iterations (21-36). All high-severity issues are resolved:
 - All contradictions fixed (iterations 21, 24)
 - All critical gaps filled (iterations 22, 27, 28, 30, 33, 34)
-- Three compression passes complete (iterations 23, 25, 35)
+- Four compression passes complete (iterations 23, 25, 35, 36)
 - Edge case ambiguities clarified (iteration 26)
 - Cross-section inconsistencies resolved (iteration 29)
 - Security model symmetric: input validation + output serialization (iteration 30)
@@ -51,11 +37,12 @@ The document has been through 15 improvement iterations (21-35). All high-severi
 - API lifecycle complete: creation → versioning → deprecation → removal (iteration 33)
 - Feature flag lifecycle complete: types → ownership → cleanup → name safety (iteration 34)
 - Section 3 naming/error examples compressed (iteration 35)
+- Section 13 API standards compressed (iteration 36)
 
-**The document has reached comprehensive maturity.** Remaining compression opportunities in Sections 13/14 would recover ~270 words combined but are diminishing returns. Future iterations should focus on:
-1. Compression of Sections 13/14 (the last uncompressed medium+ sections)
-2. Moving GraphQL and monorepo to graveyard if they fail cost-benefit analysis
-3. Discovering genuinely novel gaps via new analysis lenses
+**The document has reached comprehensive maturity.** The only remaining compression opportunity (Section 14, ~120 words) is diminishing returns. Future iterations should:
+1. Compress Section 14 or determine it's at its floor
+2. Move GraphQL and monorepo to graveyard
+3. Consider declaring the document at its final state
 
 ## Resolved
 - ~~Contradiction: Autonomy vs Permission Boundary~~ → Fixed iteration 21
@@ -73,6 +60,7 @@ The document has been through 15 improvement iterations (21-35). All high-severi
 - ~~Missing: API Deprecation Lifecycle~~ → Added iteration 33
 - ~~Missing: Feature Flag Lifecycle~~ → Added iteration 34
 - ~~Compression: Section 3 Naming/Error Class Verbosity~~ → Compressed iteration 35
+- ~~Compression: Section 13 API Standards Verbosity~~ → Compressed iteration 36
 
 ## Graveyard Candidates (Revisit if evidence changes)
 - Adding language-specific subsections (rejected: keep language-agnostic)
@@ -82,6 +70,5 @@ The document has been through 15 improvement iterations (21-35). All high-severi
 - Monorepo guidance (too opinionated for universal standard)
 
 ## Questions for Future Exploration
-- Data transformation contracts at every layer boundary (not just response)
-- Compression pass: can Sections 13/14 be tightened further without information loss?
 - Is there a compression technique that works across all sections simultaneously (e.g., consistent format standardization)?
+- Has the document reached its optimal final state?

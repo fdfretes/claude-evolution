@@ -421,3 +421,31 @@ Track how the improvement process itself evolves. Meta-observations about what w
 - Edit size: 55 → 72 → -380 → 16 → -325 → 17 → +130 → +60 → +25 → +73 → +20 → +25 → +85 → +68 → -115. The return to negative delta after 7 consecutive additive iterations signals the document is resuming its compression trajectory.
 - **Cumulative delta: -174 words** from starting state (11,668 → ~11,494). Fifteen iterations: 11 additions (+630 words), 3 compressions (-820 words), 1 delineation (+16 words).
 - **Three compression passes now complete** targeting the three largest uncompressed sections: Section 1 Git (-380), Section 12 Debugging (-325), Section 3 Code Standards (-115). Total compression: 820 words removed. Remaining sections are smaller and have less compression headroom.
+
+---
+
+## Iteration 36 - Section 13 API Standards Compression (2026-02-17)
+
+### What Worked
+- The "obvious vs non-obvious" distinction was the right lens for the status code list. A standards document should teach what developers get wrong, not what they already know. Codes like 200, 400, 404, 500 are universal knowledge; 401 vs 403, 409, 422 are the distinctions that prevent actual API design mistakes.
+- Removing the idempotency implementation sentence was cleanly justified: the standard (store key+response, return on duplicate) was already stated in the preceding sentences. The "how to implement" sentence (hash, Redis/DB, TTL) was technology-specific tutorial content.
+- The falsification step correctly protected the REST URL anti-examples: initial analysis considered removing the second one, but closer examination revealed each demonstrates a different principle (nouns-not-verbs vs resource nesting). This is the same pattern as iteration 35 where falsification preserved negative examples that serve as recognition lists.
+
+### What Struggled
+- The frontier estimated ~150 words recoverable but only ~57 were in the safe subset. The gap is partly because some "redundancies" (response envelope, pagination contract, versioning rules) were actually compact and distinct upon close reading. The frontier's word estimate was based on surface-level analysis; deep analysis found less redundancy than expected.
+- This was the smallest compression yet (-57 vs -380, -325, -115 in previous passes). This confirms the document is approaching its compression floor.
+
+### Discoveries
+- **Compression pattern: "obvious vs non-obvious"** — when a document lists items that mix universally-known content with genuinely non-obvious distinctions, remove the obvious items and keep only the non-obvious ones. The obvious items add length without adding value for the target audience. This is complementary to the "two examples define a pattern" lens from iteration 35.
+- **The duplicate-across-subsections pattern** — the status code "201 created with Location header" appeared in both the HTTP methods mapping AND the status codes list. When the same fact is stated in two subsections within the same section, the less-specific instance can be removed. This is a micro-duplication pattern distinct from the cross-section duplication addressed in earlier iterations.
+- **Section 13 was more compact than estimated.** The frontier's ~150 word estimate was based on pre-analysis pattern recognition (status code list looks like tutorial content). Actual analysis found only ~57 words of safe compression. This suggests future frontier estimates should be discounted for sections that have already been through content additions (Section 13 received the deprecation lifecycle in iteration 33, which added tight, non-redundant content).
+
+### Protocol Adjustments
+- For remaining low-leverage compression items, explicitly distinguish "estimated" from "verified" word savings on the frontier. Mark compression candidates as "estimated ~X words" until subagent or manual analysis produces a "verified ~Y words" figure.
+
+### Cross-Iteration Patterns
+- Sixteen iterations catalogued. Change types: "resolve contradiction" (21), "fill gap" (22), "compress redundancy" (23, 25, 35, 36), "delineate boundary" (24), "scope qualifier" (26), "fill mechanism gap" (27, 28, 33, 34), "cross-section alignment" (29), "promote example to rule" (30), "connect rule to gate" (31, 32). "Compress redundancy" is now the most-used type at 4 instances.
+- Edit size: 55 → 72 → -380 → 16 → -325 → 17 → +130 → +60 → +25 → +73 → +20 → +25 → +85 → +68 → -115 → -57. Compression edits are getting smaller: -380, -325, -115, -57. Clear diminishing returns curve.
+- **Cumulative delta: -231 words** from starting state (11,668 → ~11,437). Sixteen iterations: 11 additions (+630 words), 4 compressions (-877 words), 1 delineation (+16 words).
+- **Four compression passes complete** targeting the four largest compressible sections: Section 1 Git (-380), Section 12 Debugging (-325), Section 3 Code Standards (-115), Section 13 API Standards (-57). Total compression: 877 words. Remaining Section 14 is estimated at ~120 words — if verified, it would bring total compression to ~1000 words, a meaningful milestone.
+- **The diminishing returns curve is clear.** Each successive compression pass yields less: 380, 325, 115, 57. Extrapolating, Section 14's ~120 estimate may resolve to ~60-80 verified words. The document is approaching its compression floor.
