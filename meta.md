@@ -557,3 +557,32 @@ Track how the improvement process itself evolves. Meta-observations about what w
 - Edit size: 55 → 72 → -380 → 16 → -325 → 17 → +130 → +60 → +25 → +73 → +20 → +25 → +85 → +68 → -115 → -57 → 0 → +9 → -10 → +16.
 - **Cumulative delta: ~-222 words** from starting state (11,668 → ~11,446). Twenty iterations: 11 additions (+630 words), 4 compressions (-877 words), 1 delineation (+16 words), 2 enforcement connections (+45 words), 1 self-consistency patch (+9 words), 1 cross-reference integrity patch (-10 words), 1 contradiction resolution (+16 words), 1 final state declaration (+0 words).
 - **The document's improvement arc is now truly complete.** Internal contradictions: 0. All lenses exhausted. All frontier items resolved or graveyarded. The bookend symmetry — starting with a contradiction fix (iteration 21, autonomy boundary) and ending with a contradiction fix (iteration 40, any/unknown) — is fitting.
+
+---
+
+## Iteration 41 - Verify Before Generating (Audience Fitness) (2026-02-17)
+
+### What Worked
+- The "audience fitness" lens — asking "does the document's rules match the failure modes of its primary consumer?" — reopened a document declared final for three iterations. The lens is orthogonal to all 13 previous lenses because it evaluates the document from the consumer's perspective, not the content's perspective.
+- A subagent identified 5 HIGH, 7 MEDIUM, and 3 LOW findings. The triage correctly identified the highest-leverage fix: adding a "verify before generating" rule to Section 9. This addresses the #1 class of AI agent failures (hallucinated API calls) with 37 words.
+- The fix naturally extends Section 9 step 2 ("SEARCH for existing solutions") — the existing rule prevents reinvention; the new rule prevents hallucination. Same step, complementary concerns.
+- Falsification confirmed the rule is scoped correctly: it targets project dependencies and internal modules, not every stdlib call. The cost of compliance is one file read per unfamiliar API; the cost of violation is a broken build.
+
+### What Struggled
+- The "final state" declaration (iterations 37, 40) was again shown to be premature — but this time the gap was in a dimension none of the previous lenses could detect. Content-level analysis (contradictions, gaps, compressions, enforcement) was genuinely exhausted. The audience fitness gap required asking a meta-question: "who reads this document, and what do they fail at?"
+- Several of the subagent's HIGH findings (over-engineering, cross-language contamination) were partially addressed by existing rules or are already covered in the outer system prompt's CLAUDE.md instructions. The document-as-AI-prompt operates in a layered context where some AI-specific rules live elsewhere. Only the "verify before generating" gap was truly uncovered.
+
+### Discoveries
+- **Gap-finding lens: "audience fitness"** — for any standards document, ask: who is the primary consumer, and what are their unique failure modes? A CLAUDE.md consumed by an AI agent has different failure modes than the same document consumed by a human team. Human developers verify APIs via IDE autocomplete and compiled knowledge; AI agents generate plausible-looking calls from training data. This asymmetry creates a gap invisible to content-level analysis.
+- **Change type: "audience-specific rule"** — when a standard is correct for one audience but incomplete for another, the fix is adding a rule that addresses the gap audience's specific failure mode without contradicting the rules that work for both audiences. "Verify before calling" is sound advice for humans too — it just doesn't need to be stated because humans do it unconsciously.
+- **"Final state" is relative to the set of lenses applied.** The document was genuinely at its final state for content lenses (contradictions, gaps, compressions, enforcement, self-consistency, cross-reference integrity). But applying a new meta-lens (audience fitness) revealed a gap invisible to all previous lenses. The implication: a document can be declared "final for known lenses" but never "final for all possible lenses."
+
+### Protocol Adjustments
+- Add "audience fitness audit" to the lens library as a meta-lens that should be applied at least once before final state declaration. Ask: who reads this, what do they fail at, and which failures are not covered by existing rules?
+- Update reopening criteria: a new lens type (not just new failure modes or industry standards) is grounds for reopening.
+
+### Cross-Iteration Patterns
+- Twenty-one iterations catalogued. Fourteen distinct improvement lenses — the new lens is the first meta-lens (about the consumer, not the content).
+- Edit size: 55 → 72 → -380 → 16 → -325 → 17 → +130 → +60 → +25 → +73 → +20 → +25 → +85 → +68 → -115 → -57 → 0 → +9 → -10 → +16 → +37.
+- **Cumulative delta: ~-185 words** from starting state (11,668 → ~11,483). Twenty-one iterations: 12 additions (+667 words), 4 compressions (-877 words), 1 delineation (+16 words), 2 enforcement connections (+45 words), 1 self-consistency patch (+9 words), 1 cross-reference integrity patch (-10 words), 1 contradiction resolution (+16 words), 1 final state declaration (+0 words).
+- **The lens library now has a meta-layer.** Content lenses (13 types) examine what the document says. The audience fitness lens examines who reads the document and whether it serves them. This is a qualitatively different kind of analysis — and it found a genuine gap after 20 iterations of content-level analysis declared the document complete.

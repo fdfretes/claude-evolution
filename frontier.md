@@ -1,12 +1,19 @@
 # High-Leverage Improvement Questions
 
-## Status: EXHAUSTED (zero remaining items)
+## Status: LOW INVENTORY (1 active item from new lens)
 
-All improvement questions — including the previously deferred low-severity `any`/`unknown` contradiction — have been resolved or graveyarded.
+Iteration 41 reopened the frontier with a new lens: "audience fitness" — whether the document's rules match the failure modes of its primary consumer (an AI coding agent). The verify-before-generating rule was applied. Remaining audience fitness findings are lower leverage.
 
 ## Active
 
-None.
+### 1. Audience Fitness: Cross-Language Contamination Guard
+- **Priority**: Low
+- **Type**: Scope qualifier
+- **What**: Section 3 naming conventions don't explicitly say "follow the conventions of the project's actual language/framework." AI agents blend idioms across languages (snake_case in TypeScript, TypeScript-style class hierarchies in Python).
+- **Why it might matter**: Prevents subtle convention violations where code is technically correct but stylistically wrong for the project.
+- **Why it might not**: The document already says "follow existing project conventions" implicitly through S9 step 5 ("every new file verify it belongs in the right directory per the architecture rules") and S11's bright line. Adding explicit language-convention matching adds words for a minor problem. Most linters catch case convention violations.
+- **Estimated cost**: ~25 words
+- **Leverage**: Low — linters catch the common cases; the remaining edge cases are rare
 
 ## Resolved (Complete List)
 - ~~Contradiction: Autonomy vs Permission Boundary~~ → Fixed iteration 21
@@ -34,6 +41,7 @@ None.
 - ~~Cross-reference: Section 12 commit examples exceed 50-char limit~~ → Fixed iteration 39
 - ~~Cross-reference: Decision Tree "Phases 1-5" should be 1-6~~ → Fixed iteration 39
 - ~~Contradiction: "No any ever" vs "without justification"~~ → Fixed iteration 40
+- ~~Audience Fitness: Verify Before Generating~~ → Added iteration 41
 
 ## Graveyarded Items
 - Section 14 compression (27 words, below threshold) — evidence/section14-assessment.md
@@ -44,7 +52,7 @@ None.
 - IDE-specific recommendations (pre-seeded rejection)
 
 ## Remaining Low-Severity Observations (Not Worth Editing)
-Carried from iterations 38-39:
+Carried from iterations 38-41:
 - `console.error` in Section 4 startup example is a legitimate pre-logger exception
 - "Never name anything Handler" wording is broader than intent (refers to classes, not directories)
 - Performance budgets (S7) duplicate SLO targets (S18) — same numbers, different contexts
@@ -57,10 +65,11 @@ Carried from iterations 38-39:
 - "No boolean parameters" wording broader than intent (positional vs named)
 - Test name uses "and" which Section 1 flags as splitting signal (philosophical, not practical)
 - Hotfix test deferral gap with "no regression test" anti-pattern (implicit resolution)
+- Human-team-specific rules (S25 review turnaround, S26 incident response times, S22 rotation schedules) are dead weight for AI consumer but harmless
 
 ## Document Maturity Assessment
 
-The document has been through 20 improvement iterations. Every improvement lens has been applied and exhausted:
+The document has been through 21 improvement iterations. All content-level lenses are exhausted. A new meta-lens (audience fitness) has been applied:
 
 | Lens | Iterations | Status |
 |------|-----------|--------|
@@ -77,8 +86,7 @@ The document has been through 20 improvement iterations. Every improvement lens 
 | Enforcement audit | 31, 32 | Exhausted (all rules verified in CI) |
 | Self-contradiction audit | 38 | Exhausted (examples comply with rules) |
 | Cross-reference integrity | 39 | Exhausted (references verified, examples comply cross-section) |
-
-**The document has reached its final state with zero known contradictions.**
+| **Audience fitness** | **41** | **Applied (1 HIGH fix; remaining items low-leverage)** |
 
 ## Reopening Criteria
 
@@ -87,3 +95,4 @@ Future iterations would only be justified if:
 2. A new industry standard emerges (like RFC 9745 prompted the deprecation lifecycle)
 3. The codebase adopts a technology that requires new universal standards (not technology-specific ones)
 4. A user reports genuine ambiguity in applying the standards to a real scenario
+5. A new AI agent failure mode is identified that the verify-before-generating rule doesn't cover
