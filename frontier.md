@@ -1,8 +1,8 @@
 # High-Leverage Improvement Questions
 
-## Status: EXHAUSTED (confirmed at iterations 56-63)
+## Status: EXHAUSTED (confirmed at iterations 56-64)
 
-Iteration 55 declared frontier exhausted. Iteration 56 independently verified via 4 candidate lenses. Iteration 57 reconfirmed via fresh-eyes approach. Iteration 58 applied data invariant enforcement depth lens — rejected as derivable from existing trust boundary coverage. Iteration 59 applied end-to-end scenario simulation lens — 4 realistic scenarios across 18/26 sections all produce correct results with no gaps. Iteration 60 applied adversarial compliance testing lens — 10 gaming scenarios all blocked by mechanical-constraint + intent-clause pairing pattern. Iteration 61 applied partial adoption safety lens — 5 decomposition scenarios all safe, sections are self-contained. Iteration 62 applied misapplication recovery lens — 8 honest-mistake scenarios tested, structural-friction rules reliably catch errors, intent-dependent rules inherently require human judgment. Iteration 63 applied temporal obsolescence resilience lens — 14 technology references cataloged, all properly scoped as illustrations with escape hatches, no paradigm lock-in.
+Iteration 55 declared frontier exhausted. Iteration 56 independently verified via 4 candidate lenses. Iteration 57 reconfirmed via fresh-eyes approach. Iteration 58 applied data invariant enforcement depth lens — rejected as derivable from existing trust boundary coverage. Iteration 59 applied end-to-end scenario simulation lens — 4 realistic scenarios across 18/26 sections all produce correct results with no gaps. Iteration 60 applied adversarial compliance testing lens — 10 gaming scenarios all blocked by mechanical-constraint + intent-clause pairing pattern. Iteration 61 applied partial adoption safety lens — 5 decomposition scenarios all safe, sections are self-contained. Iteration 62 applied misapplication recovery lens — 8 honest-mistake scenarios tested, structural-friction rules reliably catch errors, intent-dependent rules inherently require human judgment. Iteration 63 applied temporal obsolescence resilience lens — 14 technology references cataloged, all properly scoped as illustrations with escape hatches, no paradigm lock-in. Iteration 64 applied cognitive load under stress lens — 5 high-pressure scenarios tested, all findings specific to human-audience format concerns irrelevant to AI consumer primary audience.
 
 ## Active
 
@@ -60,6 +60,7 @@ Iteration 55 declared frontier exhausted. Iteration 56 independently verified vi
 - ~~Partial adoption safety: 5 section-isolation decomposition scenarios~~ → Verified safe iteration 61
 - ~~Misapplication recovery: 8 honest-mistake feedback loop scenarios~~ → Verified adequate iteration 62
 - ~~Temporal obsolescence resilience: 14 technology references, 6 paradigm areas~~ → Verified resilient iteration 63
+- ~~Cognitive load under stress: 5 high-pressure scenarios, decision path efficiency~~ → Verified optimized for AI consumer iteration 64
 
 ## Graveyarded Items
 - Section 14 compression (27 words, below threshold) — evidence/section14-assessment.md
@@ -74,7 +75,7 @@ Iteration 55 declared frontier exhausted. Iteration 56 independently verified vi
 - Feature flag + multi-migration timing (niche, better as project-specific ADR) — graveyard.md
 
 ## Remaining Low-Severity Observations (Not Worth Editing)
-Carried from iterations 38-63 (unchanged — no promotions at iterations 56-63):
+Carried from iterations 38-64 (unchanged — no promotions at iterations 56-64):
 - `console.error` in Section 4 startup example is a legitimate pre-logger exception
 - "Never name anything Handler" wording is broader than intent (refers to classes, not directories)
 - Performance budgets (S7) duplicate SLO targets (S18) — same numbers, different contexts
@@ -118,10 +119,13 @@ Carried from iterations 38-63 (unchanged — no promotions at iterations 56-63):
 - S22 rotation cadences (90/180/365 days) may age as industry shifts toward shorter windows — principle "every secret has a rotation schedule" is durable; numbers are starting defaults (iteration 63 finding)
 - S7 performance budget numbers (200ms/500ms/50ms) will shift with hardware — "profile and optimize if exceeded" is the real rule (iteration 63 finding)
 - Client-server assumption in S2 handler pattern — already extended with "CLI commands event consumers WebSocket handlers" (iteration 63 finding)
+- S12/S26 have no cross-reference for incident handling — each self-contained for its concern; AI consumer sees both simultaneously (iteration 64 finding)
+- Merge conflict resolution guidance is minimal (11 words) — deliberately judgment-dependent, conflict resolution is context-specific (iteration 64 finding)
+- S12 Decision tree placed at end of section after 1,000+ words — irrelevant for AI consumer; valid concern for hypothetical human reader (iteration 64 finding)
 
 ## Document Maturity Assessment
 
-The document has been through 40 improvement iterations. All content-level and meta-level lenses are exhausted. Frontier exhaustion independently verified at iterations 56, 57, 58, 59, 60, 61, 62, and 63.
+The document has been through 44 improvement iterations. All content-level and meta-level lenses are exhausted. Frontier exhaustion independently verified at iterations 56, 57, 58, 59, 60, 61, 62, 63, and 64.
 
 | Lens | Iterations | Status |
 |------|-----------|--------|
@@ -161,6 +165,7 @@ The document has been through 40 improvement iterations. All content-level and m
 | Partial adoption safety | 61 | Verified safe (5 decomposition scenarios, all sections self-contained and safe in isolation) |
 | Misapplication recovery | 62 | Verified adequate (8 scenarios: 3 CAUGHT, 3 PARTIALLY CAUGHT, 2 SILENT but low-severity and inherently judgment-dependent) |
 | Temporal obsolescence resilience | 63 | Verified resilient (14 technology refs properly scoped, 6 paradigm areas have escape hatches, "principle + example + or equivalent" pattern throughout) |
+| Cognitive load under stress | 64 | Verified optimized for primary audience (5 scenarios tested; format findings are human-specific, content findings are handled or judgment-dependent) |
 
 ## Reopening Criteria
 
@@ -171,3 +176,4 @@ Future iterations would only be justified if:
 4. A user reports genuine ambiguity in applying the standards to a real scenario
 5. A new AI agent failure mode is identified that the verify-before-generating rule doesn't cover
 6. A genuinely novel audit lens is identified that hasn't been applied
+7. The document's primary audience shifts from AI agent to human developer (would trigger format restructuring)
