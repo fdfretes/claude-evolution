@@ -1,8 +1,8 @@
 # High-Leverage Improvement Questions
 
-## Status: EXHAUSTED (confirmed at iterations 56-64)
+## Status: TERMINAL (confirmed at iterations 56-65)
 
-Iteration 55 declared frontier exhausted. Iteration 56 independently verified via 4 candidate lenses. Iteration 57 reconfirmed via fresh-eyes approach. Iteration 58 applied data invariant enforcement depth lens — rejected as derivable from existing trust boundary coverage. Iteration 59 applied end-to-end scenario simulation lens — 4 realistic scenarios across 18/26 sections all produce correct results with no gaps. Iteration 60 applied adversarial compliance testing lens — 10 gaming scenarios all blocked by mechanical-constraint + intent-clause pairing pattern. Iteration 61 applied partial adoption safety lens — 5 decomposition scenarios all safe, sections are self-contained. Iteration 62 applied misapplication recovery lens — 8 honest-mistake scenarios tested, structural-friction rules reliably catch errors, intent-dependent rules inherently require human judgment. Iteration 63 applied temporal obsolescence resilience lens — 14 technology references cataloged, all properly scoped as illustrations with escape hatches, no paradigm lock-in. Iteration 64 applied cognitive load under stress lens — 5 high-pressure scenarios tested, all findings specific to human-audience format concerns irrelevant to AI consumer primary audience.
+Iteration 55 declared frontier exhausted. Iterations 56-64 independently verified via 9 distinct approaches (4 candidate lenses, fresh-eyes, data invariant depth, end-to-end simulation, adversarial compliance, partial adoption safety, misapplication recovery, temporal obsolescence, cognitive load under stress). Iteration 65 evaluated 3 final candidate lenses (instruction stability under context compression, composability with external tooling, multi-agent coordination) — all rejected as not addressable by document edits, subsumed by prior lenses, or outside scope. Protocol has reached terminal state.
 
 ## Active
 
@@ -61,6 +61,7 @@ Iteration 55 declared frontier exhausted. Iteration 56 independently verified vi
 - ~~Misapplication recovery: 8 honest-mistake feedback loop scenarios~~ → Verified adequate iteration 62
 - ~~Temporal obsolescence resilience: 14 technology references, 6 paradigm areas~~ → Verified resilient iteration 63
 - ~~Cognitive load under stress: 5 high-pressure scenarios, decision path efficiency~~ → Verified optimized for AI consumer iteration 64
+- ~~Terminal state assessment: instruction compression stability, external tooling composability, multi-agent coordination~~ → All rejected, protocol terminal iteration 65
 
 ## Graveyarded Items
 - Section 14 compression (27 words, below threshold) — evidence/section14-assessment.md
@@ -125,7 +126,7 @@ Carried from iterations 38-64 (unchanged — no promotions at iterations 56-64):
 
 ## Document Maturity Assessment
 
-The document has been through 44 improvement iterations. All content-level and meta-level lenses are exhausted. Frontier exhaustion independently verified at iterations 56, 57, 58, 59, 60, 61, 62, 63, and 64.
+The document has been through 44 improvement iterations. All content-level and meta-level lenses are exhausted. Frontier exhaustion independently verified at iterations 56, 57, 58, 59, 60, 61, 62, 63, 64, and 65.
 
 | Lens | Iterations | Status |
 |------|-----------|--------|
@@ -166,6 +167,7 @@ The document has been through 44 improvement iterations. All content-level and m
 | Misapplication recovery | 62 | Verified adequate (8 scenarios: 3 CAUGHT, 3 PARTIALLY CAUGHT, 2 SILENT but low-severity and inherently judgment-dependent) |
 | Temporal obsolescence resilience | 63 | Verified resilient (14 technology refs properly scoped, 6 paradigm areas have escape hatches, "principle + example + or equivalent" pattern throughout) |
 | Cognitive load under stress | 64 | Verified optimized for primary audience (5 scenarios tested; format findings are human-specific, content findings are handled or judgment-dependent) |
+| Terminal state assessment | 65 | Confirmed terminal (3 candidate lenses rejected: not document-addressable, subsumed, or out of scope) |
 
 ## Reopening Criteria
 
