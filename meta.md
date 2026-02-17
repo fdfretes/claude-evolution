@@ -638,3 +638,30 @@ Track how the improvement process itself evolves. Meta-observations about what w
 - Edit size: 55 → 72 → -380 → 16 → -325 → 17 → +130 → +60 → +25 → +73 → +20 → +25 → +85 → +68 → -115 → -57 → 0 → +9 → -10 → +16 → +37 → +1 → +2. The last three edits: 37, 1, 2 — firmly in the asymptotic tail.
 - **Cumulative delta: ~-182 words** from starting state (11,668 → ~11,486). Twenty-three iterations: 12 additions (+667 words), 4 compressions (-877 words), 1 delineation (+16 words), 2 enforcement connections (+45 words), 2 self-consistency patches (+10 words), 1 cross-reference integrity patch (-10 words), 1 contradiction resolution (+16 words), 1 cross-reference gap fix (+2 words), 1 final state declaration (+0 words).
 - **All CI gate cross-references are now complete.** This closes a systematic gap class. Section 21's merge gates now reference their defining sections (S2, S5, S6) wherever specifics are needed. The remaining gates are self-contained and need no cross-references.
+
+---
+
+## Iteration 44 - Numeric Constraint & Actionability Audit (2026-02-17)
+
+### What Worked
+- Two orthogonal audit lenses were applied. The numeric constraint consistency lens extracted every threshold in the document and tested for conflicts when rules are applied simultaneously. The actionability audit checked whether action specifications are complete enough for a developer to follow without ambiguity. Both produced zero actionable findings, confirming the document's maturity.
+- The subagent analysis for numeric constraints raised 3 "Severity 1" findings (handler line limit, utility size threshold, coverage enforcement). All three were correctly dismissed on closer examination: (1) the handler limit is appropriate because handlers should only parse/call/format — anything more is logic leaking into the handler; (2) the 50-line thresholds in S2 and S4 are intentionally aligned, not colliding; (3) the S21 coverage gate wording "does not decrease AND meets per-layer thresholds" is a clear conjunction.
+- The last frontier item (Cross-Language Contamination Guard) was moved to graveyard, clearing the frontier for the first time.
+
+### What Struggled
+- The subagent analyses tended to inflate findings by constructing scenarios that violate other rules in the document. For example, the "handler exceeds 20 lines" scenario included inline object construction that the document explicitly pushes to helper functions. This pattern of "finding a problem by ignoring a solution the document already provides" is a recurring subagent weakness in mature document auditing.
+
+### Discoveries
+- **Mature documents resist orthogonal audits.** When a document has been through 17+ lenses, new lenses tend to either find the same non-issues from different angles or confirm what's already correct. This iteration tested two genuinely new lens types and found nothing.
+- **Subagent findings need critical evaluation in proportion to document maturity.** Early iterations (21-28) had subagent findings that were mostly actionable. Later iterations (38-43) had mixed results. This iteration had zero valid findings from either subagent. As the document improves, the signal-to-noise ratio of subagent audits decreases.
+- **The frontier reaching zero active items is a natural stopping point.** All 31 items that were ever on the frontier have been resolved (24 fixed, 7 graveyarded). No new items emerged from this iteration's analysis.
+- **Intentional imprecision is a feature, not a bug.** Several of the subagent's "findings" were about heuristic specifications ("frequently queried", "confirming no code reads them"). These are intentionally heuristic because specifying exact thresholds would be wrong for some projects. A standards document that's too precise becomes inapplicable; one that's appropriately imprecise gives developers the right judgment framework.
+
+### Protocol Adjustments
+- For future iterations: when all subagent findings are dismissed, the document has likely reached its true final state for the current set of lens types. New lenses would need to come from genuinely novel perspectives (new technology adoption, new failure modes in production, new industry standards).
+
+### Cross-Iteration Patterns
+- Twenty-four iterations catalogued. Seventeen distinct improvement lenses — the most ever applied.
+- Edit size: 55 → 72 → -380 → 16 → -325 → 17 → +130 → +60 → +25 → +73 → +20 → +25 → +85 → +68 → -115 → -57 → 0 → +9 → -10 → +16 → +37 → +1 → +2 → 0. Second zero-edit iteration (after iteration 37).
+- **Cumulative delta: ~-182 words** (unchanged from iteration 43). Twenty-four iterations: 12 additions (+667 words), 4 compressions (-877 words), 1 delineation (+16 words), 2 enforcement connections (+45 words), 2 self-consistency patches (+10 words), 1 cross-reference integrity patch (-10 words), 1 contradiction resolution (+16 words), 1 cross-reference gap fix (+2 words), 2 audit-only iterations (+0 words).
+- **The document's improvement curve has flatlined.** The last 4 iterations produced edits of +37, +1, +2, and 0 words. Two of those were 1-word and 2-word precision fixes. The document has asymptotically converged on its optimal form.

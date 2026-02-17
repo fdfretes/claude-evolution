@@ -1,19 +1,12 @@
 # High-Leverage Improvement Questions
 
-## Status: LOW INVENTORY (1 active item, approaching exhaustion)
+## Status: EXHAUSTED (0 active items)
 
-Iteration 43 closed the Section 21 coverage threshold cross-reference gap — the same pattern as iterations 29 and 31 (CI gate items referencing their defining sections).
+Iteration 44 moved the last active item (Cross-Language Contamination Guard) to graveyard and applied two new audit lenses (numeric constraint consistency, actionability) with zero findings.
 
 ## Active
 
-### 1. Audience Fitness: Cross-Language Contamination Guard
-- **Priority**: Low
-- **Type**: Scope qualifier
-- **What**: Section 3 naming conventions don't explicitly say "follow the conventions of the project's actual language/framework." AI agents blend idioms across languages (snake_case in TypeScript, TypeScript-style class hierarchies in Python).
-- **Why it might matter**: Prevents subtle convention violations where code is technically correct but stylistically wrong for the project.
-- **Why it might not**: The document already says "follow existing project conventions" implicitly through S9 step 5 ("every new file verify it belongs in the right directory per the architecture rules") and S11's bright line. Adding explicit language-convention matching adds words for a minor problem. Most linters catch case convention violations.
-- **Estimated cost**: ~25 words
-- **Leverage**: Low — linters catch the common cases; the remaining edge cases are rare
+(none)
 
 ## Resolved (Complete List)
 - ~~Contradiction: Autonomy vs Permission Boundary~~ → Fixed iteration 21
@@ -44,6 +37,9 @@ Iteration 43 closed the Section 21 coverage threshold cross-reference gap — th
 - ~~Audience Fitness: Verify Before Generating~~ → Added iteration 41
 - ~~Self-contradiction: "No boolean parameters" bans its own solution~~ → Fixed iteration 42
 - ~~Cross-reference: Section 21 coverage thresholds don't cite Section 5~~ → Fixed iteration 43
+- ~~Numeric constraint consistency~~ → Verified clean iteration 44
+- ~~Actionability audit~~ → Verified clean iteration 44
+- ~~Cross-Language Contamination Guard~~ → Graveyarded iteration 44
 
 ## Graveyarded Items
 - Section 14 compression (27 words, below threshold) — evidence/section14-assessment.md
@@ -52,9 +48,10 @@ Iteration 43 closed the Section 21 coverage threshold cross-reference gap — th
 - Language-specific subsections (pre-seeded rejection)
 - Framework-specific patterns (pre-seeded rejection)
 - IDE-specific recommendations (pre-seeded rejection)
+- Cross-language contamination guard (low leverage, linters catch common cases, ~25 words for rare edge case) — graveyard.md
 
 ## Remaining Low-Severity Observations (Not Worth Editing)
-Carried from iterations 38-43:
+Carried from iterations 38-44:
 - `console.error` in Section 4 startup example is a legitimate pre-logger exception
 - "Never name anything Handler" wording is broader than intent (refers to classes, not directories)
 - Performance budgets (S7) duplicate SLO targets (S18) — same numbers, different contexts
@@ -62,7 +59,6 @@ Carried from iterations 38-43:
 - `utils/` directory (S2) vs "never vague names like utils.ts" (S3) — file vs directory distinction
 - Idempotency/backoff concepts appear in multiple sections — appropriate contextual repetition
 - "zero-downtime deployments" phrase not in cited Sections 10/21 (concept present, exact term not)
-- ~~Section 21 coverage enforcement doesn't cite Section 5 thresholds~~ → Fixed iteration 43
 - Section 11 dependency ask doesn't cite Section 4 framework (different concerns: communication vs evaluation)
 - Test name uses "and" which Section 1 flags as splitting signal (philosophical, not practical)
 - Hotfix test deferral gap with "no regression test" anti-pattern (implicit resolution)
@@ -70,7 +66,7 @@ Carried from iterations 38-43:
 
 ## Document Maturity Assessment
 
-The document has been through 23 improvement iterations. All content-level lenses are exhausted. New meta-lenses (audience fitness, low-severity re-evaluation) have been applied. Cross-reference integrity between CI gates and their defining sections is now complete.
+The document has been through 24 improvement iterations. All content-level and meta-level lenses are exhausted. The frontier is empty.
 
 | Lens | Iterations | Status |
 |------|-----------|--------|
@@ -89,6 +85,8 @@ The document has been through 23 improvement iterations. All content-level lense
 | Cross-reference integrity | 39, 43 | Exhausted (references verified, CI gates cite sources) |
 | Audience fitness | 41 | Applied (1 HIGH fix; remaining items low-leverage) |
 | Low-severity re-evaluation | 42, 43 | Applied (2 fixes from 13 items; remainder confirmed below threshold) |
+| Numeric constraint consistency | 44 | Applied (0 findings — all thresholds compatible) |
+| Actionability audit | 44 | Applied (0 findings — action specs appropriately detailed) |
 
 ## Reopening Criteria
 

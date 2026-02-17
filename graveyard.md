@@ -47,3 +47,13 @@ Each rejection must include reasoning and evidence.
 - **Why rejected**: Highly opinionated area with valid arguments on both sides. The decision depends on team size, deployment model, and tooling — factors that vary per organization. A universal standard cannot meaningfully prescribe this. The document already provides the decision framework: Section 19 (ADR) exists precisely for this class of project-specific architectural decision.
 - **Evidence**: No industry consensus exists; Google uses monorepo, Amazon uses polyrepo, both are successful
 - **Alternative**: Use Section 19 (ADR) to document repo structure decisions per project
+
+---
+
+## Iteration 44 Rejections
+
+### Cross-Language Contamination Guard
+- **What**: Add a rule to Section 3 saying "follow the naming conventions of the project's actual language/framework" to prevent AI agents blending idioms (snake_case in TypeScript, TypeScript-style classes in Python)
+- **Why rejected**: Low leverage for ~25 words. Linters catch the common cases (case convention violations). The remaining edge cases are rare. The document already implicitly covers this through S9 step 5 ("every new file verify it belongs in the right directory per the architecture rules") and S11's bright line principle (conforming to existing patterns is silent)
+- **Evidence**: Carried on frontier as low-priority since iteration 41; assessed as below editing threshold across 3 iterations
+- **Alternative**: Rely on linters and existing "follow project conventions" guidance
