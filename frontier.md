@@ -2,7 +2,7 @@
 
 ## Status: EXHAUSTED (0 active items)
 
-Iteration 47 applied a missing negative guidance lens, finding 1 MEDIUM gap (merge conflict markers not in contamination scan) which was fixed. No new active items emerged.
+Iteration 48 applied a prerequisite chain completeness lens, finding 1 HIGH gap (feature flag implementation) which was fixed. Remaining prerequisite findings (CI tooling, infrastructure choices) are intentionally technology-agnostic by design. No new active items emerged.
 
 ## Active
 
@@ -44,6 +44,7 @@ Iteration 47 applied a missing negative guidance lens, finding 1 MEDIUM gap (mer
 - ~~Terminology: "pre-commit verification protocol" vs "Pre-Commit Protocol"~~ → Fixed iteration 45
 - ~~Temporal ordering: Phase 4 regression test commit violates Law 1 bisect-safety~~ → Fixed iteration 46
 - ~~Missing negative guidance: merge conflict markers not in contamination scan~~ → Fixed iteration 47
+- ~~Prerequisite: Feature flag implementation pattern missing~~ → Added iteration 48
 
 ## Graveyarded Items
 - Section 14 compression (27 words, below threshold) — evidence/section14-assessment.md
@@ -55,7 +56,7 @@ Iteration 47 applied a missing negative guidance lens, finding 1 MEDIUM gap (mer
 - Cross-language contamination guard (low leverage, linters catch common cases, ~25 words for rare edge case) — graveyard.md
 
 ## Remaining Low-Severity Observations (Not Worth Editing)
-Carried from iterations 38-47:
+Carried from iterations 38-48:
 - `console.error` in Section 4 startup example is a legitimate pre-logger exception
 - "Never name anything Handler" wording is broader than intent (refers to classes, not directories)
 - Performance budgets (S7) duplicate SLO targets (S18) — same numbers, different contexts
@@ -73,10 +74,14 @@ Carried from iterations 38-47:
 - Emergency hotfix defers regression test with no merge-gate deadline (temporal window exists but hotfix protocol is inherently exception-based)
 - Refactoring prerequisite tests must be separate PR (derivable from intersection of Law 2 + S20 Step 5)
 - `json_agg(o.*)` in Section 7 N+1 example uses `*` inside aggregate (idiomatic PostgreSQL, not top-level SELECT *)
+- CI tooling for injection scanning and architecture verification is intentionally tool-agnostic (grep patterns provided for local workflow; specific tools are technology-dependent)
+- Infrastructure prerequisites (MQTT broker, time-series DB, monitoring platform, secrets manager) are intentionally left as project-specific ADR decisions
+- Redis optional-vs-required ambiguity across sections (config marks optional, scaling sections assume present — context-dependent, not contradictory)
+- Structured logger library selection is covered by Section 4 dependency framework
 
 ## Document Maturity Assessment
 
-The document has been through 27 improvement iterations. All content-level and meta-level lenses are exhausted. The frontier is empty.
+The document has been through 28 improvement iterations. All content-level and meta-level lenses are exhausted. The frontier is empty.
 
 | Lens | Iterations | Status |
 |------|-----------|--------|
@@ -100,6 +105,7 @@ The document has been through 27 improvement iterations. All content-level and m
 | Forward reference & terminology | 45 | Applied (2 fixes — inline definition + name alignment) |
 | Implicit temporal ordering | 46 | Applied (1 fix — regression test squash note resolves Phase 4 vs Law 1) |
 | Missing negative guidance | 47 | Applied (1 fix — merge conflict markers added to contamination scan) |
+| Prerequisite chain completeness | 48 | Applied (1 fix — feature flag implementation pattern; 9 others by-design or below threshold) |
 
 ## Reopening Criteria
 
