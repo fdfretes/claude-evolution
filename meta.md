@@ -531,3 +531,29 @@ Track how the improvement process itself evolves. Meta-observations about what w
 - Edit size: 55 → 72 → -380 → 16 → -325 → 17 → +130 → +60 → +25 → +73 → +20 → +25 → +85 → +68 → -115 → -57 → 0 → +9 → -10. The -10 words is from shortening commit examples — the first edit to simultaneously fix a cross-reference error AND compress.
 - **Cumulative delta: ~-238 words** from starting state (11,668 → ~11,430). Nineteen iterations: 11 additions (+630 words), 4 compressions (-877 words), 1 delineation (+16 words), 2 enforcement connections (+45 words), 1 self-consistency patch (+9 words), 1 cross-reference integrity patch (-10 words), 1 final state declaration (+0 words).
 - **The consistency verification arc is complete.** Iteration 38 verified within-section self-consistency. Iteration 39 verified cross-section reference integrity. Together they cover the two dimensions of internal document consistency. The remaining low-severity "any/unknown" contradiction is the only known inconsistency, and it's been explicitly deferred with reasoning.
+
+---
+
+## Iteration 40 - any/unknown Contradiction Resolution (2026-02-17)
+
+### What Worked
+- The deferred low-severity item turned out to be a clean, minimal fix once approached with the document's own established pattern. Section 3 already had an escape hatch for `as` assertions ("unless accompanied by a runtime check or a comment explaining why it is safe"). Applying the identical pattern to `any` ("accompany with a comment explaining why unknown is insufficient") required zero new concepts — just extending an existing one.
+- Falsification against 5 scenarios confirmed the fix doesn't open a wider loophole than the existing `as` pattern. The friction barrier (requiring a comment explaining why `unknown` is insufficient) is meaningful and enforceable via code review.
+- The fix resolves the LAST known internal contradiction. The document now has zero contradictions for the first time.
+
+### What Struggled
+- The item was deferred for several iterations with the assessment "risk of worsening exceeds benefit." In retrospect, the risk was overestimated because the document already had the exact pattern needed (the `as` escape hatch). The lesson: when a document already contains a pattern that solves a deferred problem, the risk of applying that pattern is minimal — it's extending consistency, not introducing novelty.
+
+### Discoveries
+- **"Deferred" items should be periodically re-evaluated against new context.** This item was deferred in iteration 39 with the concern that "careful wording" was needed to "avoid opening a loophole." But the wording pattern already existed in the same section. The deferral was based on an incomplete assessment of available solutions.
+- **The escape hatch pattern is now consistent across Section 3:** both `any` and `as` follow the structure "absolute prohibition + documented justification when unavoidable." This makes the rules easier to teach because they share a common form.
+- **The document achieves zero contradictions for the first time.** Previous "final state" declarations (iterations 37, 39) all had this item as a known exception. Now there are none.
+
+### Protocol Adjustments
+- When deferring items, explicitly note whether the document already contains a pattern that could solve the problem. If it does, the deferral cost (ongoing contradiction) likely exceeds the fix risk (extending an existing pattern).
+
+### Cross-Iteration Patterns
+- Twenty iterations catalogued. Thirteen distinct improvement lenses. The "contradiction resolution" lens (first used in iteration 21, revisited in iteration 40) bookends the improvement arc — the first and last edits both resolved contradictions.
+- Edit size: 55 → 72 → -380 → 16 → -325 → 17 → +130 → +60 → +25 → +73 → +20 → +25 → +85 → +68 → -115 → -57 → 0 → +9 → -10 → +16.
+- **Cumulative delta: ~-222 words** from starting state (11,668 → ~11,446). Twenty iterations: 11 additions (+630 words), 4 compressions (-877 words), 1 delineation (+16 words), 2 enforcement connections (+45 words), 1 self-consistency patch (+9 words), 1 cross-reference integrity patch (-10 words), 1 contradiction resolution (+16 words), 1 final state declaration (+0 words).
+- **The document's improvement arc is now truly complete.** Internal contradictions: 0. All lenses exhausted. All frontier items resolved or graveyarded. The bookend symmetry — starting with a contradiction fix (iteration 21, autonomy boundary) and ending with a contradiction fix (iteration 40, any/unknown) — is fitting.

@@ -1,18 +1,12 @@
 # High-Leverage Improvement Questions
 
-## Status: EXHAUSTED (with one deferred low-severity item)
+## Status: EXHAUSTED (zero remaining items)
 
-All high/medium-leverage improvement questions have been resolved or graveyarded. One low-severity contradiction remains deferred.
+All improvement questions — including the previously deferred low-severity `any`/`unknown` contradiction — have been resolved or graveyarded.
 
-## Active (Low Severity, Deferred)
+## Active
 
-### "No any ever" vs "without justification" contradiction
-- **Severity:** Low (practical impact negligible — `unknown` is correct in 99%+ of cases)
-- **Location:** Section 3 "No any ever" vs Section 11 "use any types... without justification"
-- **Issue:** Section 3 is absolute; Section 11 is conditional. Contradiction about whether justified `any` is acceptable.
-- **Proposed fix:** Add escape hatch to Section 3 matching the `as` assertion pattern ("unless accompanied by a comment explaining why"), then Section 11's "without justification" framing becomes consistent.
-- **Why deferred:** The fix requires careful wording to avoid opening a loophole. Risk of worsening exceeds benefit given `unknown` truly is the correct answer almost always.
-- **Evidence:** evidence/cross-reference-integrity-audit.md
+None.
 
 ## Resolved (Complete List)
 - ~~Contradiction: Autonomy vs Permission Boundary~~ → Fixed iteration 21
@@ -39,6 +33,7 @@ All high/medium-leverage improvement questions have been resolved or graveyarded
 - ~~Self-contradiction: 429 retry vs 4xx rule~~ → Fixed iteration 38
 - ~~Cross-reference: Section 12 commit examples exceed 50-char limit~~ → Fixed iteration 39
 - ~~Cross-reference: Decision Tree "Phases 1-5" should be 1-6~~ → Fixed iteration 39
+- ~~Contradiction: "No any ever" vs "without justification"~~ → Fixed iteration 40
 
 ## Graveyarded Items
 - Section 14 compression (27 words, below threshold) — evidence/section14-assessment.md
@@ -49,15 +44,13 @@ All high/medium-leverage improvement questions have been resolved or graveyarded
 - IDE-specific recommendations (pre-seeded rejection)
 
 ## Remaining Low-Severity Observations (Not Worth Editing)
-Carried from iteration 38:
+Carried from iterations 38-39:
 - `console.error` in Section 4 startup example is a legitimate pre-logger exception
 - "Never name anything Handler" wording is broader than intent (refers to classes, not directories)
 - Performance budgets (S7) duplicate SLO targets (S18) — same numbers, different contexts
 - `revert` semver mapping compressed to "all others=no bump" — technically imprecise but acceptable
 - `utils/` directory (S2) vs "never vague names like utils.ts" (S3) — file vs directory distinction
 - Idempotency/backoff concepts appear in multiple sections — appropriate contextual repetition
-
-New from iteration 39:
 - "zero-downtime deployments" phrase not in cited Sections 10/21 (concept present, exact term not)
 - Section 21 coverage enforcement doesn't cite Section 5 thresholds
 - Section 11 dependency ask doesn't cite Section 4 framework
@@ -67,11 +60,11 @@ New from iteration 39:
 
 ## Document Maturity Assessment
 
-The document has been through 19 improvement iterations. Every improvement lens has been applied and exhausted:
+The document has been through 20 improvement iterations. Every improvement lens has been applied and exhausted:
 
 | Lens | Iterations | Status |
 |------|-----------|--------|
-| Contradictions | 21 | Exhausted (0 remaining) |
+| Contradictions | 21, 40 | Exhausted (0 remaining) |
 | Gap fills | 22, 27, 28, 30 | Exhausted (all mechanisms connected) |
 | Compressions | 23, 25, 35, 36, 37 | Exhausted (at floor) |
 | Boundary delineation | 24 | Exhausted (all overlaps resolved) |
@@ -85,7 +78,7 @@ The document has been through 19 improvement iterations. Every improvement lens 
 | Self-contradiction audit | 38 | Exhausted (examples comply with rules) |
 | Cross-reference integrity | 39 | Exhausted (references verified, examples comply cross-section) |
 
-**The document has reached its final state.**
+**The document has reached its final state with zero known contradictions.**
 
 ## Reopening Criteria
 
@@ -94,4 +87,3 @@ Future iterations would only be justified if:
 2. A new industry standard emerges (like RFC 9745 prompted the deprecation lifecycle)
 3. The codebase adopts a technology that requires new universal standards (not technology-specific ones)
 4. A user reports genuine ambiguity in applying the standards to a real scenario
-5. The "No any ever" vs "without justification" contradiction is deemed worth fixing (currently assessed as not worth the edit risk)
