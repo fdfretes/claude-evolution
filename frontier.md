@@ -1,8 +1,8 @@
 # High-Leverage Improvement Questions
 
-## Status: TERMINAL (confirmed at iterations 56-71)
+## Status: NEAR-TERMINAL (1 fix applied at iteration 72 after 17 zero-edit iterations)
 
-Iteration 55 declared frontier exhausted. Iterations 56-64 independently verified via 9 distinct approaches (4 candidate lenses, fresh-eyes, data invariant depth, end-to-end simulation, adversarial compliance, partial adoption safety, misapplication recovery, temporal obsolescence, cognitive load under stress). Iteration 65 evaluated 3 final candidate lenses (instruction stability under context compression, composability with external tooling, multi-agent coordination) — all rejected as not addressable by document edits, subsumed by prior lenses, or outside scope. Iteration 66 attempted test execution order independence — rejected as derivable from existing "no shared mutable state" rule. Iteration 67 applied imperative completeness lens — 7 findings all below editing threshold. Iteration 68 applied contradictory incentive audit — 7 rule pairs analyzed, all resolved by existing escape hatches and explicit mechanisms. Iteration 69 applied polysemy audit — 20 terms audited, 3 AMBIGUOUS findings all below editing threshold. Iteration 70 applied composition minimality lens — 6 candidate rules tested for logical entailment, all rejected as serving independent purposes. Iteration 71 applied degraded-mode operation lens — rejected as derivable from Pre-Commit Protocol + Emergency Hotfix Protocol. Protocol has reached terminal state.
+Iteration 55 declared frontier exhausted. Iterations 56-71 independently verified via 16 distinct approaches — all rejected. Iteration 72 applied operational sequencing lens (instruction step ordering correctness) and found 1 genuine fix: Temporary Debug Logging Protocol steps 4/5 were in wrong order. 15 instruction sets audited across 10 sections. Protocol approaching terminal state again.
 
 ## Active
 
@@ -68,6 +68,7 @@ Iteration 55 declared frontier exhausted. Iterations 56-64 independently verifie
 - ~~Polysemy audit: semantic drift of terms across sections~~ → Rejected (3 AMBIGUOUS terms all below editing threshold) iteration 69
 - ~~Composition minimality: logical entailment between rules~~ → Rejected (6 candidates all serve independent purposes; subsumed by compression passes) iteration 70
 - ~~Degraded-mode operation: enforcement infrastructure failure handling~~ → Rejected (derivable from Pre-Commit Protocol + Emergency Hotfix Protocol) iteration 71
+- ~~Operational sequencing: instruction step ordering correctness~~ → Fixed (Temp Debug Logging Protocol steps 4/5 reordered) iteration 72
 
 ## Graveyarded Items
 - Section 14 compression (27 words, below threshold) — evidence/section14-assessment.md
@@ -142,7 +143,7 @@ Carried from iterations 38-71 (unchanged — no promotions at iterations 56-71):
 
 ## Document Maturity Assessment
 
-The document has been through 49 improvement iterations. All content-level and meta-level lenses are exhausted. Frontier exhaustion independently verified at iterations 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, and 71.
+The document has been through 50 improvement iterations. All content-level and meta-level lenses are exhausted. Frontier exhaustion independently verified at iterations 56-71. Iteration 72 reopened briefly with operational sequencing lens (1 fix applied).
 
 | Lens | Iterations | Status |
 |------|-----------|--------|
@@ -190,6 +191,7 @@ The document has been through 49 improvement iterations. All content-level and m
 | Polysemy audit | 69 | Rejected (20 terms audited: 8 CONSISTENT, 9 CONTEXTUAL, 3 AMBIGUOUS — all below editing threshold) |
 | Composition minimality | 70 | Rejected (6 candidates all serve independent purposes; subsumed by compression passes) |
 | Degraded-mode operation | 71 | Rejected (derivable from Pre-Commit Protocol as manual CI equivalent + Emergency Hotfix "fast-tracked not skipped" principle) |
+| Operational sequencing | 72 | Applied (1 fix — Temp Debug Logging Protocol steps 4/5 reordered; 3 HIGH rejected as mitigated; 13 MEDIUM rejected) |
 
 ## Reopening Criteria
 
