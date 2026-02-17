@@ -1324,3 +1324,34 @@ Track how the improvement process itself evolves. Meta-observations about what w
 - Edit size: ... → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0. Fourteenth consecutive zero-edit iteration.
 - **Cumulative delta: ~+32 words** (unchanged since iteration 55).
 - **The protocol's natural arc**: iterations 21-37 (17 iterations) produced all substantive improvements; iterations 38-55 (18 iterations) applied progressively finer lenses finding smaller issues; iterations 56-68 (13 iterations) verified exhaustion through 13 independent approaches. This 17:18:13 distribution continues the healthy pattern.
+
+---
+
+## Iteration 69 - Polysemy Audit (2026-02-17)
+
+### What Worked
+- Applied a genuinely novel lens: "polysemy audit" — asking whether any terms in the document carry different meanings in different sections, creating risk of misinterpretation when following cross-section guidance. This is distinct from terminology consistency (iteration 45, which verified canonical naming), cross-section alignment (iterations 29/43, which verified numeric values), and cross-format consistency (iteration 52, which verified data formats). This lens examines **semantic drift** — the same word meaning different things in different places.
+- Audited 20 terms that appear across multiple sections. Classification: 8 CONSISTENT (same meaning everywhere: adapter, handler, validation, lifecycle, module), 9 CONTEXTUAL (different meanings but context disambiguates: boundary, contract, context, pipeline, layer, interface, pattern, trust, consumer, factory, service, envelope), 3 AMBIGUOUS (potential misinterpretation risk: protocol, schema, scope).
+- All 3 AMBIGUOUS findings were correctly falsified against the document's primary audience (AI agent) and the improvement criteria:
+  1. "Protocol" dual-usage (S11 "Communication Protocol" = AI-user rules vs S23 "Communication protocol" = MQTT/HTTP/WebSocket) is a human-format concern; AI reads inline context, not section headers.
+  2. "Schema" ambiguity in S1 commit ordering ("schema type interface changes") doesn't produce incorrect behavior — all structural/type-level changes correctly belong in commit 2 regardless of which kind.
+  3. "Scope" ORM-specific usage in S14 ("default scope or view") is already disambiguated by the "or view" qualifier.
+
+### What Struggled
+- The highest-risk finding ("Communication Protocol" appearing as a section-level concept in both S11 and S23 with completely different meanings) is genuinely confusing for human readers but irrelevant for the document's primary audience. This is the same pattern as iteration 64's cognitive load findings — a real concern for a different audience.
+- Generating a lens that is simultaneously novel, applicable, and actionable at iteration 69 is extremely difficult. The polysemy lens is novel (semantic drift hasn't been tested), applicable (terms do appear across sections), but ultimately not actionable (findings are below threshold). This follows the exact pattern of iterations 66-68.
+
+### Discoveries
+- **85% of cross-section terms are semantically safe.** 17 of 20 audited terms are either fully CONSISTENT (same meaning everywhere) or CONTEXTUAL (different meanings but immediately disambiguated by qualifying phrases). This confirms the document's writing style is effective: terms like "adapter" always mean the same thing, and terms like "boundary" are always qualified ("architectural boundary", "security boundary", "protocol boundary").
+- **The document's qualifying-phrase habit is the implicit defense against polysemy.** Just as mechanical-constraint + intent-clause pairings defend against adversarial compliance (iteration 60), and principle + example + escape-hatch pairings defend against temporal obsolescence (iteration 63), qualifier + term pairings defend against semantic drift. The document never uses "schema" alone when precision matters — it says "validation schema" or "database schema" or "message schema."
+- **The remaining polysemy is handled by the AI consumer model.** An AI agent reading the full document into context can distinguish "Communication Protocol" (S11, behavioral rules for AI-user interaction) from "Communication protocol" (S23, network transport protocols) because both are consumed simultaneously with full surrounding context. A human scanning section headers could not. This is another instance of the audience-dependent lens applicability pattern discovered in iteration 64.
+
+### Protocol Adjustments
+- None. The protocol remains at terminal state. The polysemy lens joins the list of novel-but-not-actionable lenses applied since iteration 56.
+
+### Cross-Iteration Patterns
+- Forty-nine iterations catalogued. Forty-two lens applications (29 unique + 13 verification/rejection passes).
+- Edit size: ... → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0. Fifteenth consecutive zero-edit iteration.
+- **Cumulative delta: ~+32 words** (unchanged since iteration 55).
+- **The protocol's natural arc**: iterations 21-37 (17 iterations) produced all substantive improvements; iterations 38-55 (18 iterations) applied progressively finer lenses finding smaller issues; iterations 56-69 (14 iterations) verified exhaustion through 14 independent approaches. This 17:18:14 distribution continues the healthy pattern.
+- **Eight verification categories now explored:** structural analysis, cooperative compliance, adversarial compliance, decomposition safety, misapplication recovery, temporal obsolescence resilience, cognitive load efficiency, and now semantic consistency. Each probes the document from a fundamentally different perspective, and all eight confirm the document is sound.
