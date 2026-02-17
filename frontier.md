@@ -2,7 +2,7 @@
 
 ## Status: EXHAUSTED (0 active items)
 
-Iteration 46 applied an implicit temporal ordering lens, finding 1 HIGH structural contradiction (Phase 4 regression test violates Law 1 bisect-safety) which was fixed. No new active items emerged.
+Iteration 47 applied a missing negative guidance lens, finding 1 MEDIUM gap (merge conflict markers not in contamination scan) which was fixed. No new active items emerged.
 
 ## Active
 
@@ -43,6 +43,7 @@ Iteration 46 applied an implicit temporal ordering lens, finding 1 HIGH structur
 - ~~Forward reference: S7 cursor pagination delegates to S13 with no definition~~ → Fixed iteration 45
 - ~~Terminology: "pre-commit verification protocol" vs "Pre-Commit Protocol"~~ → Fixed iteration 45
 - ~~Temporal ordering: Phase 4 regression test commit violates Law 1 bisect-safety~~ → Fixed iteration 46
+- ~~Missing negative guidance: merge conflict markers not in contamination scan~~ → Fixed iteration 47
 
 ## Graveyarded Items
 - Section 14 compression (27 words, below threshold) — evidence/section14-assessment.md
@@ -54,7 +55,7 @@ Iteration 46 applied an implicit temporal ordering lens, finding 1 HIGH structur
 - Cross-language contamination guard (low leverage, linters catch common cases, ~25 words for rare edge case) — graveyard.md
 
 ## Remaining Low-Severity Observations (Not Worth Editing)
-Carried from iterations 38-46:
+Carried from iterations 38-47:
 - `console.error` in Section 4 startup example is a legitimate pre-logger exception
 - "Never name anything Handler" wording is broader than intent (refers to classes, not directories)
 - Performance budgets (S7) duplicate SLO targets (S18) — same numbers, different contexts
@@ -71,10 +72,11 @@ Carried from iterations 38-46:
 - Zero-downtime migration phases lack explicit inter-phase verification gates (derivable from Phase 4's existing "after confirming" pattern)
 - Emergency hotfix defers regression test with no merge-gate deadline (temporal window exists but hotfix protocol is inherently exception-based)
 - Refactoring prerequisite tests must be separate PR (derivable from intersection of Law 2 + S20 Step 5)
+- `json_agg(o.*)` in Section 7 N+1 example uses `*` inside aggregate (idiomatic PostgreSQL, not top-level SELECT *)
 
 ## Document Maturity Assessment
 
-The document has been through 26 improvement iterations. All content-level and meta-level lenses are exhausted. The frontier is empty.
+The document has been through 27 improvement iterations. All content-level and meta-level lenses are exhausted. The frontier is empty.
 
 | Lens | Iterations | Status |
 |------|-----------|--------|
@@ -97,6 +99,7 @@ The document has been through 26 improvement iterations. All content-level and m
 | Actionability audit | 44 | Applied (0 findings — action specs appropriately detailed) |
 | Forward reference & terminology | 45 | Applied (2 fixes — inline definition + name alignment) |
 | Implicit temporal ordering | 46 | Applied (1 fix — regression test squash note resolves Phase 4 vs Law 1) |
+| Missing negative guidance | 47 | Applied (1 fix — merge conflict markers added to contamination scan) |
 
 ## Reopening Criteria
 

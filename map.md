@@ -2,7 +2,7 @@
 
 ## Document Status: MATURE (stable)
 
-The document reached its content-optimal state after 20 iterations (21-40). Iterations 41-43 applied new lenses (audience fitness, low-severity re-evaluation, cross-reference gap closure). Iteration 44 applied two additional orthogonal lenses (numeric constraint consistency, actionability audit) with zero findings. Iteration 45 applied a forward-reference and terminology audit, finding 2 fixable issues. Iteration 46 applied an implicit temporal ordering lens, finding 1 HIGH structural contradiction between Section 12's three-commit bugfix pattern and Section 1's bisect-safe law, resolved with a squash note.
+The document reached its content-optimal state after 20 iterations (21-40). Iterations 41-43 applied new lenses (audience fitness, low-severity re-evaluation, cross-reference gap closure). Iteration 44 applied two additional orthogonal lenses (numeric constraint consistency, actionability audit) with zero findings. Iteration 45 applied a forward-reference and terminology audit, finding 2 fixable issues. Iteration 46 applied an implicit temporal ordering lens, finding 1 HIGH structural contradiction. Iteration 47 applied a missing negative guidance lens, finding 1 MEDIUM gap in the contamination scan (merge conflict markers).
 
 ## Strengths
 - Comprehensive coverage of engineering lifecycle (26 sections)
@@ -25,6 +25,7 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - Terminology consistent: all named concepts use their canonical names across sections
 - Forward references either within-section (navigable) or accompanied by inline definitions
 - Cross-section temporal dependencies resolved (regression test squash note connects Phase 4 to Law 1)
+- Contamination scan covers all common pre-commit failure modes including merge conflict markers
 
 ## Resolved Issues (Complete List)
 - Autonomy boundary contradiction → Fixed iteration 21
@@ -60,9 +61,10 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - "pre-commit verification protocol" terminology mismatch → Fixed iteration 45
 - Section 7 cursor pagination forward reference lacked inline definition → Fixed iteration 45
 - Phase 4 regression test commit violates Law 1 bisect-safety → Fixed iteration 46
+- Pre-Commit Protocol Step 4 missing merge conflict marker scan → Fixed iteration 47
 
 ## Metrics
-- Length: ~11,383 words (net ~-146 from 11,668 start; +25 from iteration 46)
+- Length: ~11,393 words (net ~-136 from 11,668 start; +10 from iteration 47)
 - Sections: 26
 - Internal contradictions: 0
 - Self-contradicting examples: 0
@@ -73,6 +75,7 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - Enforcement gaps: 0
 - Numeric constraint conflicts: 0
 - Cross-section temporal ordering conflicts: 0
+- Contamination scan gaps: 0
 - Compressed sections: 4 (Sections 1, 3, 12, 13)
 - Graveyard items: 6
 - Audit lenses applied without findings: 2 (numeric constraints, actionability)
@@ -88,6 +91,7 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - Numeric Consistency: Perfect (all thresholds compatible)
 - Reader Experience: Very High (no blocking forward references)
 - Temporal Coherence: Very High (cross-section ordering dependencies resolved)
+- Contamination Coverage: Complete (all common pre-commit patterns covered)
 
 ## Cumulative Changes
 - 12 additions: +667 words
@@ -100,8 +104,9 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - 1 cross-reference gap fix: +2 words (coverage thresholds → Section 5)
 - 1 forward-reference/terminology fix: +11 words (inline definition + name alignment)
 - 1 temporal ordering fix: +25 words (regression test squash note)
-- **Net: ~-146 words while adding 13 new concepts and fixing 12 consistency errors**
+- 1 contamination scan fix: +10 words (merge conflict markers)
+- **Net: ~-136 words while adding 14 new concepts and fixing 13 consistency errors**
 
-## Iteration: 46
+## Iteration: 47
 Last updated: 2026-02-17
-Status: Document continues in stable mature state. New lens (implicit temporal ordering) applied, finding 1 HIGH structural contradiction between Phase 4 and Law 1. 19 distinct lenses now applied.
+Status: Document continues in stable mature state. New lens (missing negative guidance) applied, finding 1 MEDIUM gap in contamination scan. 20 distinct lenses now applied.

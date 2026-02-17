@@ -722,3 +722,31 @@ Track how the improvement process itself evolves. Meta-observations about what w
 - Edit size: 55 → 72 → -380 → 16 → -325 → 17 → +130 → +60 → +25 → +73 → +20 → +25 → +85 → +68 → -115 → -57 → 0 → +9 → -10 → +16 → +37 → +1 → +2 → 0 → +11 → +25.
 - **Cumulative delta: ~-146 words** from starting state (11,668 → ~11,522). Twenty-six iterations: 12 additions (+667 words), 4 compressions (-877 words), 1 delineation (+16 words), 2 enforcement connections (+45 words), 2 self-consistency patches (+10 words), 1 cross-reference integrity patch (-10 words), 1 contradiction resolution (+16 words), 1 cross-reference gap fix (+2 words), 1 forward-reference/terminology fix (+11 words), 1 temporal ordering fix (+25 words), 2 audit-only iterations (+0 words).
 - **Four meta-categories of lenses now catalogued**: content (contradictions, gaps, compressions, enforcement, etc.), audience (failure modes of the primary consumer), reader-experience (navigability, forward references, terminology consistency), structural-interaction (temporal ordering, cross-rule state invariants). Each category is orthogonal and finds issues invisible to the others.
+
+---
+
+## Iteration 47 - Merge Conflict Marker Scan (Missing Negative Guidance) (2026-02-17)
+
+### What Worked
+- The "missing negative guidance" lens — asking "are there critical contamination patterns the Pre-Commit Protocol's scan doesn't detect?" — found 1 MEDIUM gap after 26 improvement iterations and 19 lenses. The lens is orthogonal to previous lenses because it examines scan **coverage completeness** rather than rule correctness, consistency, or audience fitness.
+- The fix was surgical: ~10 words added to Step 4's grep target list, extending the existing contamination check pattern. Merge conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`) are one of the most common pre-commit hook checks in industry tools (pre-commit, husky, lefthook) but were missing from the document's scan.
+- The gap is particularly relevant for the AI agent audience (identified in iteration 41): AI agents performing git rebase/merge operations can leave unresolved conflict markers. For non-compiled files (YAML, JSON, Markdown, config), these survive the build gate and cause silent runtime failures — a failure mode that no other gate in the document catches.
+- Falsification tested 3 counter-arguments: (1) conflict markers break compiled languages anyway — true, but non-compiled files are the dangerous case; (2) this is too specific — no, it's the same abstraction level as the existing Step 4 items; (3) it could flag intentional documentation — true, but Step 4's existing "evaluating if intentional or leftover" clause already handles this.
+
+### What Struggled
+- Identifying this gap required reasoning about what the scan *doesn't* detect rather than what the document *does* contain. All previous lenses examined existing content; this lens required imagining what contamination scenarios exist in the real world and checking whether the scan covers them. This is a fundamentally different mode of analysis.
+- Also investigated `json_agg(o.*)` in Section 7 as a residual self-contradiction with the "Never SELECT *" rule, but correctly assessed it as idiomatic PostgreSQL inside an aggregate (not a top-level SELECT *) — added to low-severity observations.
+
+### Discoveries
+- **Gap-finding lens: "missing negative guidance"** — for any checklist or scan in the document, ask: what real-world failure modes exist that this scan would miss? The contamination scan covered debug artifacts and secrets but not syntactic contamination (merge conflict markers). This is a coverage completeness question, not a correctness question.
+- **Non-compiled files are the blind spot in build-gate defenses.** The document's CI pipeline (Section 21) includes "build succeeds" as a gate. This catches merge conflict markers in compiled languages. But YAML, JSON, Markdown, .env.example, and other non-compiled files are not protected by the build gate. The Pre-Commit Protocol's contamination scan is the ONLY defense for these files, making its completeness critical.
+- **AI agents make this class of error more likely.** Human developers resolve merge conflicts interactively in an editor with visual diff. AI agents performing `git rebase` resolve conflicts programmatically and can miss edge cases where markers remain in non-obvious locations. The audience fitness lens (iteration 41) identified "verify before calling" as the #1 AI failure mode. This iteration identifies "incomplete conflict resolution" as a secondary failure mode addressed through the same scan mechanism.
+
+### Protocol Adjustments
+- The lens library now has five applicable meta-categories: content (13 types), audience (1 type), reader-experience (1 type), structural-interaction (1 type), and coverage-completeness (1 type, new). Coverage-completeness asks "does this checklist/scan/gate cover all relevant failure modes?"
+
+### Cross-Iteration Patterns
+- Twenty-seven iterations catalogued. Twenty distinct improvement lenses.
+- Edit size: 55 → 72 → -380 → 16 → -325 → 17 → +130 → +60 → +25 → +73 → +20 → +25 → +85 → +68 → -115 → -57 → 0 → +9 → -10 → +16 → +37 → +1 → +2 → 0 → +11 → +25 → +10. The +10 continues the asymptotic tail pattern.
+- **Cumulative delta: ~-136 words** from starting state (11,668 → ~11,532). Twenty-seven iterations: 12 additions (+667 words), 4 compressions (-877 words), 1 delineation (+16 words), 2 enforcement connections (+45 words), 2 self-consistency patches (+10 words), 1 cross-reference integrity patch (-10 words), 1 contradiction resolution (+16 words), 1 cross-reference gap fix (+2 words), 1 forward-reference/terminology fix (+11 words), 1 temporal ordering fix (+25 words), 1 contamination scan fix (+10 words), 2 audit-only iterations (+0 words).
+- **Five meta-categories of lenses now catalogued**: content (contradictions, gaps, compressions, enforcement, etc.), audience (failure modes of the primary consumer), reader-experience (navigability, forward references, terminology consistency), structural-interaction (temporal ordering, cross-rule state invariants), coverage-completeness (scan/gate coverage of real-world failure modes). Each category is orthogonal and finds issues invisible to the others.
