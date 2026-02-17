@@ -1,8 +1,8 @@
 # Current Understanding of CLAAAAAAUDE.md Quality
 
-## Document Status: MATURE (reopened for audience fitness)
+## Document Status: MATURE (stable)
 
-The document reached its content-optimal state after 20 iterations (21-40). Iteration 41 applied a new lens — "audience fitness" — asking whether the document's rules match the failure modes of its primary consumer (an AI coding agent). This found a genuine gap: no rule against generating code based on inference rather than verified project state.
+The document reached its content-optimal state after 20 iterations (21-40). Iteration 41 applied a new lens — "audience fitness" — adding an AI-agent-specific verification rule. Iteration 42 fixed a minor self-contradiction in the boolean parameter rule.
 
 ## Strengths
 - Comprehensive coverage of engineering lifecycle (26 sections)
@@ -17,7 +17,8 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - Self-consistency verified: examples comply with their own rules
 - Cross-reference integrity verified: examples in section X comply with rules in section Y
 - Zero internal contradictions: all escape hatches use consistent pattern (absolute + documented justification)
-- NEW: AI-agent-specific failure mode covered (verify APIs before calling them)
+- AI-agent-specific failure mode covered (verify APIs before calling them)
+- Boolean parameter rule now correctly scoped to positional booleans
 
 ## Resolved Issues (Complete List)
 - Autonomy boundary contradiction → Fixed iteration 21
@@ -46,9 +47,10 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - Decision Tree referenced "Phases 1-5" but 6 phases exist → Fixed iteration 39
 - "No any ever" vs "without justification" contradiction → Fixed iteration 40
 - Missing AI-agent-specific verification rule → Added iteration 41
+- "No boolean parameters" self-contradicts its own solution → Fixed iteration 42
 
 ## Metrics
-- Length: ~11,483 words (net ~-185 from 11,668 start)
+- Length: ~11,345 words (net ~-184 from 11,668 start, +1 word from iteration 41)
 - Sections: 26
 - Internal contradictions: 0
 - Self-contradicting examples: 0
@@ -65,18 +67,18 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - Consistency: Perfect (zero contradictions)
 - Practicality: High
 - Conciseness: Very High (at compression floor)
-- Audience Fitness: High (AI-specific failure mode now covered)
+- Audience Fitness: High (AI-specific failure mode covered)
 
 ## Cumulative Changes
 - 12 additions: +667 words
 - 4 compressions: -877 words
 - 1 delineation: +16 words
 - 2 enforcement connections: +45 words
-- 1 self-consistency patch: +9 words (3 fixes, net minimal)
+- 2 self-consistency patches: +10 words (4 fixes total, net minimal)
 - 1 cross-reference integrity patch: ~-10 words (3 fixes, shortened examples)
 - 1 contradiction resolution: +16 words (any/unknown escape hatch)
-- **Net: ~-185 words while adding 12 new concepts and fixing 7 self/cross-reference errors and 1 contradiction**
+- **Net: ~-184 words while adding 12 new concepts and fixing 8 self/cross-reference errors and 1 contradiction**
 
-## Iteration: 41
+## Iteration: 42
 Last updated: 2026-02-17
-Status: Document reopened from final state via new lens (audience fitness). One AI-agent-specific gap filled. Further audience fitness improvements possible but require careful evaluation against the "dead weight vs harmful gap" threshold.
+Status: Document continues in stable mature state. Low-severity observations from the frontier are being systematically evaluated; one ("no boolean parameters" self-contradiction) warranted a 1-word fix. Remaining low-severity items are at the threshold where the cost of editing equals or exceeds the benefit.

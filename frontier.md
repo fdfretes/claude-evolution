@@ -1,8 +1,8 @@
 # High-Leverage Improvement Questions
 
-## Status: LOW INVENTORY (1 active item from new lens)
+## Status: LOW INVENTORY (1 active item, approaching exhaustion)
 
-Iteration 41 reopened the frontier with a new lens: "audience fitness" — whether the document's rules match the failure modes of its primary consumer (an AI coding agent). The verify-before-generating rule was applied. Remaining audience fitness findings are lower leverage.
+Iteration 42 re-examined the "low-severity observations" list and found one item that warranted a fix: the "no boolean parameters" self-contradiction. The remaining item (cross-language contamination guard) remains low-priority.
 
 ## Active
 
@@ -42,6 +42,7 @@ Iteration 41 reopened the frontier with a new lens: "audience fitness" — wheth
 - ~~Cross-reference: Decision Tree "Phases 1-5" should be 1-6~~ → Fixed iteration 39
 - ~~Contradiction: "No any ever" vs "without justification"~~ → Fixed iteration 40
 - ~~Audience Fitness: Verify Before Generating~~ → Added iteration 41
+- ~~Self-contradiction: "No boolean parameters" bans its own solution~~ → Fixed iteration 42
 
 ## Graveyarded Items
 - Section 14 compression (27 words, below threshold) — evidence/section14-assessment.md
@@ -52,7 +53,7 @@ Iteration 41 reopened the frontier with a new lens: "audience fitness" — wheth
 - IDE-specific recommendations (pre-seeded rejection)
 
 ## Remaining Low-Severity Observations (Not Worth Editing)
-Carried from iterations 38-41:
+Carried from iterations 38-42:
 - `console.error` in Section 4 startup example is a legitimate pre-logger exception
 - "Never name anything Handler" wording is broader than intent (refers to classes, not directories)
 - Performance budgets (S7) duplicate SLO targets (S18) — same numbers, different contexts
@@ -62,14 +63,14 @@ Carried from iterations 38-41:
 - "zero-downtime deployments" phrase not in cited Sections 10/21 (concept present, exact term not)
 - Section 21 coverage enforcement doesn't cite Section 5 thresholds
 - Section 11 dependency ask doesn't cite Section 4 framework
-- "No boolean parameters" wording broader than intent (positional vs named)
+- ~~"No boolean parameters" wording broader than intent (positional vs named)~~ → Fixed iteration 42
 - Test name uses "and" which Section 1 flags as splitting signal (philosophical, not practical)
 - Hotfix test deferral gap with "no regression test" anti-pattern (implicit resolution)
 - Human-team-specific rules (S25 review turnaround, S26 incident response times, S22 rotation schedules) are dead weight for AI consumer but harmless
 
 ## Document Maturity Assessment
 
-The document has been through 21 improvement iterations. All content-level lenses are exhausted. A new meta-lens (audience fitness) has been applied:
+The document has been through 22 improvement iterations. All content-level lenses are exhausted. A new meta-lens (audience fitness) has been applied. Low-severity observations are being systematically re-evaluated.
 
 | Lens | Iterations | Status |
 |------|-----------|--------|
@@ -84,9 +85,10 @@ The document has been through 21 improvement iterations. All content-level lense
 | Mechanism gap fills | 33, 34 | Exhausted (all lifecycles complete) |
 | Symmetric coverage | 30 | Exhausted (input/output both covered) |
 | Enforcement audit | 31, 32 | Exhausted (all rules verified in CI) |
-| Self-contradiction audit | 38 | Exhausted (examples comply with rules) |
+| Self-contradiction audit | 38, 42 | Exhausted (examples comply with rules) |
 | Cross-reference integrity | 39 | Exhausted (references verified, examples comply cross-section) |
-| **Audience fitness** | **41** | **Applied (1 HIGH fix; remaining items low-leverage)** |
+| Audience fitness | 41 | Applied (1 HIGH fix; remaining items low-leverage) |
+| Low-severity re-evaluation | 42 | Applied (1 fix from 13 items; remainder confirmed below threshold) |
 
 ## Reopening Criteria
 

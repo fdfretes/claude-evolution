@@ -586,3 +586,29 @@ Track how the improvement process itself evolves. Meta-observations about what w
 - Edit size: 55 → 72 → -380 → 16 → -325 → 17 → +130 → +60 → +25 → +73 → +20 → +25 → +85 → +68 → -115 → -57 → 0 → +9 → -10 → +16 → +37.
 - **Cumulative delta: ~-185 words** from starting state (11,668 → ~11,483). Twenty-one iterations: 12 additions (+667 words), 4 compressions (-877 words), 1 delineation (+16 words), 2 enforcement connections (+45 words), 1 self-consistency patch (+9 words), 1 cross-reference integrity patch (-10 words), 1 contradiction resolution (+16 words), 1 final state declaration (+0 words).
 - **The lens library now has a meta-layer.** Content lenses (13 types) examine what the document says. The audience fitness lens examines who reads the document and whether it serves them. This is a qualitatively different kind of analysis — and it found a genuine gap after 20 iterations of content-level analysis declared the document complete.
+
+---
+
+## Iteration 42 - Positional Boolean Self-Contradiction Fix (2026-02-17)
+
+### What Worked
+- Re-examining the frontier's "low-severity observations" list with fresh eyes proved productive. The "No boolean parameters" item had been carried since iteration 38 as "wording broader than intent (positional vs named)" but not flagged as a self-contradiction. Reframing it through the self-contradiction lens (iteration 38's technique) revealed it was the same class of issue: a rule that contradicts its own recommended solution.
+- The fix was the smallest yet: exactly 1 word ("positional" inserted before "boolean parameters"). This is the theoretical minimum for a meaningful precision improvement — one word that eliminates a self-contradiction.
+- The subagent analysis was thorough: identified the contradiction, evaluated whether it causes real confusion, and proposed the minimal fix. The analysis confirmed the fix is warranted despite low severity because the cost (1 word) is negligible.
+
+### What Struggled
+- The item had been on the low-severity list for 4 iterations without being acted on. The assessment "not worth editing" was based on the observation that "context makes it clear" — which is true but doesn't eliminate the surface-level self-contradiction. The lesson: items that are "clear in context" can still contain genuine self-contradictions worth fixing when the fix cost is near-zero.
+
+### Discoveries
+- **Low-severity re-evaluation is a valid lens.** When a document has been through all major lenses, systematically re-examining items previously classified as "not worth editing" can find a few that warrant minimal fixes. The key filter is: is the fix cost lower than the classification assumed? The boolean parameter fix was assumed to require rewording; it actually required one word.
+- **The self-contradiction lens has a long tail.** Iteration 38 found 3 self-contradictions through a systematic audit. Iteration 42 found a 4th through re-examination of a low-severity observation. Self-contradictions can hide in rules whose intent is clear because readers mentally correct the imprecision — the contradiction exists at the literal level but not the semantic level. Both levels matter in a standards document.
+- **1-word fixes are always worth applying.** When a fix costs 1 word and eliminates a self-contradiction, the cost-benefit analysis is trivially positive regardless of severity. The threshold for "not worth editing" should account for fix cost, not just issue severity.
+
+### Protocol Adjustments
+- Add a filter to the low-severity re-evaluation: for each item, estimate the fix cost (in words). Any item with fix cost ≤ 5 words should be evaluated regardless of severity, because the cost of editing approaches zero.
+
+### Cross-Iteration Patterns
+- Twenty-two iterations catalogued. Fifteen distinct improvement lenses (adding "low-severity re-evaluation" as a meta-lens).
+- Edit size: 55 → 72 → -380 → 16 → -325 → 17 → +130 → +60 → +25 → +73 → +20 → +25 → +85 → +68 → -115 → -57 → 0 → +9 → -10 → +16 → +37 → +1. The +1 is the smallest non-zero edit in the series.
+- **Cumulative delta: ~-184 words** from starting state (11,668 → ~11,484). Twenty-two iterations: 12 additions (+667 words), 4 compressions (-877 words), 1 delineation (+16 words), 2 enforcement connections (+45 words), 2 self-consistency patches (+10 words, 4 fixes), 1 cross-reference integrity patch (-10 words), 1 contradiction resolution (+16 words), 1 final state declaration (+0 words).
+- **The document's improvement curve is asymptotically approaching zero.** Edit sizes: 55, 72, 380, 16, 325, 17, 130, 60, 25, 73, 20, 25, 85, 68, 115, 57, 0, 9, 10, 16, 37, 1. The trend is unmistakably toward diminishing returns. Future iterations would need a genuinely new lens or an external trigger to produce meaningful improvements.
