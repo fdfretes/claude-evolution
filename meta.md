@@ -1355,3 +1355,31 @@ Track how the improvement process itself evolves. Meta-observations about what w
 - **Cumulative delta: ~+32 words** (unchanged since iteration 55).
 - **The protocol's natural arc**: iterations 21-37 (17 iterations) produced all substantive improvements; iterations 38-55 (18 iterations) applied progressively finer lenses finding smaller issues; iterations 56-69 (14 iterations) verified exhaustion through 14 independent approaches. This 17:18:14 distribution continues the healthy pattern.
 - **Eight verification categories now explored:** structural analysis, cooperative compliance, adversarial compliance, decomposition safety, misapplication recovery, temporal obsolescence resilience, cognitive load efficiency, and now semantic consistency. Each probes the document from a fundamentally different perspective, and all eight confirm the document is sound.
+
+---
+
+## Iteration 70 - Composition Minimality (2026-02-17)
+
+### What Worked
+- Applied a lens focused on **logical entailment** between rules: if rule A is a strict logical consequence of rules B + C already present, rule A is redundant and removable. This is distinct from compression (which targets redundant phrasings) and from polysemy audit (which targets semantic drift). This lens asks about the **logical structure** of the rule set — whether any rules are theorems derivable from other rules.
+- Tested 6 concrete candidates: "Never SELECT *" vs "select only columns you need", "test behavior not implementation" vs mock/refactor rules, "never store local times" vs "store UTC", "linear history preferred" vs rebase instruction, "never read process.env" vs config rules, "circular imports are bugs" vs dependency direction rules.
+- All 6 rejected with distinct reasoning: gate vs guidance, principle vs consequence, positive vs negative instruction, rationale vs procedure, different attack vectors, different violation scopes.
+
+### What Struggled
+- This lens is effectively subsumed by the compression passes (iterations 23-37), which already evaluated rule-level redundancy at multiple granularities and achieved diminishing returns (380 → 325 → 115 → 57 → 27 → below threshold). The composition minimality lens asks essentially the same question ("is this rule redundant?") from a more formal/logical angle, but produces the same conclusion.
+- The document's design philosophy (documented across 140+ low-severity observations) explicitly values redundancy when removal would require multi-step logical derivation. The primary consumer (AI agent) benefits from explicit rules over implicit entailment.
+
+### Discoveries
+- **Apparent redundancies serve independent purposes.** Each candidate rule pair serves different functions even when they seem to say "the same thing": CI-greppable prohibitions vs positive guidance, general principles vs specific consequences, what-to-do vs what-not-to-do, rationale vs procedure. These aren't true redundancies — they're complementary facets of the same standard.
+- **The "principle + prohibition + positive instruction" pattern is intentional.** The document consistently provides three angles on important standards: the abstract principle ("select only what you need"), the prohibition ("never SELECT *"), and the mechanism ("enumerate columns"). Removing any one leg makes the standard weaker for its audience.
+- **Logical entailment is not a sufficient criterion for removal in a standards document.** Unlike a mathematical axiom system where minimal axiom sets are preferred, a standards document benefits from making consequences explicit. The cost of a redundant sentence (~10 words) is far less than the cost of a reader failing to derive an implicit consequence.
+
+### Protocol Adjustments
+- None. The protocol remains at terminal state.
+
+### Cross-Iteration Patterns
+- Fifty iterations catalogued. Forty-three lens applications (30 unique + 13 verification/rejection passes).
+- Edit size: ... → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0. Sixteenth consecutive zero-edit iteration.
+- **Cumulative delta: ~+32 words** (unchanged since iteration 55).
+- **The protocol's natural arc**: iterations 21-37 (17 iterations) produced all substantive improvements; iterations 38-55 (18 iterations) applied progressively finer lenses finding smaller issues; iterations 56-70 (15 iterations) verified exhaustion through 15 independent approaches. This 17:18:15 distribution continues the healthy pattern.
+- **Eight verification categories remain.** The composition minimality lens falls within the structural analysis category (examining rule internals and relationships). No new verification category discovered.
