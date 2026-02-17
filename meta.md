@@ -367,3 +367,30 @@ Track how the improvement process itself evolves. Meta-observations about what w
 - Edit size: 55 → 72 → -380 → 16 → -325 → 17 → +130 → +60 → +25 → +73 → +20 → +25 → +85. Additive trend continues.
 - **Cumulative delta: -127 words** from starting state (11,668 → ~11,541). Thirteen iterations: 10 additions (+562 words), 2 compressions (-705 words), 1 delineation (+16 words).
 - **API lifecycle complete.** The remaining frontier items (feature flag cleanup, GraphQL, monorepo) are internal or niche concerns. The document's external contract lifecycle (API) is now fully covered.
+
+---
+
+## Iteration 34 - Feature Flag Lifecycle (2026-02-17)
+
+### What Worked
+- The subagent research provided exceptional evidence: Knight Capital's $465M loss from flag name reuse, Uber's 6,000+ stale flags requiring a dedicated cleanup tool, LinkedIn's all-flags-on outage. Real-world catastrophic failures made the case unambiguous.
+- The Hodgson/Fowler taxonomy (release/ops/experiment/permission) is industry-standard and tool-agnostic, fitting the document's language-agnostic philosophy perfectly.
+- Connecting stale flags to the preamble's existing "dead code must be deleted" principle was elegant: it doesn't create a new rule, it extends an existing one. Stale flags ARE dead code. The draft makes this connection explicit.
+- 68 words for 4 rules. Each word is load-bearing.
+
+### What Struggled
+- The frontier had ranked this as "medium leverage" since iteration 29. The research revealed it was higher leverage than estimated — a $465M real-world incident is not "medium leverage." The lesson: frontier leverage estimates should weight catastrophic failure modes more heavily, even when the affected domain (feature flags) seems mundane.
+
+### Discoveries
+- **The "directive without mechanism" pattern completes its arc.** Iterations 27, 28, 33, and now 34 all fixed the same gap class: the document directs teams to do something (zero-downtime deploys, dependency injection, API deprecation, feature flags) but omits the lifecycle mechanism. This iteration closes the last known instance.
+- **Connecting new rules to existing principles is more powerful than standalone rules.** "Stale flags are dead code per the preamble: delete them" is stronger than "delete stale flags" because it activates an existing, understood obligation. The reader already knows dead code must go; now they know stale flags qualify.
+- **"Never reuse" rules are cheap and catastrophic to violate.** The cost of unique flag names is zero (namespace is infinite). The cost of reuse can destroy a company. When the cost of compliance is zero and the cost of violation is catastrophic, the rule is maximally justified.
+
+### Protocol Adjustments
+- For future frontier ranking, weight catastrophic real-world failures more heavily when assessing leverage. A "medium" domain (feature flags) with a catastrophic failure mode ($465M) should rank higher than a "high" domain with only moderate failure modes.
+
+### Cross-Iteration Patterns
+- Fourteen iterations catalogued. Change types: "resolve contradiction" (21), "fill gap" (22), "compress redundancy" (23, 25), "delineate boundary" (24), "scope qualifier" (26), "fill mechanism gap" (27, 28, 33, 34), "cross-section alignment" (29), "promote example to rule" (30), "connect rule to gate" (31, 32). "Fill mechanism gap" is now the most-used type at 4 instances.
+- Edit size: 55 → 72 → -380 → 16 → -325 → 17 → +130 → +60 → +25 → +73 → +20 → +25 → +85 → +68. Consistent additive pattern for gap fills.
+- **Cumulative delta: -59 words** from starting state (11,668 → ~11,609). Fourteen iterations: 11 additions (+630 words), 2 compressions (-705 words), 1 delineation (+16 words).
+- **All known lifecycle gaps are now closed.** The document covers: code lifecycle (write → test → review → merge), API lifecycle (create → version → deprecate → remove), deployment lifecycle (build → stage → deploy → rollback), feature flag lifecycle (create → type → own → cleanup), and incident lifecycle (detect → respond → mitigate → post-mortem). The remaining frontier items are scope expansions (GraphQL, monorepo), not gap fills.
