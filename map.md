@@ -22,10 +22,12 @@
 - **Injection pattern scanning added** — Section 21 CI gates now verify Section 6's absolute injection prevention rules (SQL, shell, HTML) via automated pattern scanning
 - **API deprecation lifecycle added** — Section 13 now defines the full deprecation process: RFC headers (Deprecation/Sunset), monitoring requirement, 410 Gone after sunset, zero-traffic removal gate
 - **Feature flag lifecycle added** — Section 10 now defines flag types (release/ops/experiment/permission), ownership, cleanup rules, and name reuse prohibition
+- **Section 3 naming conventions compressed** — removed "(yes)"/"(no)" markers and parenthetical explanations; removed third error class example (InsufficientFundsError)
 
 ## Weaknesses Remaining
 - Missing GraphQL-specific standards (only REST in Section 13)
 - No monorepo vs polyrepo guidance
+- Sections 13 and 14 have compression opportunities (~150 and ~120 words respectively)
 
 ## Resolved Issues
 - ~~Autonomy boundary contradiction in Section 11~~ → Fixed iteration 21
@@ -42,13 +44,15 @@
 - ~~Security injection rules had no CI enforcement~~ → Added iteration 32
 - ~~API deprecation lifecycle missing from Section 13~~ → Added iteration 33
 - ~~Feature flag lifecycle missing from Section 10~~ → Added iteration 34
+- ~~Section 3 naming/error class verbosity~~ → Compressed iteration 35
 
 ## Current Metrics
-- Length: ~11,603 words (net +68 from feature flag lifecycle)
+- Length: ~11,488 words (net -115 from Section 3 compression)
 - Sections: 26
 - Internal contradictions: 0 remaining
 - Cross-section inconsistencies: 0 remaining
 - Enforcement gaps: 0 remaining
+- Compressed sections: 3 (Sections 1, 3, 12)
 
 ## Quality Assessment
 - Enforceability: Very High
@@ -56,8 +60,8 @@
 - Completeness: Very High (all lifecycle gaps closed: code, API, feature flags, deployment)
 - Consistency: High
 - Practicality: High
-- Conciseness: High
+- Conciseness: High (3 compression passes complete)
 
-## Iteration: 34
+## Iteration: 35
 Last updated: 2026-02-17
-Next focus: The remaining weaknesses (GraphQL, monorepo) are low-leverage and likely graveyard candidates. The document's coverage is now comprehensive across all lifecycle dimensions. Future iterations should focus on compression opportunities or discovering genuinely novel gaps via new analysis lenses.
+Next focus: Remaining compression opportunities in Sections 13 (~150 words) and 14 (~120 words). The remaining weaknesses (GraphQL, monorepo) are low-leverage and likely graveyard candidates. Future iterations should evaluate whether to compress Sections 13/14 or declare the document at its compression floor.

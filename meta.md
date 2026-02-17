@@ -394,3 +394,30 @@ Track how the improvement process itself evolves. Meta-observations about what w
 - Edit size: 55 → 72 → -380 → 16 → -325 → 17 → +130 → +60 → +25 → +73 → +20 → +25 → +85 → +68. Consistent additive pattern for gap fills.
 - **Cumulative delta: -59 words** from starting state (11,668 → ~11,609). Fourteen iterations: 11 additions (+630 words), 2 compressions (-705 words), 1 delineation (+16 words).
 - **All known lifecycle gaps are now closed.** The document covers: code lifecycle (write → test → review → merge), API lifecycle (create → version → deprecate → remove), deployment lifecycle (build → stage → deploy → rollback), feature flag lifecycle (create → type → own → cleanup), and incident lifecycle (detect → respond → mitigate → post-mortem). The remaining frontier items are scope expansions (GraphQL, monorepo), not gap fills.
+
+---
+
+## Iteration 35 - Section 3 Naming/Error Class Compression (2026-02-17)
+
+### What Worked
+- The subagent analysis identified ~280 words of theoretical compression in Section 3, but only ~115 words were in the safe, high-confidence subset. Applied the conservative approach: compress the clearly redundant framing, leave the borderline content (nesting example, two domain error examples) intact.
+- The "(yes)"/"(no)" marker removal was a clean pattern: when a sentence already uses "not" or "never" to distinguish positive from negative examples, the explicit markers add zero information. Removing them uniformly across 8 naming rules achieved consistent compression with no ambiguity.
+- Removing InsufficientFundsError was the most surgical edit: the base AppError class defines the shape, NotFoundError shows entity/id parameterization, ValidationError shows field/reason parameterization. A third example demonstrating the identical "extend AppError with domain args" pattern adds nothing a reader can't derive.
+
+### What Struggled
+- Deciding where to draw the line between "redundant framing" and "valuable negative examples." The negative examples themselves (r = 3, process(), active, flag) are kept because they serve as a recognition list — developers encountering these patterns need to see them flagged. Only the verbose framing around them was removed.
+- The subagent also identified Section 13 (~150 words) and Section 14 (~120 words) as compression targets. These were deferred to future iterations — compressing three sections in one iteration risks accumulating errors. One section per compression iteration is the proven safe cadence.
+
+### Discoveries
+- **Compression pattern: "remove markers when structure implies them."** The "(yes)"/"(no)" markers were added to clarify positive vs negative in a wall-of-text format. But the sentence structure "X not Y" already communicates this. When structural cues make explicit markers redundant, remove the markers. This pattern may apply to other verbose formatting throughout the document.
+- **Compression pattern: "two examples define a pattern; three is redundancy."** For demonstrating an abstract pattern (like "extend base class with domain-specific constructor"), two concrete examples that differ in parameterization (entity/id vs field/reason) establish the pattern completely. A third example with different parameters but identical structure adds zero new information. This is the same principle as the "rule of three" in Section 20 — but inverted for examples: three is when you refactor, but for documentation, two is sufficient.
+- **Section 3 was the largest uncompressed section.** After three compression passes (Sections 1, 12, 3), the remaining large uncompressed sections are 13 and 14. The document is converging toward a uniform density.
+
+### Protocol Adjustments
+- None needed. The subagent-first approach for compression analysis continues to be the right method. The "identify theoretical maximum → apply safe subset" flow prevents over-compression.
+
+### Cross-Iteration Patterns
+- Fifteen iterations catalogued. Change types: "resolve contradiction" (21), "fill gap" (22), "compress redundancy" (23, 25, 35), "delineate boundary" (24), "scope qualifier" (26), "fill mechanism gap" (27, 28, 33, 34), "cross-section alignment" (29), "promote example to rule" (30), "connect rule to gate" (31, 32). "Compress redundancy" ties with "fill mechanism gap" at 3 instances each.
+- Edit size: 55 → 72 → -380 → 16 → -325 → 17 → +130 → +60 → +25 → +73 → +20 → +25 → +85 → +68 → -115. The return to negative delta after 7 consecutive additive iterations signals the document is resuming its compression trajectory.
+- **Cumulative delta: -174 words** from starting state (11,668 → ~11,494). Fifteen iterations: 11 additions (+630 words), 3 compressions (-820 words), 1 delineation (+16 words).
+- **Three compression passes now complete** targeting the three largest uncompressed sections: Section 1 Git (-380), Section 12 Debugging (-325), Section 3 Code Standards (-115). Total compression: 820 words removed. Remaining sections are smaller and have less compression headroom.
