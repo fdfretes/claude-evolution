@@ -2,7 +2,7 @@
 
 ## Status: EXHAUSTED (0 active items)
 
-Iteration 44 moved the last active item (Cross-Language Contamination Guard) to graveyard and applied two new audit lenses (numeric constraint consistency, actionability) with zero findings.
+Iteration 45 applied a forward-reference and terminology audit lens, finding 2 fixable issues (both resolved). No new active items emerged.
 
 ## Active
 
@@ -40,6 +40,8 @@ Iteration 44 moved the last active item (Cross-Language Contamination Guard) to 
 - ~~Numeric constraint consistency~~ → Verified clean iteration 44
 - ~~Actionability audit~~ → Verified clean iteration 44
 - ~~Cross-Language Contamination Guard~~ → Graveyarded iteration 44
+- ~~Forward reference: S7 cursor pagination delegates to S13 with no definition~~ → Fixed iteration 45
+- ~~Terminology: "pre-commit verification protocol" vs "Pre-Commit Protocol"~~ → Fixed iteration 45
 
 ## Graveyarded Items
 - Section 14 compression (27 words, below threshold) — evidence/section14-assessment.md
@@ -51,7 +53,7 @@ Iteration 44 moved the last active item (Cross-Language Contamination Guard) to 
 - Cross-language contamination guard (low leverage, linters catch common cases, ~25 words for rare edge case) — graveyard.md
 
 ## Remaining Low-Severity Observations (Not Worth Editing)
-Carried from iterations 38-44:
+Carried from iterations 38-45:
 - `console.error` in Section 4 startup example is a legitimate pre-logger exception
 - "Never name anything Handler" wording is broader than intent (refers to classes, not directories)
 - Performance budgets (S7) duplicate SLO targets (S18) — same numbers, different contexts
@@ -63,10 +65,12 @@ Carried from iterations 38-44:
 - Test name uses "and" which Section 1 flags as splitting signal (philosophical, not practical)
 - Hotfix test deferral gap with "no regression test" anti-pattern (implicit resolution)
 - Human-team-specific rules (S25 review turnaround, S26 incident response times, S22 rotation schedules) are dead weight for AI consumer but harmless
+- S3 Graceful Shutdown forward-references S10/S21 (MEDIUM, but rule is self-contained without the cross-reference)
+- Unlabeled preamble referenced as "the preamble" in S10 (LOW, obvious from context)
 
 ## Document Maturity Assessment
 
-The document has been through 24 improvement iterations. All content-level and meta-level lenses are exhausted. The frontier is empty.
+The document has been through 25 improvement iterations. All content-level and meta-level lenses are exhausted. The frontier is empty.
 
 | Lens | Iterations | Status |
 |------|-----------|--------|
@@ -87,6 +91,7 @@ The document has been through 24 improvement iterations. All content-level and m
 | Low-severity re-evaluation | 42, 43 | Applied (2 fixes from 13 items; remainder confirmed below threshold) |
 | Numeric constraint consistency | 44 | Applied (0 findings — all thresholds compatible) |
 | Actionability audit | 44 | Applied (0 findings — action specs appropriately detailed) |
+| Forward reference & terminology | 45 | Applied (2 fixes — inline definition + name alignment) |
 
 ## Reopening Criteria
 
@@ -96,3 +101,4 @@ Future iterations would only be justified if:
 3. The codebase adopts a technology that requires new universal standards (not technology-specific ones)
 4. A user reports genuine ambiguity in applying the standards to a real scenario
 5. A new AI agent failure mode is identified that the verify-before-generating rule doesn't cover
+6. A genuinely novel audit lens is identified that hasn't been applied

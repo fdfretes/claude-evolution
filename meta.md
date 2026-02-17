@@ -665,3 +665,31 @@ Track how the improvement process itself evolves. Meta-observations about what w
 - Edit size: 55 → 72 → -380 → 16 → -325 → 17 → +130 → +60 → +25 → +73 → +20 → +25 → +85 → +68 → -115 → -57 → 0 → +9 → -10 → +16 → +37 → +1 → +2 → 0. Second zero-edit iteration (after iteration 37).
 - **Cumulative delta: ~-182 words** (unchanged from iteration 43). Twenty-four iterations: 12 additions (+667 words), 4 compressions (-877 words), 1 delineation (+16 words), 2 enforcement connections (+45 words), 2 self-consistency patches (+10 words), 1 cross-reference integrity patch (-10 words), 1 contradiction resolution (+16 words), 1 cross-reference gap fix (+2 words), 2 audit-only iterations (+0 words).
 - **The document's improvement curve has flatlined.** The last 4 iterations produced edits of +37, +1, +2, and 0 words. Two of those were 1-word and 2-word precision fixes. The document has asymptotically converged on its optimal form.
+
+---
+
+## Iteration 45 - Forward Reference & Terminology Audit (2026-02-17)
+
+### What Worked
+- A genuinely new lens ("forward reference audit") that none of the previous 17 lenses could have detected. Previous lenses examined content correctness, consistency, completeness, enforcement, and audience fitness. This lens examines **reader experience**: when reading top-to-bottom, can the reader follow every instruction without jumping ahead?
+- The subagent identified 5 forward references (1 HIGH, 1 MEDIUM, 3 LOW) and 3 terminology inconsistencies (1 MEDIUM, 2 LOW). The triage correctly identified which 2 warranted fixes and which 6 were acceptable.
+- Fix 1 was a -1 word terminology correction: "pre-commit verification protocol" → "Pre-Commit Protocol" in Section 11. The word "verification" was both inconsistent with the canonical name AND inaccurate (the protocol includes message composition, not just verification).
+- Fix 2 was a +12 word inline definition: adding "(client passes the last-seen sort key instead of a page number)" to Section 7's cursor pagination reference. This makes the instruction self-contained for a reader who hasn't reached Section 13 yet.
+
+### What Struggled
+- The HIGH-severity forward reference (S7 → S13) was introduced in iteration 29 as a cross-reference fix. That iteration focused on content alignment (ensuring both sections agreed on when to use cursor pagination) but didn't consider the reader-experience dimension (can the reader in Section 7 understand the instruction without knowing what cursor pagination is?). The lesson: content-level fixes can create reader-experience issues that only a separate lens detects.
+
+### Discoveries
+- **Gap-finding lens: "forward reference audit"** — for any cross-section reference, check whether the reader at that point in a linear read has enough context to follow the instruction. Forward references to not-yet-introduced concepts are acceptable when: (1) they're within the same section and clearly marked "below", or (2) they provide enough inline context for the reader to act without jumping ahead. They're problematic when they delegate understanding entirely to a later section.
+- **Terminology consistency compounds over iterations.** The "pre-commit verification protocol" mismatch was introduced at some point during the 44 iterations of editing. When multiple iterations edit different sections, the risk of naming drift increases. A terminology audit should be applied after any iteration that references named concepts across sections.
+- **The 18th lens found 2 genuine issues.** Iteration 44's conclusion that "mature documents resist orthogonal audits" was too strong. The key insight is that CONTENT lenses are exhausted, but READER-EXPERIENCE lenses are orthogonal to content and can still find issues. The document's content was correct; its navigability had a gap.
+
+### Protocol Adjustments
+- Add "forward reference audit" to the lens library. This is a reader-experience lens, distinct from all content-level lenses. It should be applied after any iteration that adds or modifies cross-section references.
+- The lens library now has three meta-categories: content lenses (13 types), audience lenses (1 type), and reader-experience lenses (1 type, new).
+
+### Cross-Iteration Patterns
+- Twenty-five iterations catalogued. Eighteen distinct improvement lenses.
+- Edit size: 55 → 72 → -380 → 16 → -325 → 17 → +130 → +60 → +25 → +73 → +20 → +25 → +85 → +68 → -115 → -57 → 0 → +9 → -10 → +16 → +37 → +1 → +2 → 0 → +11. Back to non-zero after a zero-edit iteration.
+- **Cumulative delta: ~-171 words** from starting state (11,668 → ~11,497). Twenty-five iterations: 12 additions (+667 words), 4 compressions (-877 words), 1 delineation (+16 words), 2 enforcement connections (+45 words), 2 self-consistency patches (+10 words), 1 cross-reference integrity patch (-10 words), 1 contradiction resolution (+16 words), 1 cross-reference gap fix (+2 words), 1 forward-reference/terminology fix (+11 words), 2 audit-only iterations (+0 words).
+- **Three meta-categories of lenses now catalogued**: content (contradictions, gaps, compressions, enforcement, etc.), audience (failure modes of the primary consumer), reader-experience (navigability, forward references, terminology consistency). Each category is orthogonal and can find issues invisible to the others.
