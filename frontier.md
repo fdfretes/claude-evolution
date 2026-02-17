@@ -2,7 +2,7 @@
 
 ## Status: EXHAUSTED (0 active items)
 
-Iteration 50 applied a constraint stacking composability lens, testing 5 multi-section interaction scenarios. Found 1 real deadlock (refactoring reveals bug testable only post-refactor) — fixed. 2 niche conflicts graveyarded (emergency schema hotfix, migration-coupled feature flags). 2 confirmed clean (cross-layer bug fix, dependency + restructuring). No new active items emerged.
+Iteration 51 applied an error recovery path completeness lens, auditing 9 multi-step procedures for unstated failure-branch recovery paths. Found 5 LOW-severity gaps (S9 step 2→3 gate, S12 three-commit conditionality, S14 partial backfill, S22 JWT overlap duration, S15 retry exhaustion) — all derivable from adjacent rules and below editing threshold. No new active items emerged.
 
 ## Active
 
@@ -47,6 +47,7 @@ Iteration 50 applied a constraint stacking composability lens, testing 5 multi-s
 - ~~Prerequisite: Feature flag implementation pattern missing~~ → Added iteration 48
 - ~~Failure mode asymmetry: protective density proportional~~ → Verified clean iteration 49
 - ~~Constraint stacking: S20 refactoring-reveals-bug deadlock with S12/S5~~ → Fixed iteration 50
+- ~~Error recovery path completeness: procedure failure branches~~ → Verified clean iteration 51
 
 ## Graveyarded Items
 - Section 14 compression (27 words, below threshold) — evidence/section14-assessment.md
@@ -61,7 +62,7 @@ Iteration 50 applied a constraint stacking composability lens, testing 5 multi-s
 - Feature flag + multi-migration timing (niche, better as project-specific ADR) — graveyard.md
 
 ## Remaining Low-Severity Observations (Not Worth Editing)
-Carried from iterations 38-50:
+Carried from iterations 38-51:
 - `console.error` in Section 4 startup example is a legitimate pre-logger exception
 - "Never name anything Handler" wording is broader than intent (refers to classes, not directories)
 - Performance budgets (S7) duplicate SLO targets (S18) — same numbers, different contexts
@@ -84,10 +85,14 @@ Carried from iterations 38-50:
 - Redis optional-vs-required ambiguity across sections (config marks optional, scaling sections assume present — context-dependent, not contradictory)
 - Structured logger library selection is covered by Section 4 dependency framework
 - Cross-layer bug fix commit scoping (Law 1 bisect-safety serves as tiebreaker for Law 2 when splitting would break intermediate commits) — derivable, not worth explicit text
+- S9 step 2→3 has no explicit "if existing solution found, stop" gate (derivable from "must not reinvent what exists")
+- S12 Phase 4 "three commits minimum" is conditional on Phase 3 finding similar patterns (derivable from context)
+- S22 JWT overlap period has no duration guidance (narrow operational detail, ~15 words)
+- S15 retry exhaustion has no explicit "what next" (derivable from error handling architecture)
 
 ## Document Maturity Assessment
 
-The document has been through 30 improvement iterations. All content-level and meta-level lenses are exhausted. The frontier is empty.
+The document has been through 31 improvement iterations. All content-level and meta-level lenses are exhausted. The frontier is empty.
 
 | Lens | Iterations | Status |
 |------|-----------|--------|
@@ -114,6 +119,7 @@ The document has been through 30 improvement iterations. All content-level and m
 | Prerequisite chain completeness | 48 | Applied (1 fix — feature flag implementation pattern; 9 others by-design or below threshold) |
 | Failure mode asymmetry | 49 | Applied (0 findings — protective density proportional to severity) |
 | Constraint stacking composability | 50 | Applied (1 fix — refactoring-reveals-bug deadlock; 2 graveyarded; 2 clean) |
+| Error recovery path completeness | 51 | Applied (0 findings — all failure branches handled or derivable) |
 
 ## Reopening Criteria
 
