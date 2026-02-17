@@ -1,8 +1,8 @@
 # High-Leverage Improvement Questions
 
-## Status: TERMINAL (confirmed at iterations 56-67)
+## Status: TERMINAL (confirmed at iterations 56-68)
 
-Iteration 55 declared frontier exhausted. Iterations 56-64 independently verified via 9 distinct approaches (4 candidate lenses, fresh-eyes, data invariant depth, end-to-end simulation, adversarial compliance, partial adoption safety, misapplication recovery, temporal obsolescence, cognitive load under stress). Iteration 65 evaluated 3 final candidate lenses (instruction stability under context compression, composability with external tooling, multi-agent coordination) — all rejected as not addressable by document edits, subsumed by prior lenses, or outside scope. Iteration 66 attempted test execution order independence — rejected as derivable from existing "no shared mutable state" rule. Iteration 67 applied imperative completeness lens — 7 findings all below editing threshold. Protocol has reached terminal state.
+Iteration 55 declared frontier exhausted. Iterations 56-64 independently verified via 9 distinct approaches (4 candidate lenses, fresh-eyes, data invariant depth, end-to-end simulation, adversarial compliance, partial adoption safety, misapplication recovery, temporal obsolescence, cognitive load under stress). Iteration 65 evaluated 3 final candidate lenses (instruction stability under context compression, composability with external tooling, multi-agent coordination) — all rejected as not addressable by document edits, subsumed by prior lenses, or outside scope. Iteration 66 attempted test execution order independence — rejected as derivable from existing "no shared mutable state" rule. Iteration 67 applied imperative completeness lens — 7 findings all below editing threshold. Iteration 68 applied contradictory incentive audit — 7 rule pairs analyzed, all resolved by existing escape hatches and explicit mechanisms. Protocol has reached terminal state.
 
 ## Active
 
@@ -64,6 +64,7 @@ Iteration 55 declared frontier exhausted. Iterations 56-64 independently verifie
 - ~~Terminal state assessment: instruction compression stability, external tooling composability, multi-agent coordination~~ → All rejected, protocol terminal iteration 65
 - ~~Test execution order independence~~ → Rejected (derivable from "no shared mutable state" rule) iteration 66
 - ~~Imperative completeness: directive operand sufficiency~~ → Rejected (7 MEDIUM findings, all below threshold) iteration 67
+- ~~Contradictory incentive audit: rule-pair optimization pressures~~ → Rejected (7 pairs all resolved by existing mechanisms) iteration 68
 
 ## Graveyarded Items
 - Section 14 compression (27 words, below threshold) — evidence/section14-assessment.md
@@ -78,7 +79,7 @@ Iteration 55 declared frontier exhausted. Iterations 56-64 independently verifie
 - Feature flag + multi-migration timing (niche, better as project-specific ADR) — graveyard.md
 
 ## Remaining Low-Severity Observations (Not Worth Editing)
-Carried from iterations 38-67 (unchanged — no promotions at iterations 56-67):
+Carried from iterations 38-68 (unchanged — no promotions at iterations 56-68):
 - `console.error` in Section 4 startup example is a legitimate pre-logger exception
 - "Never name anything Handler" wording is broader than intent (refers to classes, not directories)
 - Performance budgets (S7) duplicate SLO targets (S18) — same numbers, different contexts
@@ -135,7 +136,7 @@ Carried from iterations 38-67 (unchanged — no promotions at iterations 56-67):
 
 ## Document Maturity Assessment
 
-The document has been through 46 improvement iterations. All content-level and meta-level lenses are exhausted. Frontier exhaustion independently verified at iterations 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, and 67.
+The document has been through 47 improvement iterations. All content-level and meta-level lenses are exhausted. Frontier exhaustion independently verified at iterations 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, and 68.
 
 | Lens | Iterations | Status |
 |------|-----------|--------|
@@ -179,6 +180,7 @@ The document has been through 46 improvement iterations. All content-level and m
 | Terminal state assessment | 65 | Confirmed terminal (3 candidate lenses rejected: not document-addressable, subsumed, or out of scope) |
 | Test execution order independence | 66 | Rejected (derivable from "no shared mutable state" rule in Section 5) |
 | Imperative completeness | 67 | Rejected (7 MEDIUM findings: judgment-dependent, platform-specific, workload-dependent, or defense-in-depth covered) |
+| Contradictory incentive audit | 68 | Rejected (7 rule pairs analyzed, all resolved by escape hatches, exception clauses, or separation of concerns) |
 
 ## Reopening Criteria
 
