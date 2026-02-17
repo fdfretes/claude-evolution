@@ -2,7 +2,7 @@
 
 ## Document Status: MATURE (stable)
 
-The document reached its content-optimal state after 20 iterations (21-40). Iterations 41-53 applied orthogonal lenses (audience fitness, low-severity re-evaluation, cross-reference gaps, numeric constraints, actionability, forward references, temporal ordering, negative guidance, prerequisite chain completeness, failure mode asymmetry, constraint stacking composability, error recovery path completeness, cross-format consistency, trust boundary transitions). Iteration 54 applied a rule verifiability lens, auditing ~45 absolute rules across all 26 sections for mechanical verifiability vs heuristic character. All absolutes are correctly calibrated: mechanically verifiable rules have CI gates, review-verifiable rules are part of S25 review checklist, and heuristic rules self-scope with judgment language.
+The document reached its content-optimal state after 20 iterations (21-40). Iterations 41-54 applied orthogonal lenses (audience fitness, low-severity re-evaluation, cross-reference gaps, numeric constraints, actionability, forward references, temporal ordering, negative guidance, prerequisite chain completeness, failure mode asymmetry, constraint stacking composability, error recovery path completeness, cross-format consistency, trust boundary transitions, rule verifiability). Iteration 55 applied a scope boundary lens, auditing absolute rules for unstated exceptions where literal application is counterproductive. Found 3 HIGH-severity scope gaps (join table timestamps, generated file line limit, type file single-export) and applied surgical qualifiers.
 
 ## Strengths
 - Comprehensive coverage of engineering lifecycle (26 sections)
@@ -33,6 +33,7 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - Cross-format consistency: JSON key naming convention declared, structured output formats consistent across sections
 - Trust boundary transitions: 12 boundaries identified, 11 explicit rules, 1 derivable from existing patterns
 - Rule verifiability: all ~45 absolute rules correctly calibrated to their verification mechanism (mechanical, review, or heuristic)
+- Scope boundaries: commonly-encountered absolute rules scoped to prevent literal misapplication (join tables, generated files, type grouping)
 
 ## Resolved Issues (Complete List)
 - Autonomy boundary contradiction → Fixed iteration 21
@@ -75,9 +76,10 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - Missing JSON key naming convention; mixed S8 example → Fixed iteration 52
 - Trust boundary transition audit → Verified clean iteration 53
 - Rule verifiability audit → Verified clean iteration 54
+- Scope boundary: join table timestamps, generated file limit, type file export rule → Fixed iteration 55
 
 ## Metrics
-- Length: ~11,516 words (net ~-13 from 11,668 start; unchanged from iteration 52)
+- Length: ~11,561 words (net +45 from iteration 54; net +32 from 11,516 start of iteration 54)
 - Sections: 26
 - Internal contradictions: 0
 - Self-contradicting examples: 0
@@ -96,6 +98,7 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - Cross-format consistency gaps: 0
 - Trust boundary coverage gaps (HIGH): 0
 - Rule verifiability mismatches: 0
+- Scope boundary gaps (HIGH): 0
 - Compressed sections: 4 (Sections 1, 3, 12, 13)
 - Graveyard items: 8
 - Audit lenses applied without findings: 6 (numeric constraints, actionability, failure mode asymmetry, error recovery paths, trust boundary transitions, rule verifiability)
@@ -119,6 +122,7 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - Cross-Format Consistency: Very High (JSON key convention declared, all 6 formats audited, 0 remaining gaps)
 - Trust Boundary Coverage: Very High (12 boundaries audited, 11 explicit, 1 derivable, 0 gaps)
 - Rule Verifiability: Very High (~45 absolutes audited, all correctly calibrated to verification mechanism)
+- Scope Boundary Coverage: Very High (3 HIGH fixes applied, 14 MEDIUM rejected as below threshold or naturally scoped by practitioner judgment)
 
 ## Cumulative Changes
 - 14 additions: +760 words
@@ -135,8 +139,9 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - 1 prerequisite chain fix: +48 words (feature flag implementation pattern)
 - 1 composability deadlock fix: +45 words (refactoring-reveals-bug exception)
 - 1 cross-format consistency fix: +30 words (JSON key convention + S8 example fix)
-- **Net: ~-13 words while adding 17 new concepts and fixing 16 consistency errors**
+- 1 scope boundary fix: +45 words (3 absolute rules scoped to prevent literal misapplication)
+- **Net: ~+32 words while adding 20 new concepts and fixing 19 consistency errors**
 
-## Iteration: 54
+## Iteration: 55
 Last updated: 2026-02-17
-Status: Document continues in stable mature state. New lens (rule verifiability) applied, auditing ~45 absolute rules across all 26 sections. All absolutes correctly calibrated: mechanically verifiable rules have CI gates, review-verifiable rules map to S25 review checklist, heuristic rules self-scope with judgment language. 27 distinct lenses now applied.
+Status: Document continues in stable mature state. New lens (scope boundary) applied, auditing absolute rules for unstated exceptions. 3 HIGH-severity scope gaps fixed (join table timestamps, generated file line limit, type file export grouping). 14 MEDIUM findings rejected as below threshold. 28 distinct lenses now applied.

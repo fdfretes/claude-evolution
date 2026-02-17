@@ -2,7 +2,7 @@
 
 ## Status: EXHAUSTED (0 active items)
 
-Iteration 54 applied a rule verifiability lens, auditing ~45 absolute rules for mechanical verifiability vs heuristic character. All correctly calibrated. No new active items emerged.
+Iteration 55 applied a scope boundary lens, auditing absolute rules for unstated exceptions where literal application is counterproductive. 3 HIGH-severity scope gaps fixed. 14 MEDIUM findings rejected as below threshold. No new active items emerged.
 
 ## Active
 
@@ -51,6 +51,7 @@ Iteration 54 applied a rule verifiability lens, auditing ~45 absolute rules for 
 - ~~Cross-format consistency: JSON key convention and mixed S8 example~~ → Fixed iteration 52
 - ~~Trust boundary transitions: data flow boundary coverage~~ → Verified clean iteration 53
 - ~~Rule verifiability: absolute rules calibrated to verification mechanism~~ → Verified clean iteration 54
+- ~~Scope boundaries: join table timestamps, generated file limit, type file export~~ → Fixed iteration 55
 
 ## Graveyarded Items
 - Section 14 compression (27 words, below threshold) — evidence/section14-assessment.md
@@ -65,7 +66,7 @@ Iteration 54 applied a rule verifiability lens, auditing ~45 absolute rules for 
 - Feature flag + multi-migration timing (niche, better as project-specific ADR) — graveyard.md
 
 ## Remaining Low-Severity Observations (Not Worth Editing)
-Carried from iterations 38-54:
+Carried from iterations 38-55:
 - `console.error` in Section 4 startup example is a legitimate pre-logger exception
 - "Never name anything Handler" wording is broader than intent (refers to classes, not directories)
 - Performance budgets (S7) duplicate SLO targets (S18) — same numbers, different contexts
@@ -98,10 +99,15 @@ Carried from iterations 38-54:
 - Outbound HTTP request construction (SSRF prevention) not explicitly stated — derivable from injection prevention pattern + adapter architecture
 - "One logical assertion per test" uses judgment word "logical" — correctly self-scoping as heuristic (iteration 54 finding)
 - "Never hold a database lock while making an external HTTP call" requires cross-function path analysis — correctly absolute despite verification difficulty (iteration 54 finding)
+- TODO contradiction between S1 Law 4 ("never commit TODO hacks") and S11 ("without ticket reference") — reconcilable: "TODO hacks" as compound noun + Step 4 "evaluate if intentional" (iteration 55 finding)
+- "Never use raw literals in tests" is overkill for primitive-input pure function tests — practitioners naturally apply judgment (iteration 55 finding)
+- "Max 30 lines per function" for flat dispatchers/mappers — practitioners recognize trivially-simple line exceptions (iteration 55 finding)
+- "Every service exposes GET /health" doesn't address non-HTTP workers — implicit scope to HTTP services (iteration 55 finding)
+- "No reproduction means no fix attempt" could block defensive measures against undeniable security evidence — Emergency Hotfix Protocol provides escape (iteration 55 finding)
 
 ## Document Maturity Assessment
 
-The document has been through 34 improvement iterations. All content-level and meta-level lenses are exhausted. The frontier is empty.
+The document has been through 35 improvement iterations. All content-level and meta-level lenses are exhausted. The frontier is empty.
 
 | Lens | Iterations | Status |
 |------|-----------|--------|
@@ -132,6 +138,7 @@ The document has been through 34 improvement iterations. All content-level and m
 | Cross-format consistency | 52 | Applied (1 fix — JSON key convention + S8 example; 6 LOW findings rejected) |
 | Trust boundary transitions | 53 | Applied (0 findings — 12 boundaries audited, 11 explicit, 1 derivable) |
 | Rule verifiability | 54 | Applied (0 findings — ~45 absolutes audited, all correctly calibrated) |
+| Scope boundaries | 55 | Applied (3 fixes — join table timestamps, generated file limit, type file export; 14 MEDIUM rejected) |
 
 ## Reopening Criteria
 
