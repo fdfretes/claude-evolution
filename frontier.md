@@ -2,7 +2,7 @@
 
 ## Status: LOW INVENTORY (1 active item, approaching exhaustion)
 
-Iteration 42 re-examined the "low-severity observations" list and found one item that warranted a fix: the "no boolean parameters" self-contradiction. The remaining item (cross-language contamination guard) remains low-priority.
+Iteration 43 closed the Section 21 coverage threshold cross-reference gap — the same pattern as iterations 29 and 31 (CI gate items referencing their defining sections).
 
 ## Active
 
@@ -43,6 +43,7 @@ Iteration 42 re-examined the "low-severity observations" list and found one item
 - ~~Contradiction: "No any ever" vs "without justification"~~ → Fixed iteration 40
 - ~~Audience Fitness: Verify Before Generating~~ → Added iteration 41
 - ~~Self-contradiction: "No boolean parameters" bans its own solution~~ → Fixed iteration 42
+- ~~Cross-reference: Section 21 coverage thresholds don't cite Section 5~~ → Fixed iteration 43
 
 ## Graveyarded Items
 - Section 14 compression (27 words, below threshold) — evidence/section14-assessment.md
@@ -53,7 +54,7 @@ Iteration 42 re-examined the "low-severity observations" list and found one item
 - IDE-specific recommendations (pre-seeded rejection)
 
 ## Remaining Low-Severity Observations (Not Worth Editing)
-Carried from iterations 38-42:
+Carried from iterations 38-43:
 - `console.error` in Section 4 startup example is a legitimate pre-logger exception
 - "Never name anything Handler" wording is broader than intent (refers to classes, not directories)
 - Performance budgets (S7) duplicate SLO targets (S18) — same numbers, different contexts
@@ -61,16 +62,15 @@ Carried from iterations 38-42:
 - `utils/` directory (S2) vs "never vague names like utils.ts" (S3) — file vs directory distinction
 - Idempotency/backoff concepts appear in multiple sections — appropriate contextual repetition
 - "zero-downtime deployments" phrase not in cited Sections 10/21 (concept present, exact term not)
-- Section 21 coverage enforcement doesn't cite Section 5 thresholds
-- Section 11 dependency ask doesn't cite Section 4 framework
-- ~~"No boolean parameters" wording broader than intent (positional vs named)~~ → Fixed iteration 42
+- ~~Section 21 coverage enforcement doesn't cite Section 5 thresholds~~ → Fixed iteration 43
+- Section 11 dependency ask doesn't cite Section 4 framework (different concerns: communication vs evaluation)
 - Test name uses "and" which Section 1 flags as splitting signal (philosophical, not practical)
 - Hotfix test deferral gap with "no regression test" anti-pattern (implicit resolution)
 - Human-team-specific rules (S25 review turnaround, S26 incident response times, S22 rotation schedules) are dead weight for AI consumer but harmless
 
 ## Document Maturity Assessment
 
-The document has been through 22 improvement iterations. All content-level lenses are exhausted. A new meta-lens (audience fitness) has been applied. Low-severity observations are being systematically re-evaluated.
+The document has been through 23 improvement iterations. All content-level lenses are exhausted. New meta-lenses (audience fitness, low-severity re-evaluation) have been applied. Cross-reference integrity between CI gates and their defining sections is now complete.
 
 | Lens | Iterations | Status |
 |------|-----------|--------|
@@ -79,16 +79,16 @@ The document has been through 22 improvement iterations. All content-level lense
 | Compressions | 23, 25, 35, 36, 37 | Exhausted (at floor) |
 | Boundary delineation | 24 | Exhausted (all overlaps resolved) |
 | Scope qualifiers | 26 | Exhausted (all ambiguities clarified) |
-| Cross-section alignment | 29 | Exhausted (all inconsistencies fixed) |
+| Cross-section alignment | 29, 43 | Exhausted (all inconsistencies fixed) |
 | Example-to-rule promotion | 30 | Exhausted (implicit patterns made explicit) |
 | Rule-to-gate connection | 31, 32 | Exhausted (all absolute rules enforced) |
 | Mechanism gap fills | 33, 34 | Exhausted (all lifecycles complete) |
 | Symmetric coverage | 30 | Exhausted (input/output both covered) |
 | Enforcement audit | 31, 32 | Exhausted (all rules verified in CI) |
 | Self-contradiction audit | 38, 42 | Exhausted (examples comply with rules) |
-| Cross-reference integrity | 39 | Exhausted (references verified, examples comply cross-section) |
+| Cross-reference integrity | 39, 43 | Exhausted (references verified, CI gates cite sources) |
 | Audience fitness | 41 | Applied (1 HIGH fix; remaining items low-leverage) |
-| Low-severity re-evaluation | 42 | Applied (1 fix from 13 items; remainder confirmed below threshold) |
+| Low-severity re-evaluation | 42, 43 | Applied (2 fixes from 13 items; remainder confirmed below threshold) |
 
 ## Reopening Criteria
 

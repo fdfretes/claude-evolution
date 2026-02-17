@@ -612,3 +612,29 @@ Track how the improvement process itself evolves. Meta-observations about what w
 - Edit size: 55 → 72 → -380 → 16 → -325 → 17 → +130 → +60 → +25 → +73 → +20 → +25 → +85 → +68 → -115 → -57 → 0 → +9 → -10 → +16 → +37 → +1. The +1 is the smallest non-zero edit in the series.
 - **Cumulative delta: ~-184 words** from starting state (11,668 → ~11,484). Twenty-two iterations: 12 additions (+667 words), 4 compressions (-877 words), 1 delineation (+16 words), 2 enforcement connections (+45 words), 2 self-consistency patches (+10 words, 4 fixes), 1 cross-reference integrity patch (-10 words), 1 contradiction resolution (+16 words), 1 final state declaration (+0 words).
 - **The document's improvement curve is asymptotically approaching zero.** Edit sizes: 55, 72, 380, 16, 325, 17, 130, 60, 25, 73, 20, 25, 85, 68, 115, 57, 0, 9, 10, 16, 37, 1. The trend is unmistakably toward diminishing returns. Future iterations would need a genuinely new lens or an external trigger to produce meaningful improvements.
+
+---
+
+## Iteration 43 - Coverage Threshold Cross-Reference (2026-02-17)
+
+### What Worked
+- The low-severity observations list continues to yield small, justified fixes. "Section 21 coverage enforcement doesn't cite Section 5 thresholds" was carried since iteration 38 and resolved with a 2-word edit. This follows the established cross-reference pattern from iterations 29 (OFFSET → Section 13) and 31 (architecture verification → Section 2).
+- The subagent analysis confirmed the gap is genuine: a CI engineer configuring the pipeline from Section 21 would not know what thresholds to use. The fix makes Section 5 the authoritative source by cross-reference, avoiding number duplication.
+- Also evaluated "Section 11 dependency ask doesn't cite Section 4 framework" and correctly determined it's NOT the same pattern: Section 11 is a communication protocol (when to ask), Section 4 is an evaluation framework (how to decide). These are different concerns and don't need cross-referencing.
+
+### What Struggled
+- Nothing significant. The fix was straightforward once the pattern was recognized. The main work was confirming which low-severity items justify editing versus which don't.
+
+### Discoveries
+- **The cross-reference pattern is now complete for CI gates.** Section 21's gate list now references all relevant defining sections: Section 2 (architecture), Section 5 (coverage), Section 6 (injection). The only gates without cross-references are the self-contained ones (linting, type checking, test pass rates, bundle size) where no external section defines the specifics.
+- **Not all cross-reference gaps are equal.** The Section 11 → Section 4 gap was evaluated and correctly rejected: communication protocol ("ask before adding") and evaluation framework ("how to assess") are different concerns. A cross-reference would conflate "when to communicate" with "how to decide." The pattern: cross-reference when a CI gate needs specifics from another section; don't cross-reference when two sections address the same topic from different angles.
+- **The low-severity list is a well that occasionally yields.** Iterations 42 and 43 both found fixes in this list. The diminishing-returns trend is clear (1 word, then 2 words), but the cost of checking is near-zero, making it always worthwhile to scan.
+
+### Protocol Adjustments
+- None needed. The low-severity re-evaluation protocol works: scan the list, estimate fix cost, apply if cost ≤ 5 words and the gap is genuine.
+
+### Cross-Iteration Patterns
+- Twenty-three iterations catalogued. Fifteen distinct improvement lenses.
+- Edit size: 55 → 72 → -380 → 16 → -325 → 17 → +130 → +60 → +25 → +73 → +20 → +25 → +85 → +68 → -115 → -57 → 0 → +9 → -10 → +16 → +37 → +1 → +2. The last three edits: 37, 1, 2 — firmly in the asymptotic tail.
+- **Cumulative delta: ~-182 words** from starting state (11,668 → ~11,486). Twenty-three iterations: 12 additions (+667 words), 4 compressions (-877 words), 1 delineation (+16 words), 2 enforcement connections (+45 words), 2 self-consistency patches (+10 words), 1 cross-reference integrity patch (-10 words), 1 contradiction resolution (+16 words), 1 cross-reference gap fix (+2 words), 1 final state declaration (+0 words).
+- **All CI gate cross-references are now complete.** This closes a systematic gap class. Section 21's merge gates now reference their defining sections (S2, S5, S6) wherever specifics are needed. The remaining gates are self-contained and need no cross-references.

@@ -2,7 +2,7 @@
 
 ## Document Status: MATURE (stable)
 
-The document reached its content-optimal state after 20 iterations (21-40). Iteration 41 applied a new lens — "audience fitness" — adding an AI-agent-specific verification rule. Iteration 42 fixed a minor self-contradiction in the boolean parameter rule.
+The document reached its content-optimal state after 20 iterations (21-40). Iterations 41-42 applied new lenses (audience fitness, low-severity re-evaluation). Iteration 43 closed a CI cross-reference gap using the established cross-reference pattern from iterations 29 and 31.
 
 ## Strengths
 - Comprehensive coverage of engineering lifecycle (26 sections)
@@ -18,7 +18,8 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - Cross-reference integrity verified: examples in section X comply with rules in section Y
 - Zero internal contradictions: all escape hatches use consistent pattern (absolute + documented justification)
 - AI-agent-specific failure mode covered (verify APIs before calling them)
-- Boolean parameter rule now correctly scoped to positional booleans
+- Boolean parameter rule correctly scoped to positional booleans
+- CI gate thresholds cross-referenced to their defining sections
 
 ## Resolved Issues (Complete List)
 - Autonomy boundary contradiction → Fixed iteration 21
@@ -48,9 +49,10 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - "No any ever" vs "without justification" contradiction → Fixed iteration 40
 - Missing AI-agent-specific verification rule → Added iteration 41
 - "No boolean parameters" self-contradicts its own solution → Fixed iteration 42
+- Section 21 coverage thresholds didn't reference Section 5 → Fixed iteration 43
 
 ## Metrics
-- Length: ~11,345 words (net ~-184 from 11,668 start, +1 word from iteration 41)
+- Length: ~11,347 words (net ~-182 from 11,668 start, +2 words from iteration 43)
 - Sections: 26
 - Internal contradictions: 0
 - Self-contradicting examples: 0
@@ -77,8 +79,9 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - 2 self-consistency patches: +10 words (4 fixes total, net minimal)
 - 1 cross-reference integrity patch: ~-10 words (3 fixes, shortened examples)
 - 1 contradiction resolution: +16 words (any/unknown escape hatch)
-- **Net: ~-184 words while adding 12 new concepts and fixing 8 self/cross-reference errors and 1 contradiction**
+- 1 cross-reference gap fix: +2 words (coverage thresholds → Section 5)
+- **Net: ~-182 words while adding 12 new concepts and fixing 9 self/cross-reference errors and 1 contradiction**
 
-## Iteration: 42
+## Iteration: 43
 Last updated: 2026-02-17
-Status: Document continues in stable mature state. Low-severity observations from the frontier are being systematically evaluated; one ("no boolean parameters" self-contradiction) warranted a 1-word fix. Remaining low-severity items are at the threshold where the cost of editing equals or exceeds the benefit.
+Status: Document continues in stable mature state. One low-severity cross-reference gap closed (Section 21 coverage thresholds now reference Section 5). Remaining low-severity observations confirmed below editing threshold.
