@@ -1,8 +1,8 @@
 # Current Understanding of CLAAAAAAUDE.md Quality
 
-## Document Status: NEAR-TERMINAL (1 fix applied after 17 zero-edit iterations)
+## Document Status: NEAR-TERMINAL (2 fixes applied at iteration 73 after 1 fix at iteration 72)
 
-The document reached its content-optimal state after 20 iterations (21-40). Iterations 41-55 applied 15 orthogonal lenses without finding remaining HIGH-severity issues. Iterations 56-65 verified frontier exhaustion via 10 distinct verification approaches. Iterations 66-71 attempted six additional lenses — all rejected. Iteration 72 applied operational sequencing lens and found 1 genuine step-ordering error in the Temporary Debug Logging Protocol.
+The document reached its content-optimal state after 20 iterations (21-40). Iterations 41-55 applied 15 orthogonal lenses without finding remaining HIGH-severity issues. Iterations 56-65 verified frontier exhaustion via 10 distinct verification approaches. Iterations 66-71 attempted six additional lenses — all rejected. Iteration 72 applied operational sequencing lens and found 1 step-ordering error. Iteration 73 applied directive modality consistency lens and found 2 modality mismatches (soft language on data-integrity rules).
 
 ## Strengths
 - Comprehensive coverage of engineering lifecycle (26 sections)
@@ -45,6 +45,7 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - Semantic consistency: 20 cross-section terms audited; 3 ambiguous terms all disambiguated by qualifying phrases
 - Composition minimality: no rules are logically entailed by other rules; apparent redundancies serve independent purposes
 - Operational sequencing: 15 sequential instruction sets audited; 1 step-ordering error fixed
+- Directive modality consistency: directive strength matches violation severity; 2 soft-language mismatches on data-integrity rules fixed
 
 ## Resolved Issues (Complete List)
 - Autonomy boundary contradiction → Fixed iteration 21
@@ -105,9 +106,10 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - Composition minimality → Rejected (6 candidates all serve independent purposes) iteration 70
 - Degraded-mode operation → Rejected (derivable from Pre-Commit Protocol + Emergency Hotfix) iteration 71
 - Temporary Debug Logging Protocol step ordering → Fixed iteration 72
+- Discriminated unions "Prefer" and Idempotency-Key "should" modality mismatches → Fixed iteration 73
 
 ## Metrics
-- Length: ~11,559 words (-2 from iteration 55)
+- Length: ~11,558 words (-1 from iteration 72)
 - Sections: 26
 - Internal contradictions: 0
 - Self-contradicting examples: 0
@@ -138,6 +140,7 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - Polysemy risks (HIGH): 0
 - Logically entailed (redundant) rules: 0
 - Operational sequencing errors: 0
+- Directive modality mismatches: 0
 - Compressed sections: 4 (Sections 1, 3, 12, 13)
 - Graveyard items: 8
 - Audit lenses applied without findings: 21 (numeric constraints, actionability, failure mode asymmetry, error recovery paths, trust boundary transitions, rule verifiability, frontier exhaustion verification x2, database constraint depth, scenario simulation, adversarial compliance, partial adoption safety, misapplication recovery, temporal obsolescence resilience, cognitive load under stress, terminal state assessment, test execution order independence, imperative completeness, contradictory incentive audit, polysemy audit, composition minimality, degraded-mode operation)
@@ -173,6 +176,7 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - Semantic Consistency: Very High (20 terms audited; 3 ambiguous all disambiguated by qualifying phrases)
 - Composition Minimality: Very High (6 candidate rules tested; all serve independent purposes, no logical entailment)
 - Operational Sequencing: Very High (15 instruction sets audited; 1 step-ordering error fixed, 3 HIGH candidates rejected as mitigated)
+- Directive Modality Consistency: Very High (all directives audited; 2 modality mismatches fixed, severity now matches strength)
 
 ## Cumulative Changes
 - 14 additions: +760 words
@@ -191,8 +195,9 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - 1 cross-format consistency fix: +30 words (JSON key convention + S8 example fix)
 - 1 scope boundary fix: +45 words (3 absolute rules scoped to prevent literal misapplication)
 - 1 sequencing fix: -2 words (debug logging protocol step reorder)
-- **Net: ~+30 words while adding 21 new concepts and fixing 20 consistency errors**
+- 1 modality fix: -1 word (2 soft directives strengthened to match severity)
+- **Net: ~+29 words while adding 22 new concepts and fixing 22 consistency errors**
 
-## Iteration: 72
+## Iteration: 73
 Last updated: 2026-02-17
-Status: Applied operational sequencing lens. Found and fixed 1 step-ordering error in Section 12 Temporary Debug Logging Protocol (steps 4 and 5 were reversed — following literally would delete useful debug logging before converting it to permanent observability). 15 sequential instruction sets audited across 10 sections. 3 HIGH candidates rejected as mitigated by CI pipeline, derivable from context, or infrastructure-specific. 13 MEDIUM findings rejected as below threshold. 32nd unique lens. First edit after 17 consecutive zero-edit iterations. 45 total lens applications (32 unique + 13 verification/rejection passes).
+Status: Applied directive modality consistency lens. Found and fixed 2 modality mismatches: (1) Section 3 "Prefer discriminated unions" → "Use discriminated unions" because the same paragraph calls the alternative "wrong" and creates impossible states; (2) Section 13 "should support an Idempotency-Key header" → "support an Idempotency-Key header" because duplicate side effects are a data-integrity issue and every surrounding directive uses declarative imperative. 3 MEDIUM findings rejected as correctly calibrated (linear history "preferred," blue-green "preferred," raw literals "never"). 33rd unique lens. 46 total lens applications (33 unique + 13 verification/rejection passes).

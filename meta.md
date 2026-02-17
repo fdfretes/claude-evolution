@@ -1438,3 +1438,31 @@ Track how the improvement process itself evolves. Meta-observations about what w
 - **Cumulative delta: ~+30 words** (down 2 from iteration 55's +32).
 - **The protocol's natural arc**: iterations 21-37 (17 iterations) produced all substantive improvements; iterations 38-55 (18 iterations) applied progressively finer lenses finding smaller issues; iterations 56-71 (16 iterations) verified exhaustion through 16 independent approaches; iteration 72 (1 iteration) found a latent ordering error through a genuinely novel lens. This 17:18:16:1 distribution shows the protocol can still produce value but at extremely low yield.
 - **New verification category: execution simulation.** Previous lenses analyzed structural properties (content, consistency, verifiability, composability). The operational sequencing lens simulates *executing* the instructions in order and checking outcomes. This is the 9th verification category (adding to: structural analysis, cooperative/adversarial compliance, decomposition safety, misapplication recovery, temporal obsolescence, cognitive load, derivability, semantic consistency).
+
+---
+
+## Iteration 73 - Directive Modality Consistency Audit (2026-02-17)
+
+### What Worked
+- Applied a genuinely novel lens: **directive modality consistency** — does the STRENGTH of each directive (MUST/NEVER/ALWAYS vs should/prefer/default vs may/consider) match the SEVERITY of violating it? This is distinct from all previous lenses: it's not about what the directives say, but how forcefully they say it relative to how much the violation matters.
+- Systematic audit of all directives across 26 sections found 2 HIGH-severity modality mismatches. Both are cases where data-integrity/correctness rules used soft language while surrounding rules of equal severity used absolute language.
+- Both fixes are minimal: "Prefer" → "Use" (0 words delta) and removing "should" (-1 word). No information is lost; only the modality signal changes.
+- Both findings survived falsification cleanly. The discriminated unions fix is particularly strong: the same paragraph calls the alternative "wrong" but frames the correct approach as merely "preferred."
+
+### What Struggled
+- 3 MEDIUM findings (linear history "preferred," blue-green "preferred," raw literals "never") were borderline but correctly rejected as appropriate modality for their context (workflow choices, infrastructure constraints, and contextual interpretation respectively).
+
+### Discoveries
+- **The document's dominant modality is "declarative imperative"** — rules stated as commands without explicit RFC-style keywords ("Use nouns not verbs", "Run the full test suite"). This reads as absolute and is the correct default for a standards document.
+- **The two mismatches share a root cause: inherited RFC-style "should" convention.** Both "should support" (idempotency) and "Prefer" (discriminated unions) likely originated from common industry phrasing patterns (RFC 2119 SHOULD, "best practice: prefer X") rather than being calibrated to the document's own severity scale.
+- **Modality consistency is a 10th verification category.** Previous categories examined content, structure, consistency, completeness, ordering, composability, compliance, resilience, cognitive load, and execution simulation. Modality consistency examines the *force* of expression independent of content correctness — a dimension orthogonal to all previous lenses.
+
+### Protocol Adjustments
+- None needed. The directive modality lens was a productive addition to the verification toolkit, but the yield (2 fixes from a full-document audit) confirms the document remains very close to its limit.
+
+### Cross-Iteration Patterns
+- Fifty-three iterations catalogued. Forty-six lens applications (33 unique + 13 verification/rejection passes).
+- Edit size: ... → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → 0 → **-2** → **-1**. Second consecutive edit after 17 zero-edit iterations.
+- **Cumulative delta: ~+29 words** (down 1 from iteration 72's +30).
+- **The protocol's natural arc**: iterations 21-37 (17 iterations) produced all substantive improvements; iterations 38-55 (18 iterations) applied progressively finer lenses finding smaller issues; iterations 56-71 (16 iterations) verified exhaustion through 16 independent approaches; iterations 72-73 (2 iterations) found latent issues through genuinely novel lenses (ordering + modality). This 17:18:16:2 distribution shows the document has a very small tail of issues discoverable only through novel lens categories.
+- **New verification category: modality analysis.** This is the 10th category (adding to: structural analysis, cooperative/adversarial compliance, decomposition safety, misapplication recovery, temporal obsolescence, cognitive load, derivability, semantic consistency, execution simulation).

@@ -1,8 +1,8 @@
 # High-Leverage Improvement Questions
 
-## Status: NEAR-TERMINAL (1 fix applied at iteration 72 after 17 zero-edit iterations)
+## Status: NEAR-TERMINAL (2 fixes applied at iteration 73 after 1 fix at iteration 72)
 
-Iteration 55 declared frontier exhausted. Iterations 56-71 independently verified via 16 distinct approaches — all rejected. Iteration 72 applied operational sequencing lens (instruction step ordering correctness) and found 1 genuine fix: Temporary Debug Logging Protocol steps 4/5 were in wrong order. 15 instruction sets audited across 10 sections. Protocol approaching terminal state again.
+Iteration 55 declared frontier exhausted. Iterations 56-71 independently verified via 16 distinct approaches — all rejected. Iteration 72 applied operational sequencing lens (1 fix). Iteration 73 applied directive modality consistency lens (2 fixes). Protocol approaching terminal state again.
 
 ## Active
 
@@ -69,6 +69,7 @@ Iteration 55 declared frontier exhausted. Iterations 56-71 independently verifie
 - ~~Composition minimality: logical entailment between rules~~ → Rejected (6 candidates all serve independent purposes; subsumed by compression passes) iteration 70
 - ~~Degraded-mode operation: enforcement infrastructure failure handling~~ → Rejected (derivable from Pre-Commit Protocol + Emergency Hotfix Protocol) iteration 71
 - ~~Operational sequencing: instruction step ordering correctness~~ → Fixed (Temp Debug Logging Protocol steps 4/5 reordered) iteration 72
+- ~~Directive modality consistency: directive strength vs violation severity~~ → Fixed (discriminated unions "Prefer"→"Use", idempotency-key "should"→declarative imperative) iteration 73
 
 ## Graveyarded Items
 - Section 14 compression (27 words, below threshold) — evidence/section14-assessment.md
@@ -83,7 +84,7 @@ Iteration 55 declared frontier exhausted. Iterations 56-71 independently verifie
 - Feature flag + multi-migration timing (niche, better as project-specific ADR) — graveyard.md
 
 ## Remaining Low-Severity Observations (Not Worth Editing)
-Carried from iterations 38-71 (unchanged — no promotions at iterations 56-71):
+Carried from iterations 38-72 (unchanged — no promotions at iterations 56-73):
 - `console.error` in Section 4 startup example is a legitimate pre-logger exception
 - "Never name anything Handler" wording is broader than intent (refers to classes, not directories)
 - Performance budgets (S7) duplicate SLO targets (S18) — same numbers, different contexts
@@ -140,10 +141,13 @@ Carried from iterations 38-71 (unchanged — no promotions at iterations 56-71):
 - "Communication Protocol" appears as section title in both S11 (AI-user interaction) and S23 (MQTT/HTTP/WebSocket) — human-format concern, AI reads inline context (iteration 69 finding)
 - "Schema" in S1 commit ordering ("schema type interface changes") doesn't disambiguate database vs validation vs message schemas — all correctly placed in commit 2 regardless (iteration 69 finding)
 - S14 "default scope or view" uses ORM-specific "scope" meaning — "or view" qualifier already disambiguates (iteration 69 finding)
+- "Linear history preferred" uses soft modality for a workflow choice — correctly calibrated, not a correctness issue (iteration 73 finding)
+- "Blue-green or canary deployments preferred" uses soft modality — correctly calibrated, infrastructure-dependent (iteration 73 finding)
+- "Never use raw literals in tests" slightly over-mandated for simple scalars — context clarifies intent is complex objects (iteration 73 finding)
 
 ## Document Maturity Assessment
 
-The document has been through 50 improvement iterations. All content-level and meta-level lenses are exhausted. Frontier exhaustion independently verified at iterations 56-71. Iteration 72 reopened briefly with operational sequencing lens (1 fix applied).
+The document has been through 51 improvement iterations. All content-level and meta-level lenses are exhausted. Frontier exhaustion independently verified at iterations 56-71. Iteration 72 reopened briefly with operational sequencing lens (1 fix applied). Iteration 73 applied directive modality consistency lens (2 fixes applied).
 
 | Lens | Iterations | Status |
 |------|-----------|--------|
@@ -192,6 +196,7 @@ The document has been through 50 improvement iterations. All content-level and m
 | Composition minimality | 70 | Rejected (6 candidates all serve independent purposes; subsumed by compression passes) |
 | Degraded-mode operation | 71 | Rejected (derivable from Pre-Commit Protocol as manual CI equivalent + Emergency Hotfix "fast-tracked not skipped" principle) |
 | Operational sequencing | 72 | Applied (1 fix — Temp Debug Logging Protocol steps 4/5 reordered; 3 HIGH rejected as mitigated; 13 MEDIUM rejected) |
+| Directive modality consistency | 73 | Applied (2 fixes — discriminated unions "Prefer"→"Use", idempotency-key "should"→declarative imperative; 3 MEDIUM rejected as correctly calibrated) |
 
 ## Reopening Criteria
 
