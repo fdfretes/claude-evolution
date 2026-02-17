@@ -1,8 +1,8 @@
 # High-Leverage Improvement Questions
 
-## Status: EXHAUSTED (confirmed at iterations 56-57)
+## Status: EXHAUSTED (confirmed at iterations 56-58)
 
-Iteration 55 declared frontier exhausted. Iteration 56 independently verified via 4 candidate lenses. Iteration 57 reconfirmed via fresh-eyes approach evaluating AI behavioral correctness, defense-in-depth completeness, and low-severity promotion review. All candidates rejected — existing mechanisms (test-first discipline, protective proportionality) already provide the defense.
+Iteration 55 declared frontier exhausted. Iteration 56 independently verified via 4 candidate lenses. Iteration 57 reconfirmed via fresh-eyes approach. Iteration 58 applied data invariant enforcement depth lens — rejected as derivable from existing trust boundary coverage. All candidates continue to be rejected — existing mechanisms provide the defense.
 
 ## Active
 
@@ -54,6 +54,7 @@ Iteration 55 declared frontier exhausted. Iteration 56 independently verified vi
 - ~~Scope boundaries: join table timestamps, generated file limit, type file export~~ → Fixed iteration 55
 - ~~Frontier exhaustion verification~~ → Confirmed iteration 56
 - ~~Fresh eyes verification: AI behavioral correctness, defense-in-depth, low-severity promotion~~ → Reconfirmed iteration 57
+- ~~Data invariant enforcement depth: database-level CHECK constraints~~ → Rejected (derivable from trust boundary coverage) iteration 58
 
 ## Graveyarded Items
 - Section 14 compression (27 words, below threshold) — evidence/section14-assessment.md
@@ -68,7 +69,7 @@ Iteration 55 declared frontier exhausted. Iteration 56 independently verified vi
 - Feature flag + multi-migration timing (niche, better as project-specific ADR) — graveyard.md
 
 ## Remaining Low-Severity Observations (Not Worth Editing)
-Carried from iterations 38-55 (unchanged — no promotions at iterations 56-57):
+Carried from iterations 38-55 (unchanged — no promotions at iterations 56-58):
 - `console.error` in Section 4 startup example is a legitimate pre-logger exception
 - "Never name anything Handler" wording is broader than intent (refers to classes, not directories)
 - Performance budgets (S7) duplicate SLO targets (S18) — same numbers, different contexts
@@ -106,10 +107,11 @@ Carried from iterations 38-55 (unchanged — no promotions at iterations 56-57):
 - "Max 30 lines per function" for flat dispatchers/mappers — practitioners recognize trivially-simple line exceptions (iteration 55 finding)
 - "Every service exposes GET /health" doesn't address non-HTTP workers — implicit scope to HTTP services (iteration 55 finding)
 - "No reproduction means no fix attempt" could block defensive measures against undeniable security evidence — Emergency Hotfix Protocol provides escape (iteration 55 finding)
+- Database-level CHECK constraints for business invariants not explicitly mentioned — derivable from "validate at boundaries" + database as trust boundary (iteration 58 finding)
 
 ## Document Maturity Assessment
 
-The document has been through 37 improvement iterations. All content-level and meta-level lenses are exhausted. Frontier exhaustion independently verified at iterations 56 and 57.
+The document has been through 37 improvement iterations. All content-level and meta-level lenses are exhausted. Frontier exhaustion independently verified at iterations 56, 57, and 58.
 
 | Lens | Iterations | Status |
 |------|-----------|--------|
@@ -143,6 +145,7 @@ The document has been through 37 improvement iterations. All content-level and m
 | Scope boundaries | 55 | Applied (3 fixes — join table timestamps, generated file limit, type file export; 14 MEDIUM rejected) |
 | Frontier exhaustion verification | 56 | Confirmed (4 candidate lenses evaluated, all rejected) |
 | Fresh eyes verification | 57 | Reconfirmed (AI behavioral correctness, defense-in-depth, low-severity promotion — all rejected) |
+| Data invariant enforcement depth | 58 | Rejected (derivable from trust boundary coverage + boundary validation principle) |
 
 ## Reopening Criteria
 

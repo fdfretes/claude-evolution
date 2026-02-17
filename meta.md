@@ -1031,3 +1031,27 @@ Track how the improvement process itself evolves. Meta-observations about what w
 - Edit size: ... → +45 → 0 → 0. Eighth zero-edit iteration. Three consecutive zero-edit iterations.
 - **Cumulative delta: ~+32 words** (unchanged since iteration 55).
 - **Three consecutive zero-edit iterations (55→56→57 evaluated, 56→57 zero-edit).** This is the longest zero-edit streak. The document is in confirmed terminal steady state.
+
+---
+
+## Iteration 58 - Data Invariant Enforcement Depth (2026-02-17)
+
+### What Worked
+- Applied a novel lens: "data invariant enforcement depth" — asking whether critical business invariants are enforced at multiple layers (application + database CHECK constraints), not just at the application boundary. This is a genuinely distinct question from iteration 53's trust boundary audit, which focused on whether each boundary HAD a rule, not on defense-in-depth WITHIN a boundary.
+- Correctly assessed severity as MEDIUM and rejected: the adapter architecture (S2) means all DB access goes through adapters, making direct-write bypass uncommon. The "validate at boundaries" principle (S6) combined with database as a trust boundary (iteration 53) makes the guidance derivable.
+
+### What Struggled
+- Finding a genuinely novel lens at iteration 58 required deeper domain analysis. The lens I found (data invariant enforcement depth) is legitimate but ultimately subsumes into existing coverage. The gap between "novel lens" and "actionable finding" continues to widen.
+
+### Discoveries
+- **Defense-in-depth has diminishing returns in standards documents.** Adding "also enforce invariants in the database" is sound engineering advice, but the document already provides the principle (validate at boundaries), the architecture that makes bypasses rare (adapter pattern), and the specific mechanism for the most common database constraint (NOT NULL in S14). Adding CHECK constraint guidance would help practitioners who don't extrapolate the boundary validation principle to the database layer — but such practitioners would also miss many other implied applications.
+- **The adapter pattern IS the primary defense against direct-write data corruption.** By routing all DB access through adapters (S2), the document implicitly prevents most scenarios where database-level constraints would be the last line of defense.
+
+### Protocol Adjustments
+- None needed. The protocol continues to handle "no change needed" gracefully.
+
+### Cross-Iteration Patterns
+- Thirty-eight iterations catalogued. Thirty-one lens applications (28 unique + 3 verification/rejection passes).
+- Edit size: ... → +45 → 0 → 0 → 0. Ninth zero-edit iteration. Four consecutive zero-edit iterations.
+- **Cumulative delta: ~+32 words** (unchanged since iteration 55).
+- **Four consecutive zero-edit iterations.** New record for longest zero-edit streak. The document's content-optimal state continues to hold under novel analysis.

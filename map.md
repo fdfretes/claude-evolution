@@ -2,7 +2,7 @@
 
 ## Document Status: MATURE (confirmed stable)
 
-The document reached its content-optimal state after 20 iterations (21-40). Iterations 41-55 applied 15 orthogonal lenses without finding remaining HIGH-severity issues. Iterations 56-57 independently verified frontier exhaustion: all candidate lenses either subsume into previously-applied lenses, fall below the editing threshold, or fall outside the document's intended scope.
+The document reached its content-optimal state after 20 iterations (21-40). Iterations 41-55 applied 15 orthogonal lenses without finding remaining HIGH-severity issues. Iterations 56-57 independently verified frontier exhaustion: all candidate lenses either subsume into previously-applied lenses, fall below the editing threshold, or fall outside the document's intended scope. Iteration 58 applied a data invariant enforcement depth lens — rejected as derivable from existing trust boundary coverage.
 
 ## Strengths
 - Comprehensive coverage of engineering lifecycle (26 sections)
@@ -79,6 +79,7 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - Scope boundary: join table timestamps, generated file limit, type file export rule → Fixed iteration 55
 - Frontier exhaustion verification → Confirmed iteration 56
 - Fresh eyes verification → Reconfirmed iteration 57
+- Database-level constraint enforcement depth → Rejected (derivable) iteration 58
 
 ## Metrics
 - Length: ~11,561 words (unchanged since iteration 55)
@@ -103,7 +104,7 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - Scope boundary gaps (HIGH): 0
 - Compressed sections: 4 (Sections 1, 3, 12, 13)
 - Graveyard items: 8
-- Audit lenses applied without findings: 7 (numeric constraints, actionability, failure mode asymmetry, error recovery paths, trust boundary transitions, rule verifiability, frontier exhaustion verification)
+- Audit lenses applied without findings: 8 (numeric constraints, actionability, failure mode asymmetry, error recovery paths, trust boundary transitions, rule verifiability, frontier exhaustion verification x2, database constraint depth)
 
 ## Quality Assessment
 - Enforceability: Very High
@@ -144,6 +145,6 @@ The document reached its content-optimal state after 20 iterations (21-40). Iter
 - 1 scope boundary fix: +45 words (3 absolute rules scoped to prevent literal misapplication)
 - **Net: ~+32 words while adding 20 new concepts and fixing 19 consistency errors**
 
-## Iteration: 57
+## Iteration: 58
 Last updated: 2026-02-17
-Status: Frontier exhaustion reconfirmed via fresh-eyes approach. Evaluated AI behavioral correctness failure mode (defended by existing test-first discipline), defense-in-depth completeness lens (subsumes into iteration 49), and low-severity promotion review (no promotions). Document remains at content-optimal state. 30 total lens applications (28 unique + 2 exhaustion verifications).
+Status: Applied data invariant enforcement depth lens. Database-level CHECK constraints for business invariants are a real defense-in-depth mechanism, but the gap is MEDIUM-severity, derivable from existing trust boundary coverage (iteration 53) and Section 6's boundary validation principle. Rejected — below editing threshold. 31 total lens applications (28 unique + 3 verification/rejection passes). Document remains at content-optimal state.
